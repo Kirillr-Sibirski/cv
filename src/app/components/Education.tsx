@@ -1,85 +1,99 @@
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
+import { Badge } from "@/components/ui/badge";
 
-type Education = (typeof RESUME_DATA)["education"][number];
-
-interface EducationPeriodProps {
-  start: Education["start"];
-  end: Education["end"];
+interface AchievementTagsProps {
+  keywords: readonly string[];
 }
 
-/**
- * Displays the education period in a consistent format
- */
-function EducationPeriod({ start, end }: EducationPeriodProps) {
+function AchievementTags({ keywords }: AchievementTagsProps) {
+  if (keywords.length === 0) return null;
+
   return (
-    <div
-      className="text-sm tabular-nums text-gray-500"
-      aria-label={`Period: ${start} to ${end}`}
+    <ul 
+      className="mt-2 flex list-none flex-wrap gap-1 p-0" 
+      aria-label="Keywords"
     >
-      {start} - {end}
-    </div>
+      {keywords.map((keyword) => (
+        <li key={keyword}>
+          <Badge 
+            className="px-1 py-0 text-[10px] print:px-1 print:py-0.5 print:text-[8px] print:leading-tight" 
+            variant="secondary"
+          >
+            {keyword}
+          </Badge>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-interface EducationItemProps {
-  education: Education;
+interface AchievementCardProps {
+  title: string;
+  achievements: readonly string[];
+  keywords: readonly string[];
 }
 
-/**
- * Individual education card component
- */
-function EducationItem({ education }: EducationItemProps) {
-  const { school, start, end, degree } = education;
-
+function AchievementCard({ title, achievements, keywords }: AchievementCardProps) {
   return (
-    <Card>
+    <Card 
+      className="flex h-full flex-col overflow-hidden border p-3" 
+      role="article"
+    >
       <CardHeader>
-        <div className="flex items-center justify-between gap-x-2 text-base">
-          <h3
-            className="font-semibold leading-none"
-            id={`education-${school.toLowerCase().replace(/\s+/g, "-")}`}
+        <div className="space-y-1">
+          <CardTitle className="text-base">{title}</CardTitle>
+          <CardDescription 
+            className="text-pretty font-mono text-xs print:text-[10px]" 
+            aria-label="Achievement description"
           >
-            {school}
-          </h3>
-          <EducationPeriod start={start} end={end} />
+              {achievements.map((item, index) => (
+                <p key={index}>{item}</p>
+              ))}
+          </CardDescription>
         </div>
       </CardHeader>
-      <CardContent
-        className="mt-2 text-foreground/80 print:text-[12px]"
-        aria-labelledby={`education-${school
-          .toLowerCase()
-          .replace(/\s+/g, "-")}`}
-      >
-        {degree}
+      <CardContent className="mt-auto flex">
+        <AchievementTags keywords={keywords} />
       </CardContent>
     </Card>
   );
 }
 
-interface EducationListProps {
-  education: readonly Education[];
+interface EducationProps {
+  education: (typeof RESUME_DATA)["education"];
 }
 
-/**
- * Main education section component
- * Renders a list of education experiences
- */
-export function Education({ education }: EducationListProps) {
+export function Education({ education }: EducationProps) {
   return (
     <Section>
       <h2 className="text-xl font-bold" id="education-section">
         Education
       </h2>
-      <div
-        className="space-y-4"
-        role="feed"
-        aria-labelledby="education-section"
-      >
+      <div className="space-y-4 print:space-y-0" role="feed" aria-labelledby="education-section">
         {education.map((item) => (
           <article key={item.school} role="article">
-            <EducationItem education={item} />
+            <div className="flex items-center justify-between mb-2">
+              <h3 className="font-semibold leading-none">{item.school}</h3>
+              <div className="text-sm tabular-nums text-gray-500">
+                {item.start} - {item.end}
+              </div>
+            </div>
+            <div 
+              className="grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"
+              role="feed"
+              aria-labelledby="education-achievements"
+            >
+              {item.achievements.map((achievement) => (
+                <AchievementCard
+                  key={achievement.title}
+                  title={achievement.title}
+                  achievements={achievement.achievements}
+                  keywords={achievement.keywords}
+                />
+              ))}
+            </div>
           </article>
         ))}
       </div>

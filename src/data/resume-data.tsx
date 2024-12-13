@@ -9,233 +9,252 @@ import {
 import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 
 export const RESUME_DATA = {
-  name: "Bartosz Jarocki",
-  initials: "BJ",
-  location: "Wrocław, Poland, CET",
-  locationLink: "https://www.google.com/maps/place/Wrocław",
-  about:
-    "Detail-oriented Full Stack Engineer dedicated to building high-quality products.",
+  name: "Kirill Rybkov",
+  initials: "KR",
+  location: "Barcelona, Spain",
+  locationLink: "https://www.google.com/maps/place/Barcelona",
+  about: "Full-Stack Blockchain Developer & Mechatronics Enthusiast",
   summary: (
     <>
-      Frontend-focused Full Stack Engineer specializing in high-performance
-      React applications, scalable Node.js services, and real-time collaboration
-      systems. Experienced in technical architecture design and remote team
-      leadership.
+      Builder of bold ideas. From pioneering blockchain solutions to engineering electronics, I turn concepts into reality. My journey spans software, hardware, and everything in between—always with an eye on solving problems that matter. Speed and scalability are my guiding principles.
     </>
   ),
-  avatarUrl: "https://avatars.githubusercontent.com/u/1017620?v=4",
-  personalWebsiteUrl: "https://jarocki.me",
+  avatarUrl: "./image.png",
   contact: {
-    email: "bartosz.jarocki@hey.com",
-    tel: "+48530213401",
+    email: "kirill.rybkov@outlook.com",
     social: [
       {
         name: "GitHub",
-        url: "https://github.com/BartoszJarocki",
+        url: "https://github.com/Kirillr-Sibirski",
         icon: GitHubIcon,
       },
       {
         name: "LinkedIn",
-        url: "https://www.linkedin.com/in/bjarocki/",
+        url: "https://www.linkedin.com/in/kirillrybkov/",
         icon: LinkedInIcon,
       },
       {
         name: "X",
-        url: "https://x.com/BartoszJarocki",
+        url: "https://twitter.com/kirillrybkov",
         icon: XIcon,
       },
     ],
   },
   education: [
     {
-      school: "Wrocław University of Technology",
-      degree: "Bachelor's Degree in Control systems engineering and Robotics",
-      start: "2007",
-      end: "2010",
-    },
+      school: "The British School of Barcelona",
+      degree: "Secondary Education",
+      start: "2021",
+      end: "2025",
+      achievements: [
+        {
+          title: "Duke of Edinburgh Award",
+          keywords: ["Hiking", "Expedition"],
+          achievements: [
+            "Bronze and Silver Awards for leadership and resilience. Completed 4 challenging journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks, including two 2-day and two 3-day journeys (sleeping in tents)."
+          ]
+        },
+        {
+          title: "Model United Nations",
+          keywords: ["International Relations", "BIMUN"],
+          achievements: [
+            "Represented Tanzania in UNWOMEN Council; my clause on post-partum contraceptives was passed into the final resolution, highlighting my passion for international relations.",
+          ]
+        },
+        {
+          title: "Public Speaking",
+          keywords: ["Public Speaking", "4Voices"],
+          achievements: [
+            "Gave a speech at CosmoCaixa venue in Barcelona to 300 people on the future of human-computer interface (brain chips)"
+          ]
+        }
+      ]
+    }
   ],
   work: [
     {
-      company: "Film.io",
-      link: "https://film.io",
-      badges: ["Remote", "React", "Next.js", "TypeScript", "Node.js"],
-      title: "Software Architect",
-      logo: ConsultlyLogo,
-      start: "2024",
+      company: "Lattic3 Finance",
+      badges: ["DeFi", "Radix", "Next.js", "Shadcn/UI"],
+      title: "Co-Founder",
+      start: "Oct 2024",
       end: null,
       description: (
         <>
-          Leading technical architecture of a blockchain-based film funding
-          platform.
           <ul className="list-inside list-disc">
-            <li>
-              Architecting migration from CRA to Next.js for improved
-              performance, SEO, and DX
-            </li>
-            <li>
-              Established release process enabling faster deployments and
-              reliable rollbacks
-            </li>
-            <li>
-              Implementing system-wide monitoring and security improvements
-            </li>
+            <li>Spearheading the development of DeFi solutions for the Radix ecosystem</li>
+            <li>Leading frontend development using Next.js and Shadcn/UI to create a user-centric interface</li>
           </ul>
         </>
       ),
     },
     {
-      company: "Parabol",
-      link: "https://parabol.co",
-      badges: [
-        "Remote",
-        "React",
-        "TypeScript",
-        "Node.js",
-        "GraphQL",
-        "Tailwind CSS",
-      ],
-      title: "Senior Full Stack Developer",
-      logo: ParabolLogo,
-      start: "2021",
-      end: "2024",
+      company: "CalmScent & BorderlessWave",
+      badges: ["SMMA", "Dropshipping"],
+      title: "Entrepreneur",
+      start: "Feb 2023",
+      end: "Sep 2023",
       description: (
         <>
-          Senior developer and squad leader for an enterprise agile meeting
-          platform.
           <ul className="list-inside list-disc">
-            <li>
-              Built design system with Tailwind CSS, improving development speed
-              and time to market
-            </li>
-            <li>
-              Implemented engineering practices: PR automation, code review
-              guidelines, and workflows
-            </li>
-            <li>
-              Open source contributions to Relay DevTools and React i18n tooling
-            </li>
+            <li>Established "CalmScent," a dropshipping store specializing in oil diffusers</li>
+            <li>Founded "BorderlessWave," a Twitter/X management agency targeting tech startups</li>
           </ul>
         </>
       ),
     },
     {
-      company: "Clevertech",
-      link: "https://clevertech.biz",
-      badges: ["Remote", "React", "TypeScript", "Node.js", "Android", "Kotlin"],
-      title: "Lead Android Developer → Full Stack Developer",
-      logo: ClevertechLogo,
-      start: "2015",
-      end: "2021",
+      company: "Ragemp.pro",
+      badges: ["C#", "JavaScript", "RAGE:MP"],
+      title: "Freelance Game Developer",
+      start: "June 2021",
+      end: "Feb 2022",
       description: (
         <>
-          Successfully transitioned from mobile to full-stack development while
-          leading distributed teams.
           <ul className="list-inside list-disc">
-            <li>
-              Led frontend team at Evercast, building real-time platform
-              supporting 30+ users per room with HD streaming and collaboration
-              tools
-            </li>
-            <li>
-              Developed offline-first Android app for DKMS, improving donor
-              registration process
-            </li>
-            <li>
-              Led development teams across multiple successful client projects
-            </li>
+            <li>Designed and implemented backend systems using C# and frontend systems with JavaScript</li>
+            <li>Developed various game functionalities for servers based on the RAGE:MP API for GTA5</li>
           </ul>
         </>
       ),
-    },
-    {
-      company: "Jojo Mobile",
-      link: "https://bsgroup.eu/",
-      badges: ["On Site", "Android", "Java", "Kotlin"],
-      title: "Android Developer → Lead Android Developer",
-      logo: JojoMobileLogo,
-      start: "2012",
-      end: "2015",
-      description: (
-        <>
-          First Android developer, grew and led a team of 15+ engineers while
-          establishing engineering culture.
-          <ul className="list-inside list-disc">
-            <li>
-              Developed apps for major Polish companies including LOT, Polskie
-              Radio, and Agora
-            </li>
-            <li>Built and mentored high-performing mobile development team</li>
-          </ul>
-        </>
-      ),
-    },
-    {
-      company: "Nokia Siemens Networks",
-      link: "https://www.nokia.com",
-      badges: ["On Site", "C/C++", "LTE", "Agile"],
-      title: "C/C++ Developer",
-      logo: NSNLogo,
-      start: "2010",
-      end: "2012",
-      description:
-        "Developed software for LTE base stations at enterprise scale, gaining strong fundamentals in software architecture, testing practices, and cross-team collaboration.",
     },
   ],
-  skills: [
-    "React/Next.js/Remix",
-    "TypeScript",
-    "Tailwind CSS",
-    "Design Systems",
-    "WebRTC",
-    "WebSockets",
-    "Node.js",
-    "GraphQL",
-    "Relay",
-    "System Architecture",
-    "Remote Team Leadership",
+  skills: {
+    softSkills: [
+      "Critical Thinking",
+      "Problem Solving",
+      "Public Speaking",
+      "Leadership",
+      "Team work",
+      "Organization",
+    ],
+    softwareDevelopment: [
+      "React/Next.js",
+      "JavaScript/TypeScript",
+      "Solidity",
+      "ethers.js/web3.js/wagmi",
+      "Tailwind CSS",
+      "Shadcn/UI",
+      "C#",
+      "Python",
+      "C/C++",
+      "Git"
+    ],
+    engineering: [
+      "Arduino",
+      "Raspberry Pi",
+      "CAD (Onshape)",
+      "3D Printing",
+    ],
+  },
+  hackathons: [
+    {
+      hackathon: "EBC10 Radix",
+      hackathonUrl: "https://eblockchainconvention.com/hackathon/",
+      projectName: "Radish",
+      projectUrl: "https://github.com/Lattic3-RDX/lending-dapp",
+      achievement: "2nd Place | $5,000",
+      teamSize: 2,
+      role: "Front-end dev",
+      chain: "Radix",
+      description: "Multi-collateralized lending protocol."
+    },
+    {
+      hackathon: "ETHGlobal Brussels",
+      hackathonUrl: "https://ethglobal.com/events/brussels",
+      projectName: "SCRBL",
+      projectUrl: "https://ethglobal.com/showcase/scrbl-6d9uh",
+      achievement: "Worldcoin Pool Prize",
+      teamSize: 3,
+      role: "Solidity dev",
+      chain: "Optimism",
+      description: "Uncollateralized lending platform leveraging Worlcoin onchain identity."
+    },
+    {
+      hackathon: "BuildUp #2",
+      hackathonUrl: "https://app.buidlbox.io/lukso/build-up-2",
+      projectName: "Lukso Lending Protocol (LLP)",
+      projectUrl: "https://app.buidlbox.io/projects/llp?path=projects%2Fllp",
+      achievement: "3rd place | Blue Sky Category | 5,000 EUR",
+      teamSize: 1,
+      role: "Full-stack dev",
+      chain: "Lukso",
+      description: "First lending platform on the Lukso (L1) blockchain."
+    },
+    {
+      hackathon: "Chainlink SmartCon Hacker House Barcelona 2023",
+      hackathonUrl: "https://taikai.network/chainlink/hackathons/hackerhouse-sc23/overview",
+      projectName: "DecentPort",
+      projectUrl: "https://taikai.network/chainlink/hackathons/hackerhouse-sc23/projects/cln77ho7m004bvx0108a91vv1/idea",
+      achievement: "2nd Place | Other Services | $2,500",
+      teamSize: 2,
+      role: "Solidity dev",
+      chain: "Ethereum",
+      description: "Decentralized marine port game built on top of Chainlink's VRF."
+    },
+    {
+      hackathon: "ETHLisbon 2022",
+      hackathonUrl: "https://ethlisbon.org/",
+      projectName: "Lekker Finance",
+      projectUrl: "https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9tpj350446301zcoiepyje5/idea",
+      achievement: "Finalist | Multiple Prizes | $10,000",
+      teamSize: 4,
+      role: "Frontend dev, Designer",
+      chain: "Ethereum",
+      description: "One-click futures leverage platform."
+    },
+    {
+      hackathon: "Filecoin SBS 2022",
+      hackathonUrl: "https://paris22.sbs.tech/",
+      projectName: "newEnvAI",
+      projectUrl: "https://github.com/Kirillr-Sibirski/newEnvAI",
+      achievement: "2nd place | $1,000",
+      teamSize: 1,
+      role: "Full-stack dev",
+      chain: "Filecoin",
+      description: "Leveraging NASA API to detect wildfires using dynamic NFTs, integrated with OpenAI's API for AI processing (before the AI hype)."
+    },
+    {
+      hackathon: "Road to Web3",
+      hackathonUrl: "https://ethglobal.com/",
+      projectName: "The Loan Stream",
+      projectUrl: "https://ethglobal.com/showcase/the-loan-stream-vp2cc",
+      achievement: "Multiple Prizes | $3,000",
+      teamSize: 4,
+      role: "Frontend dev, Designer",
+      chain: "Polygon",
+      description: "My first hackathon. Built a lending platform using Superfluid streams."
+    }
   ],
   projects: [
     {
-      title: "Monito",
-      techStack: ["TypeScript", "Next.js", "Browser Extension", "PostgreSQL"],
-      description:
-        "Browser extension for debugging web applications. Includes taking screenshots, screen recording, E2E tests generation and generating bug reports",
-      logo: MonitoLogo,
-      link: {
-        label: "monito.dev",
-        href: "https://monito.dev/",
-      },
+      title: "Global Currency Digital Asset",
+      projectUrl: undefined,
+      techStack: ["Python", "Data Science", "Matplotlib"],
+      description: "Created a Python program to analyze global currencies and attempt to create a digital currency based on geometric mean of exchange rates. Concluded that existing currencies such as USD outperform any new digital global currency."
     },
     {
-      title: "Consultly",
-      techStack: [
-        "TypeScript",
-        "Next.js",
-        "Vite",
-        "GraphQL",
-        "WebRTC",
-        "Tailwind CSS",
-        "PostgreSQL",
-        "Redis",
-      ],
-      description:
-        "Platform for online consultations with real-time video meetings and scheduling",
-      logo: ConsultlyLogo,
-      link: {
-        label: "consultly.com",
-        href: "https://consultly.com/",
-      },
+      title: "Active Suspension System",
+      projectUrl: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
+      techStack: ["Arduino", "C++", "Electronics", "3D Printing"],
+      description: "Built an active suspension system for a 1/10th scale RC vehicle to prevent rollovers in off-road conditions. Used Arduino, gyroscope, and a custom perfboard PCB, with 3D printed frames and enclosures. Wrote a 6000-word researche essay showcasing the process and findings."
     },
     {
-      title: "Minimalist CV",
-      techStack: ["TypeScript", "Next.js", "Tailwind CSS"],
-      description:
-        "An open source minimalist, print friendly CV template with a focus on readability and clean design. >9k stars on GitHub",
-      logo: MonitoLogo,
-      link: {
-        label: "Minimalist CV",
-        href: "https://github.com/BartoszJarocki/cv",
-      },
+      title: "AFDA - Autonomous Fire Detection Aircraft",
+      projectUrl: undefined,
+      techStack: ["Raspberry Pi", "Arduino", "Electronics"],
+      description: "Part of efforts to combat wildfires in Catalonia. Responsible for electronics integration including SpeedyBee flight computer, motor, telemetry, and camera. Collaborating with team on drone construction and wildfire detection AI. Currently in negotiations with Agrupació de Defensa Forestal."
     },
-  ],
+    {
+      title: "Desk Lamp",
+      projectUrl: undefined,
+      techStack: ["Woodworking", "Metalworking", "Electronics"],
+      description: "Designed and built a custom desk lamp with a wooden base, metalworked stand, and electrical work for the bulbs, with a plastic cover."
+    },
+    {
+      title: "Customized 3D Printer",
+      projectUrl: undefined,
+      techStack: ["Raspberry Pi", "OctoPrint", "3D Printing"],
+      description: "Upgraded Creality Ender 3 v3 SE with remote access, auto turn-off, and integrated Octoprint software via Raspberry Pi. Currently working on an enclosure with filter for ABS printing."
+    }
+  ]
 } as const;

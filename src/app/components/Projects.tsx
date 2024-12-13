@@ -85,9 +85,6 @@ interface ProjectCardProps {
   link?: string;
 }
 
-/**
- * Card component displaying project information
- */
 function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
   return (
     <Card
@@ -118,9 +115,6 @@ interface ProjectsProps {
   projects: (typeof RESUME_DATA)["projects"];
 }
 
-/**
- * Section component displaying all side projects
- */
 export function Projects({ projects }: ProjectsProps) {
   return (
     <Section className="print-force-new-page scroll-mb-16 print:space-y-4 print:pt-12">
@@ -128,20 +122,20 @@ export function Projects({ projects }: ProjectsProps) {
         Side projects
       </h2>
       <div
-        className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"
         role="feed"
         aria-labelledby="side-projects"
       >
         {projects.map((project) => (
           <article
             key={project.title}
-            className="h-full" // Added h-full here
+            className="h-full"
           >
             <ProjectCard
               title={project.title}
               description={project.description}
               tags={project.techStack}
-              link={"link" in project ? project.link.href : undefined}
+              link={project.projectUrl}
             />
           </article>
         ))}

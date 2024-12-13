@@ -72,13 +72,6 @@ function ContactButtons({ contact, personalWebsiteUrl }: ContactButtonsProps) {
           label="Email"
         />
       )}
-      {contact.tel && (
-        <SocialButton
-          href={`tel:${contact.tel}`}
-          icon={PhoneIcon}
-          label="Phone"
-        />
-      )}
       {contact.social.map((social) => (
         <SocialButton
           key={social.name}
@@ -123,14 +116,6 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
           </a>
           <span aria-hidden="true">/</span>
         </>
-      )}
-      {contact.tel && (
-        <a
-          className="underline hover:text-foreground/70"
-          href={`tel:${contact.tel}`}
-        >
-          {contact.tel}
-        </a>
       )}
     </div>
   );

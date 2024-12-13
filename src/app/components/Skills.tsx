@@ -3,30 +3,36 @@ import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
 
-type Skills = readonly string[];
+type SkillCategory = readonly string[];
+type Skills = {
+  softSkills: SkillCategory;
+  softwareDevelopment: SkillCategory;
+  engineering: SkillCategory;
+};
 
 interface SkillsListProps {
-  skills: Skills;
+  title: string;
+  skills: SkillCategory;
   className?: string;
 }
 
-/**
- * Renders a list of skills as badges
- */
-function SkillsList({ skills, className }: SkillsListProps) {
+function SkillsList({ title, skills, className }: SkillsListProps) {
   return (
-    <ul
-      className={cn("flex list-none flex-wrap gap-1 p-0", className)}
-      aria-label="List of skills"
-    >
-      {skills.map((skill) => (
-        <li key={skill}>
-          <Badge className="print:text-[10px]" aria-label={`Skill: ${skill}`}>
-            {skill}
-          </Badge>
-        </li>
-      ))}
-    </ul>
+    <div className="mb-4 last:mb-0">
+      <h3 className="text-sm font-medium mb-2">{title}</h3>
+      <ul
+        className={cn("flex list-none flex-wrap gap-1 p-0", className)}
+        aria-label={`List of ${title.toLowerCase()}`}
+      >
+        {skills.map((skill) => (
+          <li key={skill}>
+            <Badge className="print:text-[10px]" aria-label={`Skill: ${skill}`}>
+              {skill}
+            </Badge>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -35,17 +41,27 @@ interface SkillsProps {
   className?: string;
 }
 
-/**
- * Skills section component
- * Displays a list of professional skills as badges
- */
 export function Skills({ skills, className }: SkillsProps) {
   return (
     <Section className={className}>
-      <h2 className="text-xl font-bold" id="skills-section">
+      <h2 className="text-xl font-bold mb-4" id="skills-section">
         Skills
       </h2>
-      <SkillsList skills={skills} aria-labelledby="skills-section" />
+      <SkillsList 
+        title="Software Development" 
+        skills={skills.softwareDevelopment} 
+        aria-labelledby="skills-section" 
+      />
+      <SkillsList 
+        title="Engineering" 
+        skills={skills.engineering} 
+        aria-labelledby="skills-section" 
+      />
+      <SkillsList 
+        title="Soft Skills" 
+        skills={skills.softSkills} 
+        aria-labelledby="skills-section" 
+      />
     </Section>
   );
 }
