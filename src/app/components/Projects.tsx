@@ -90,23 +90,23 @@ interface ProjectCardProps {
 function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
   return (
     <Card
-      className="flex h-full flex-col overflow-hidden border p-3"
+      className="flex h-full flex-col overflow-hidden border p-2"
       role="article"
     >
-      <CardHeader>
+      <CardHeader className="p-2 space-y-1">
         <div className="space-y-1">
-          <CardTitle className="text-base">
+          <CardTitle className="text-sm">
             <ProjectLink title={title} link={link} />
           </CardTitle>
           <CardDescription
-            className="text-pretty font-mono text-xs print:text-[10px]"
+            className="text-pretty font-mono text-xs text-foreground/80"
             aria-label="Project description"
           >
             {description}
           </CardDescription>
         </div>
       </CardHeader>
-      <CardContent className="mt-auto flex">
+      <CardContent className="mt-auto p-2">
         <ProjectTags tags={tags} />
       </CardContent>
     </Card>

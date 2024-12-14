@@ -131,13 +131,11 @@ export const RESUME_DATA = {
       "React/Next.js",
       "JavaScript/TypeScript",
       "Solidity",
-      "ethers.js/web3.js/wagmi",
+      "ethers.js/web3.js",
       "Tailwind CSS",
-      "Shadcn/UI",
       "C#",
       "Python",
-      "C/C++",
-      "Git"
+      "C/C++"
     ],
     engineering: [
       "Arduino",

@@ -59,7 +59,7 @@ function getCommandMenuLinks() {
 export default function ResumePage() {
   return (
     <main
-      className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-11 md:p-16"
+      className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:p-12 md:p-16 print:max-w-letter"
       id="main-content"
     >
       <div className="sr-only">

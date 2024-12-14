@@ -4,32 +4,64 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // Replace with the URL or local file path to your Next.js page
-    await page.goto('http://localhost:3000/', { waitUntil: 'networkidle0' });
+    // Set higher resolution viewport
+    await page.setViewport({
+        width: 1920,
+        height: 1080,
+        deviceScaleFactor: 2, // Higher resolution
+    });
 
-    // await page.addStyleTag({
-    //     content: `
-    //         * {
-    //             margin: 0;
-    //             padding: 0;
-    //             box-sizing: border-box;
-    //         }
+    await page.goto('http://localhost:3000/', { 
+        waitUntil: 'networkidle0',
+        timeout: 30000 
+    });
 
-    //         body {
-    //             margin: 0;
-    //             line-height: 1.5;
+    // Add print-specific styles
+    await page.addStyleTag({
+        content: `
+            @page {
+                size: A4;
+                margin: 0;
+            }
             
+            body {
+                margin: 0;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
 
-    //         [style*="margin"] {
-    //             margin: 0 !important; /* Override inline styles with large margins */
-    //         }
-    //     `
-    // });
+            * {
+                box-sizing: border-box;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+
+            @media print {
+                html, body {
+                    width: 210mm;
+                    height: 297mm;
+                }
+                
+                .print:hidden {
+                    display: none !important;
+                }
+            }
+        `
+    });
 
     await page.pdf({
-        path: './output/output.pdf',       // Output file path
-        format: 'A4',            // Paper format
-        printBackground: true,   // Ensures CSS background colors are preserved
+        path: './output/resume.pdf',
+        format: 'A4',
+        printBackground: true,
+        preferCSSPageSize: true,
+        margin: {
+            top: '20mm',
+            right: '20mm',
+            bottom: '20mm',
+            left: '20mm'
+        },
+        scale: 0.98, // Slightly scale down to ensure content fits
+        displayHeaderFooter: false
     });
 
     await browser.close();
