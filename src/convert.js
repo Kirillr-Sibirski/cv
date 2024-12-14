@@ -45,6 +45,11 @@ const puppeteer = require('puppeteer');
                 .print:hidden {
                     display: none !important;
                 }
+                
+                .print\:break-inside-avoid {
+                    break-inside: avoid;
+                    page-break-inside: avoid;
+                }
             }
         `
     });
@@ -54,12 +59,12 @@ const puppeteer = require('puppeteer');
         format: 'A4',
         printBackground: true,
         preferCSSPageSize: true,
-        margin: {
-            top: '20mm',
-            right: '20mm',
-            bottom: '20mm',
-            left: '20mm'
-        },
+        // margin: {
+        //     top: '20mm',
+        //     right: '20mm',
+        //     bottom: '20mm',
+        //     left: '20mm'
+        // },
         scale: 0.98, // Slightly scale down to ensure content fits
         displayHeaderFooter: false
     });

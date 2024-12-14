@@ -119,9 +119,11 @@ interface ProjectsProps {
 
 export function Projects({ projects }: ProjectsProps) {
   return (
-    <Section className="print-force-new-page scroll-mb-16 print:space-y-4 print:pt-12">
+    <Section 
+      className="print:break-inside-avoid print:pt-0" // Remove top padding and prevent page break
+    >
       <h2 className="text-xl font-bold" id="side-projects">
-        Side projects
+        Projects
       </h2>
       <div
         className="grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"

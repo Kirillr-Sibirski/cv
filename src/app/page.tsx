@@ -79,11 +79,12 @@ export default function ResumePage() {
 
           <WorkExperience work={RESUME_DATA.work} />
 
-          <Hackathons />
-
           <Projects projects={RESUME_DATA.projects} />
 
+          <Hackathons />
+
           <Education education={RESUME_DATA.education} />
+
         </div>
       </section>
 

@@ -44,9 +44,20 @@ export const RESUME_DATA = {
     {
       school: "The British School of Barcelona",
       degree: "Secondary Education",
-      start: "2021",
-      end: "2025",
+      start: "Sep 2021",
+      end: "Jun 2025",
       achievements: [
+        {
+          title: "A-level",
+          keywords: ["Grades", "A* to E"],
+          achievements: [
+            "Physics: A ",
+            "Mathematics: A ",
+            "Computer Science: A ",
+            "EPQ: A* ",
+            "Russian: A* "
+          ]
+        },
         {
           title: "Duke of Edinburgh Award",
           keywords: ["Hiking", "Expedition"],
@@ -106,7 +117,7 @@ export const RESUME_DATA = {
       company: "Ragemp.pro",
       badges: ["C#", "JavaScript", "RAGE:MP"],
       title: "Freelance Game Developer",
-      start: "June 2021",
+      start: "Jun 2021",
       end: "Feb 2022",
       description: (
         <div>
@@ -228,19 +239,19 @@ export const RESUME_DATA = {
       title: "Global Currency Digital Asset",
       projectUrl: undefined,
       techStack: ["Python", "Data Science", "Matplotlib"],
-      description: "Created a Python program to analyze global currencies and attempt to create a digital currency based on geometric mean of exchange rates. Concluded that existing currencies such as USD outperform any new digital global currency."
+      description: "Created a Python program to analyze global currencies and attempt to create a digital currency based on geometric mean of exchange rates. Concluded that USD would outperform any new digital global currency."
     },
     {
       title: "Active Suspension System",
       projectUrl: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
       techStack: ["Arduino", "C++", "Electronics", "3D Printing"],
-      description: "Built an active suspension system for a 1/10th scale RC vehicle to prevent rollovers in off-road conditions. Used Arduino, gyroscope, and a custom perfboard PCB, with 3D printed frames and enclosures. Wrote a 6000-word researche essay showcasing the process and findings."
+      description: "Built an active suspension system for a 1/10th scale RC vehicle to prevent rollovers in off-road conditions. Used Arduino, gyroscope, and a custom perfboard PCB, with 3D printed parts. Wrote a 6000-word essay showcasing the process."
     },
     {
       title: "AFDA - Autonomous Fire Detection Aircraft",
       projectUrl: undefined,
       techStack: ["Raspberry Pi", "Arduino", "Electronics"],
-      description: "Part of efforts to combat wildfires in Catalonia. Responsible for electronics integration including SpeedyBee flight computer, motor, telemetry, and camera. Collaborating with team on drone construction and wildfire detection AI. Currently in negotiations with Agrupació de Defensa Forestal."
+      description: "Developing a wildfire detection drone for Catalonia, handling electronics integration (SpeedyBee flight computer, motor, telemetry, camera) and collaborating on AI and construction. Engaged in talks with Agrupació de Defensa Forestal."
     },
     {
       title: "Desk Lamp",

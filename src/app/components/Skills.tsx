@@ -21,7 +21,7 @@ interface SkillsListProps {
 function SkillsList({ title, skills, className }: SkillsListProps) {
   return (
     <div className="mb-4 last:mb-0">
-      <h3 className="text-sm font-medium mb-2">{title}</h3>
+      <h3 className="text-sm font-semibold">{title}</h3>
       <ul
         className={cn("flex list-none flex-wrap gap-1 p-0", className)}
         aria-label={`List of ${title.toLowerCase()}`}
@@ -49,7 +49,7 @@ interface SkillsProps {
 export function Skills({ skills, className }: SkillsProps) {
   return (
     <Section className={className}>
-      <h2 className="text-xl font-bold mb-4" id="skills-section">
+      <h2 className="text-xl font-bold mb-2" id="skills-section">
         Skills
       </h2>
       <SkillsList 

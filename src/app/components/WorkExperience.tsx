@@ -128,9 +128,17 @@ export function WorkExperience({ work }: WorkExperienceProps) {
       <h2 className="text-xl font-bold" id="work-experience">
         Work Experience
       </h2>
-      <div className="space-y-4 print:space-y-0" role="feed" aria-labelledby="work-experience">
+      <div 
+        className="space-y-4 print:space-y-2" // Increased print spacing from print:space-y-0 to print:space-y-6
+        role="feed" 
+        aria-labelledby="work-experience"
+      >
         {work.map((item) => (
-          <article key={`${item.company}-${item.start}`} role="article">
+          <article 
+            key={`${item.company}-${item.start}`} 
+            role="article"
+            className="print:break-inside-avoid" // Prevent breaking work experiences across pages
+          >
             <WorkExperienceItem work={item} />
           </article>
         ))}

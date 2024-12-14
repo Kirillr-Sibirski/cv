@@ -43,11 +43,20 @@ function AchievementCard({ title, achievements, keywords }: AchievementCardProps
       <CardHeader className="p-2 space-y-1">
         <div className="space-y-1">
           <CardTitle className="text-sm font-semibold">{title}</CardTitle>
-          <CardDescription className="font-mono text-xs text-foreground/80">
-            {achievements.map((item, index) => (
-              <span key={index}>{item}</span>
-            ))}
-          </CardDescription>
+          {achievements.length > 1 ? (
+            <ul 
+              className="font-mono text-xs text-foreground/80 list-disc pl-4"
+              aria-label="Achievement details"
+            >
+              {achievements.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          ) : (
+            <p className="font-mono text-xs text-foreground/80">
+              {achievements[0]}
+            </p>
+          )}
         </div>
       </CardHeader>
       <CardContent className="mt-auto p-2">

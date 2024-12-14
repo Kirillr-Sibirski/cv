@@ -92,30 +92,42 @@ interface PrintContactProps {
 function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
   return (
     <div
-      className="hidden gap-x-2 font-mono text-sm text-foreground/80 print:flex print:text-[12px]"
+      className="hidden print:flex print:flex-wrap print:items-center print:gap-x-2 font-mono text-xs text-foreground/80 print:text-[10px]"
       aria-label="Print contact information"
     >
       {personalWebsiteUrl && (
         <>
           <a
-            className="underline hover:text-foreground/70"
+            className="print:underline"
             href={personalWebsiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
           >
             {new URL(personalWebsiteUrl).hostname}
           </a>
-          <span aria-hidden="true">/</span>
+          <span aria-hidden="true" className="print:hidden">/</span>
         </>
       )}
+      {contact.social.map((social) => (
+        <a
+          key={social.name}
+          href={social.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="print:underline"
+        >
+          {social.name}
+        </a>
+      ))}
       {contact.email && (
-        <>
-          <a
-            className="underline hover:text-foreground/70"
-            href={`mailto:${contact.email}`}
-          >
-            {contact.email}
-          </a>
-          <span aria-hidden="true">/</span>
-        </>
+        <a
+          className="print:underline"
+          href={`mailto:${contact.email}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {contact.email}
+        </a>
       )}
     </div>
   );
@@ -145,7 +157,7 @@ export function Header() {
 
         <ContactButtons
           contact={RESUME_DATA.contact}
-          personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
+          // personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
         />
 
         <PrintContact
