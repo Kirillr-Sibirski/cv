@@ -1,3 +1,5 @@
+"use client";
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
@@ -49,7 +51,7 @@ function AchievementCard({ title, achievements, keywords }: AchievementCardProps
             aria-label="Achievement description"
           >
               {achievements.map((item, index) => (
-                <p key={index}>{item}</p>
+                <span key={index}>{item}</span>
               ))}
           </CardDescription>
         </div>

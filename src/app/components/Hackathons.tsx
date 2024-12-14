@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
 import { RESUME_DATA } from "@/data/resume-data";

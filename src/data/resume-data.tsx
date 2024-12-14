@@ -79,12 +79,12 @@ export const RESUME_DATA = {
       start: "Oct 2024",
       end: null,
       description: (
-        <>
+        <div>
           <ul className="list-inside list-disc">
             <li>Spearheading the development of DeFi solutions for the Radix ecosystem</li>
             <li>Leading frontend development using Next.js and Shadcn/UI to create a user-centric interface</li>
           </ul>
-        </>
+        </div>
       ),
     },
     {
@@ -94,12 +94,12 @@ export const RESUME_DATA = {
       start: "Feb 2023",
       end: "Sep 2023",
       description: (
-        <>
+        <div>
           <ul className="list-inside list-disc">
             <li>Established "CalmScent," a dropshipping store specializing in oil diffusers</li>
             <li>Founded "BorderlessWave," a Twitter/X management agency targeting tech startups</li>
           </ul>
-        </>
+        </div>
       ),
     },
     {
@@ -109,12 +109,12 @@ export const RESUME_DATA = {
       start: "June 2021",
       end: "Feb 2022",
       description: (
-        <>
+        <div>
           <ul className="list-inside list-disc">
             <li>Designed and implemented backend systems using C# and frontend systems with JavaScript</li>
             <li>Developed various game functionalities for servers based on the RAGE:MP API for GTA5</li>
           </ul>
-        </>
+        </div>
       ),
     },
   ],
