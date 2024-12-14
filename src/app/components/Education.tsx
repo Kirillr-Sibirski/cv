@@ -39,20 +39,14 @@ interface AchievementCardProps {
 
 function AchievementCard({ title, achievements, keywords }: AchievementCardProps) {
   return (
-    <Card 
-      className="flex h-full flex-col overflow-hidden border p-3" 
-      role="article"
-    >
+    <Card className="flex h-full flex-col overflow-hidden border p-3">
       <CardHeader>
         <div className="space-y-1">
-          <CardTitle className="text-base">{title}</CardTitle>
-          <CardDescription 
-            className="text-pretty font-mono text-xs print:text-[10px]" 
-            aria-label="Achievement description"
-          >
-              {achievements.map((item, index) => (
-                <span key={index}>{item}</span>
-              ))}
+          <CardTitle className="text-base font-semibold">{title}</CardTitle>
+          <CardDescription className="font-mono text-xs text-foreground/80">
+            {achievements.map((item, index) => (
+              <span key={index}>{item}</span>
+            ))}
           </CardDescription>
         </div>
       </CardHeader>

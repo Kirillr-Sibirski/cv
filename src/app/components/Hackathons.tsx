@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { RESUME_DATA } from "@/data/resume-data";
 import { Separator } from "@/components/ui/separator";
 import { ExternalLink } from "lucide-react";
+import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 interface HackathonPeriodProps {
     start: string;
@@ -25,49 +26,69 @@ interface HackathonItemProps {
 
 function HackathonItem({ hackathon }: HackathonItemProps) {
     return (
-        <div className="space-y-2 p-4 hover:bg-accent/50 transition-colors rounded-lg">
-            <div className="flex justify-between items-center">
-                <div className="flex items-center justify-between w-full">
-                    <a
-                        href={hackathon.hackathonUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-1 hover:text-primary"
-                    >
-                        <h3 className="font-semibold text-lg underline">{hackathon.hackathon}</h3>
-                        <ExternalLink size={14} />
-                    </a>
-
+        <Card className="py-1 print:py-0">
+            <CardHeader className="print:space-y-1">
+                <div className="flex items-center justify-between gap-x-2">
+                    <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold text-base">
+                        <a
+                            href={hackathon.hackathonUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="hover:text-primary hover:underline"
+                        >
+                            {hackathon.hackathon}
+                            <ExternalLink size={14} />
+                        </a>
+                    </h3>
                     {hackathon.achievement && (
-                        <Badge variant="secondary" className="ml-2">
+                        <Badge 
+                            variant="secondary" 
+                            className="text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                        >
                             {hackathon.achievement}
                         </Badge>
                     )}
                 </div>
-            </div>
-
-            <div className="flex gap-2 items-center">
-                <a
-                    href={hackathon.projectUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1 hover:text-primary"
-                >
-                    <h4 className="text-md font-medium underline">{hackathon.projectName}</h4>
-                    <ExternalLink size={14} />
-                </a>
-            </div>
-
-            <p className="text-sm text-muted-foreground">{hackathon.description}</p>
-
-            <div className="flex gap-2 text-xs text-muted-foreground">
-                <span>Team Size: {hackathon.teamSize}</span>
-                <span>•</span>
-                <span>{hackathon.role}</span>
-                <span>•</span>
-                <span>{hackathon.chain}</span>
-            </div>
-        </div>
+                {hackathon.projectUrl && (
+                    <div className="mt-1">
+                        <a
+                            href={hackathon.projectUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-x-1 font-semibold text-base hover:text-primary hover:underline"
+                        >
+                            {hackathon.projectName}
+                            <ExternalLink size={14} />
+                        </a>
+                    </div>
+                )}
+                <div className="flex items-center gap-x-2">
+                    <div className="font-mono text-xs text-foreground/80">
+                        Team Size: {hackathon.teamSize} · Role: {hackathon.role} · Chain: {hackathon.chain}
+                    </div>
+                </div>
+            </CardHeader>
+            <CardContent>
+                <div className="font-mono text-xs text-foreground/80 text-pretty">
+                    {hackathon.description}
+                </div>
+                {hackathon.techStack && (
+                    <div className="mt-2">
+                        <div className="flex flex-wrap gap-1">
+                            {hackathon.techStack.map((tech) => (
+                                <Badge
+                                    key={tech}
+                                    variant="secondary"
+                                    className="text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                                >
+                                    {tech}
+                                </Badge>
+                            ))}
+                        </div>
+                    </div>
+                )}
+            </CardContent>
+        </Card>
     );
 }
 
