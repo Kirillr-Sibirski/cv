@@ -43,7 +43,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                     {hackathon.achievement && (
                         <Badge
                             variant="secondary"
-                            className="text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                            className="text-xs print:text-[8px] print:leading-tight print:py-0.5 print:align-middle"
                         >
                             {hackathon.achievement}
                         </Badge>
@@ -53,7 +53,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                     <div>
                         <Badge
                             variant="default"
-                            className="text-xs print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                            className="text-xs print:text-[8px] print:leading-tight print:py-0.5 print:align-middle"
                         >
                             <a
                                 href={hackathon.projectUrl}
@@ -67,7 +67,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                     </div>
                 )}
                 <div className="flex items-center gap-x-2">
-                    <div className="font-mono text-xs text-foreground/80">
+                    <div className="font-mono text-xs print:text-xs text-foreground/80">
                         Team Size: {hackathon.teamSize} · Role: {hackathon.role} · Chain: {hackathon.chain}
                     </div>
                 </div>
@@ -83,7 +83,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
 
 export function Hackathons() {
     return (
-        <section 
+        <section
             className="w-full print:break-inside-avoid print:pt-8" // Increased top padding for print
             aria-label="Hackathons"
         >

@@ -4,19 +4,17 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    // Set higher resolution viewport
     await page.setViewport({
         width: 1920,
         height: 1080,
-        deviceScaleFactor: 2, // Higher resolution
+        deviceScaleFactor: 2,
     });
 
     await page.goto('http://localhost:3000/', { 
         waitUntil: 'networkidle0',
-        timeout: 30000 
+        timeout: 30000
     });
 
-    // Add print-specific styles
     await page.addStyleTag({
         content: `
             @page {
@@ -31,24 +29,23 @@ const puppeteer = require('puppeteer');
             }
 
             * {
-                box-sizing: border-box;
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
+                text-decoration: none !important; /* Removes all underlining */
             }
 
             @media print {
-                html, body {
-                    width: 210mm;
-                    height: 297mm;
-                }
-                
-                .print:hidden {
+                .print\:hidden {
                     display: none !important;
                 }
-                
-                .print\:break-inside-avoid {
-                    break-inside: avoid;
-                    page-break-inside: avoid;
+
+                a {
+                    text-decoration: none !important; /* Specifically targets links */
+                    color: inherit !important;
+                }
+
+                .print\:inline-flex {
+                    display: inline-flex !important;
+                    align-items: center !important;
+                    gap: 0.25rem !important;
                 }
             }
         `
@@ -59,13 +56,13 @@ const puppeteer = require('puppeteer');
         format: 'A4',
         printBackground: true,
         preferCSSPageSize: true,
-        // margin: {
-        //     top: '20mm',
-        //     right: '20mm',
-        //     bottom: '20mm',
-        //     left: '20mm'
-        // },
-        scale: 0.98, // Slightly scale down to ensure content fits
+        margin: {
+            top: '20mm',
+            right: '20mm',
+            bottom: '20mm',
+            left: '20mm'
+        },
+        scale: 0.98,
         displayHeaderFooter: false
     });
 

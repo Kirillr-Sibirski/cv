@@ -29,7 +29,7 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
         {skills.map((skill) => (
           <li key={skill}>
             <Badge 
-              className="px-1.5 py-0.5 text-[10px] leading-tight print:text-[8px] print:px-1 print:py-0" 
+              className="px-2 py-0.5 text-xs leading-normal print:text-xs print:px-2 print:py-0.5" 
               aria-label={`Skill: ${skill}`}
             >
               {skill}

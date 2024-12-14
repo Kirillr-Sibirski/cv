@@ -10,6 +10,7 @@ import {
 } from "../../components/ui/card";
 import { Section } from "../../components/ui/section";
 import { RESUME_DATA } from "../../data/resume-data";
+import { cn } from "../../utils/cn"; // Assuming cn is a utility function for class name composition
 
 type ProjectTags = readonly string[];
 

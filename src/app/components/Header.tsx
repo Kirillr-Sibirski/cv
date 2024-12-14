@@ -18,7 +18,7 @@ function LocationLink({ location, locationLink }: LocationLinkProps) {
         rel="noopener noreferrer"
         aria-label={`Location: ${location}`}
       >
-        <GlobeIcon className="size-3" aria-hidden="true" />
+        <GlobeIcon className="size-3 text-foreground/80" aria-hidden="true" />
         {location}
       </a>
     </p>
@@ -92,21 +92,28 @@ interface PrintContactProps {
 function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
   return (
     <div
-      className="hidden print:flex print:flex-wrap print:items-center print:gap-x-2 font-mono text-xs text-foreground/80 print:text-[10px]"
+      className="hidden print:flex print:flex-wrap print:items-center print:gap-x-4 font-mono text-xs text-foreground/80"
       aria-label="Print contact information"
     >
       {personalWebsiteUrl && (
-        <>
-          <a
-            className="print:underline"
-            href={personalWebsiteUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {new URL(personalWebsiteUrl).hostname}
-          </a>
-          <span aria-hidden="true" className="print:hidden">/</span>
-        </>
+        <a
+          href={personalWebsiteUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Personal website"
+        >
+          <GlobeIcon className="size-4 text-foreground/80" />
+        </a>
+      )}
+      {contact.email && (
+        <a
+          href={`mailto:${contact.email}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Email: ${contact.email}`}
+        >
+          <MailIcon className="size-4 text-foreground/80" />
+        </a>
       )}
       {contact.social.map((social) => (
         <a
@@ -114,21 +121,11 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
           href={social.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="print:underline"
+          aria-label={social.name}
         >
-          {social.name}
+          <social.icon className="size-4 text-foreground/80" />
         </a>
       ))}
-      {contact.email && (
-        <a
-          className="print:underline"
-          href={`mailto:${contact.email}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {contact.email}
-        </a>
-      )}
     </div>
   );
 }
