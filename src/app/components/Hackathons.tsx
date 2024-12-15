@@ -68,7 +68,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                 )}
                 <div className="flex items-center gap-x-2">
                     <div className="font-mono text-xs print:text-xs text-foreground/80">
-                        Team Size: {hackathon.teamSize} · Role: {hackathon.role} · Chain: {hackathon.chain}
+                        Team Size: {hackathon.teamSize} · Role: {hackathon.role}
                     </div>
                 </div>
             </CardHeader>

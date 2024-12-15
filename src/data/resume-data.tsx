@@ -16,7 +16,7 @@ export const RESUME_DATA = {
   about: "Full-Stack Blockchain Developer & Mechatronics Enthusiast",
   summary: (
     <>
-      Builder of bold ideas. From pioneering blockchain solutions to engineering electronics, I turn concepts into reality. My journey spans software, hardware, and everything in between—always with an eye on solving problems that matter. Speed and scalability are my guiding principles.
+      Builder of bold ideas. From pioneering blockchain solutions to engineering electronics, turns concepts into reality. The journey spans software, hardware, and everything in between—always with an eye on solving problems that matter. Speed and scalability are the guiding principles.
     </>
   ),
   avatarUrl: "./image.png",
@@ -51,32 +51,32 @@ export const RESUME_DATA = {
           title: "A-level",
           keywords: ["Grades", "A* to E"],
           achievements: [
-            "Physics: A ",
-            "Mathematics: A ",
-            "Computer Science: A ",
-            "EPQ: A* ",
-            "Russian: A* "
+            "Physics: A",
+            "Mathematics: A",
+            "Computer Science: A",
+            "EPQ: A*",
+            "Russian: A*"
           ]
         },
         {
           title: "Duke of Edinburgh Award",
-          keywords: ["Hiking", "Expedition"],
+          keywords: ["Hiking", "Expedition", "Bronze", "Silver"],
           achievements: [
-            "Bronze and Silver Awards for leadership and resilience. Completed 4 challenging journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks, including two 2-day and two 3-day journeys (sleeping in tents)."
+            "Completed 4 challenging journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks"
           ]
         },
         {
           title: "Model United Nations",
           keywords: ["International Relations", "BIMUN"],
           achievements: [
-            "Represented Tanzania in UNWOMEN Council; my clause on post-partum contraceptives was passed into the final resolution, highlighting my passion for international relations.",
+            "Represented Tanzania in UNWOMEN Council; drafted a clause on post-partum contraceptives that was passed into the final resolution",
           ]
         },
         {
           title: "Public Speaking",
           keywords: ["Public Speaking", "4Voices"],
           achievements: [
-            "Gave a speech at CosmoCaixa venue in Barcelona to 300 people on the future of human-computer interface (brain chips)"
+            "Gave a speech at CosmoCaixa venue in Barcelona to 300 people on brain chips"
           ]
         }
       ]
@@ -92,66 +92,55 @@ export const RESUME_DATA = {
       description: (
         <div>
           <ul className="list-inside list-disc">
-            <li>Spearheading the development of DeFi solutions for the Radix ecosystem</li>
-            <li>Leading frontend development using Next.js and Shadcn/UI to create a user-centric interface</li>
+            <li>Leading frontend development to create a user-centric interface</li>
           </ul>
         </div>
       ),
     },
     {
       company: "CalmScent & BorderlessWave",
-      badges: ["SMMA", "Dropshipping"],
+      badges: ["SMMA", "Dropshipping", "Shopify", "LLC"],
       title: "Entrepreneur",
       start: "Feb 2023",
       end: "Sep 2023",
       description: (
         <div>
           <ul className="list-inside list-disc">
-            <li>Established "CalmScent," a dropshipping store specializing in oil diffusers</li>
-            <li>Founded "BorderlessWave," a Twitter/X management agency targeting tech startups</li>
+            <li>Started as a dropshipping store specializing in oil diffusers, later pivoted to a X management agency focused on tech startups</li>
           </ul>
         </div>
       ),
     },
     {
       company: "Ragemp.pro",
-      badges: ["C#", "JavaScript", "RAGE:MP"],
+      badges: ["C#", "JavaScript", "RAGE:MP API"],
       title: "Freelance Game Developer",
-      start: "Jun 2021",
+      start: "Oct 2021",
       end: "Feb 2022",
       description: (
         <div>
           <ul className="list-inside list-disc">
-            <li>Designed and implemented backend systems using C# and frontend systems with JavaScript</li>
-            <li>Developed various game functionalities for servers based on the RAGE:MP API for GTA5</li>
+            <li>Developed a range of game functionalities for GTA5 Online servers</li>
           </ul>
         </div>
       ),
     },
   ],
   skills: {
-    softSkills: [
-      "Critical Thinking",
+    soft: [
       "Problem Solving",
       "Public Speaking",
       "Leadership",
       "Team work",
-      "Organization",
     ],
-    softwareDevelopment: [
+    tech: [
       "React/Next.js",
       "JavaScript/TypeScript",
       "Solidity",
       "ethers.js/web3.js",
-      "Tailwind CSS",
-      "C#",
       "Python",
-      "C/C++"
-    ],
-    engineering: [
-      "Arduino",
-      "Raspberry Pi",
-      "CAD (Onshape)",
+      "C/C++",
+      "CAD",
       "3D Printing",
     ],
   },
@@ -164,7 +153,6 @@ export const RESUME_DATA = {
       achievement: "2nd Place | $5,000",
       teamSize: 2,
       role: "Front-end dev",
-      chain: "Radix",
       description: "Multi-collateralized lending protocol."
     },
     {
@@ -175,7 +163,6 @@ export const RESUME_DATA = {
       achievement: "Worldcoin Pool Prize",
       teamSize: 3,
       role: "Solidity dev",
-      chain: "Optimism",
       description: "Uncollateralized lending platform leveraging Worlcoin onchain identity."
     },
     {
@@ -186,7 +173,6 @@ export const RESUME_DATA = {
       achievement: "3rd place | Blue Sky Category | 5,000 EUR",
       teamSize: 1,
       role: "Full-stack dev",
-      chain: "Lukso",
       description: "First lending platform on the Lukso (L1) blockchain."
     },
     {
@@ -197,7 +183,6 @@ export const RESUME_DATA = {
       achievement: "2nd Place | Other Services | $2,500",
       teamSize: 2,
       role: "Solidity dev",
-      chain: "Ethereum",
       description: "Decentralized marine port game built on top of Chainlink's VRF."
     },
     {
@@ -208,7 +193,6 @@ export const RESUME_DATA = {
       achievement: "Finalist | Multiple Prizes | $10,000",
       teamSize: 4,
       role: "Frontend dev, Designer",
-      chain: "Ethereum",
       description: "One-click futures leverage platform."
     },
     {
@@ -219,7 +203,6 @@ export const RESUME_DATA = {
       achievement: "2nd place | $1,000",
       teamSize: 1,
       role: "Full-stack dev",
-      chain: "Filecoin",
       description: "Leveraging NASA API to detect wildfires using dynamic NFTs, integrated with OpenAI's API for AI processing (before the AI hype)."
     },
     {
@@ -230,8 +213,7 @@ export const RESUME_DATA = {
       achievement: "Multiple Prizes | $3,000",
       teamSize: 4,
       role: "Frontend dev, Designer",
-      chain: "Polygon",
-      description: "My first hackathon. Built a lending platform using Superfluid streams."
+      description: "First hackathon. Built a lending platform using Superfluid streams."
     }
   ],
   projects: [
@@ -263,7 +245,7 @@ export const RESUME_DATA = {
       title: "Customized 3D Printer",
       projectUrl: undefined,
       techStack: ["Raspberry Pi", "OctoPrint", "3D Printing"],
-      description: "Upgraded Creality Ender 3 v3 SE with remote access, auto turn-off, and integrated Octoprint software via Raspberry Pi. Currently working on an enclosure with filter for ABS printing."
+      description: "Upgraded Creality Ender 3 v3 SE with remote access, auto turn-off, and integrated Octoprint software via Raspberry Pi."
     }
   ]
 } as const;

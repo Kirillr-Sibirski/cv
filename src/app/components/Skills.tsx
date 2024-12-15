@@ -7,9 +7,8 @@ import { cn } from "@/lib/utils";
 
 type SkillCategory = readonly string[];
 type Skills = {
-  softSkills: SkillCategory;
-  softwareDevelopment: SkillCategory;
-  engineering: SkillCategory;
+  soft: SkillCategory;
+  tech: SkillCategory;
 };
 
 interface SkillsListProps {
@@ -54,17 +53,12 @@ export function Skills({ skills, className }: SkillsProps) {
       </h2>
       <SkillsList 
         title="Software Development" 
-        skills={skills.softwareDevelopment} 
+        skills={skills.tech} 
         aria-labelledby="skills-section" 
       />
       <SkillsList 
         title="Engineering" 
-        skills={skills.engineering} 
-        aria-labelledby="skills-section" 
-      />
-      <SkillsList 
-        title="Soft Skills" 
-        skills={skills.softSkills} 
+        skills={skills.soft} 
         aria-labelledby="skills-section" 
       />
     </Section>
