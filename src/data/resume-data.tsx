@@ -200,7 +200,7 @@ export const RESUME_DATA = {
       hackathonUrl: "https://paris22.sbs.tech/",
       projectName: "newEnvAI",
       projectUrl: "https://github.com/Kirillr-Sibirski/newEnvAI",
-      achievement: "2nd place | $1,000",
+      achievement: "Runner-up | $1,000",
       teamSize: 1,
       role: "Full-stack dev",
       description: "Leveraging NASA API to detect wildfires using dynamic NFTs, integrated with OpenAI's API for AI processing (before the AI hype)."
