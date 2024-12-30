@@ -28,7 +28,7 @@ function BadgeList({ className, badges }: BadgeListProps) {
         <li key={badge}>
           <Badge
             variant="secondary"
-            className="align-middle text-xs print:text-xs print:px-2 print:py-0.5"
+            className="align-middle resume-details print:resume-details print:px-2 print:py-0.5"
           >
             {badge}
           </Badge>
@@ -49,7 +49,7 @@ interface WorkPeriodProps {
 function WorkPeriod({ start, end }: WorkPeriodProps) {
   return (
     <div
-      className="text-sm tabular-nums text-gray-500"
+      className="resume-body tabular-nums text-gray-500"
       aria-label={`Employment period: ${start} to ${end ?? "Present"}`}
     >
       {start} - {end ?? "Present"}
@@ -59,17 +59,14 @@ function WorkPeriod({ start, end }: WorkPeriodProps) {
 
 interface CompanyLinkProps {
   company: WorkExperience["company"];
-  link: WorkExperience["link"];
+  // link: WorkExperience["link"];
 }
 
-/**
- * Renders company name with optional link
- */
-function CompanyLink({ company, link }: CompanyLinkProps) {
+function CompanyLink({ company }: CompanyLinkProps) {
   return (
     <a
       className="hover:underline"
-      href={link}
+      // href={link}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${company} company website`}
@@ -88,25 +85,25 @@ interface WorkExperienceItemProps {
  * Handles responsive layout for badges (mobile/desktop)
  */
 function WorkExperienceItem({ work }: WorkExperienceItemProps) {
-  const { company, link, badges, title, start, end, description } = work;
+  const { company, badges, title, start, end, description } = work;
 
   return (
     <Card className="py-1 print:py-0">
       <CardHeader className="print:space-y-1">
         <div className="flex items-center justify-between gap-x-2 text-base">
           <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold text-base">
-            <CompanyLink company={company} link={link} />
+            <CompanyLink company={company} />
           </h3>
-          <div className="font-mono text-xs text-gray-500">
+          <div className="font-mono resume-details text-gray-500">
             {start} - {end ?? "Present"}
           </div>
         </div>
-        <h4 className="font-mono text-xs font-semibold">
+        <h4 className="font-mono resume-details font-semibold">
           {title}
         </h4>
       </CardHeader>
       <CardContent>
-        <div className="font-mono text-xs text-foreground/80 text-pretty">
+        <div className="font-mono resume-details text-foreground/80 text-pretty">
           {description}
         </div>
       </CardContent>
@@ -125,7 +122,7 @@ interface WorkExperienceProps {
 export function WorkExperience({ work }: WorkExperienceProps) {
   return (
     <Section>
-      <h2 className="text-xl font-bold" id="work-experience">
+      <h2 className="resume-section-title font-bold" id="work-experience">
         Work Experience
       </h2>
       <div 

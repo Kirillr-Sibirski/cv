@@ -49,7 +49,7 @@ export const RESUME_DATA = {
       achievements: [
         {
           title: "A-level",
-          keywords: ["Grades", "A* to E"],
+          keywords: ["Grades", "A* - E"],
           achievements: [
             "Physics: A",
             "Mathematics: A",
@@ -59,22 +59,22 @@ export const RESUME_DATA = {
           ]
         },
         {
-          title: "Duke of Edinburgh Award",
-          keywords: ["Hiking", "Expedition", "Bronze", "Silver"],
+          title: "Duke of Edinburgh",
+          keywords: ["Hike", "Expedition"],
           achievements: [
-            "Completed 4 challenging journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks"
+            "Four journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks"
           ]
         },
         {
-          title: "Model United Nations",
-          keywords: ["International Relations", "BIMUN"],
+          title: "MUN",
+          keywords: ["Debate", "Politics"],
           achievements: [
-            "Represented Tanzania in UNWOMEN Council; drafted a clause on post-partum contraceptives that was passed into the final resolution",
+            "Repped Tanzania in UNWOMEN Council; drafted a clause on post-partum contraceptives adopted in resolution",
           ]
         },
         {
           title: "Public Speaking",
-          keywords: ["Public Speaking", "4Voices"],
+          keywords: ["4Voices"],
           achievements: [
             "Gave a speech at CosmoCaixa venue in Barcelona to 300 people on brain chips"
           ]
@@ -224,7 +224,7 @@ export const RESUME_DATA = {
       description: "Created a Python program to analyze global currencies and attempt to create a digital currency based on geometric mean of exchange rates. Concluded that USD would outperform any new digital global currency."
     },
     {
-      title: "Active Suspension System",
+      title: "Active Suspension System: Preventing Rollovers",
       projectUrl: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
       techStack: ["Arduino", "C++", "Electronics", "3D Printing"],
       description: "Built an active suspension system for a 1/10th scale RC vehicle to prevent rollovers in off-road conditions. Used Arduino, gyroscope, and a custom perfboard PCB, with 3D printed parts. Wrote a 6000-word essay showcasing the process."
@@ -233,19 +233,19 @@ export const RESUME_DATA = {
       title: "AFDA - Autonomous Fire Detection Aircraft",
       projectUrl: undefined,
       techStack: ["Raspberry Pi", "Arduino", "Electronics"],
-      description: "Developing a wildfire detection drone for Catalonia, handling electronics integration (SpeedyBee flight computer, motor, telemetry, camera) and collaborating on AI and construction. Engaged in talks with Agrupació de Defensa Forestal."
+      description: "Developing a wildfire detection drone for Catalonia, handling electronics integration (flight computer, motor, telemetry, camera) and collaborating on detection algorithm and construction. In talks with Agrupació de Defensa Forestal."
     },
-    {
-      title: "Desk Lamp",
-      projectUrl: undefined,
-      techStack: ["Woodworking", "Metalworking", "Electronics"],
-      description: "Designed and built a custom desk lamp with a wooden base, metalworked stand, and electrical work for the bulbs, with a plastic cover."
-    },
-    {
-      title: "Customized 3D Printer",
-      projectUrl: undefined,
-      techStack: ["Raspberry Pi", "OctoPrint", "3D Printing"],
-      description: "Upgraded Creality Ender 3 v3 SE with remote access, auto turn-off, and integrated Octoprint software via Raspberry Pi."
-    }
+    // {
+    //   title: "Desk Lamp",
+    //   projectUrl: undefined,
+    //   techStack: ["Woodworking", "Metalworking", "Electronics"],
+    //   description: "Designed and built a custom desk lamp with a wooden base, metalworked stand, and electrical work for the bulbs, with a plastic cover."
+    // },
+    // {
+    //   title: "Customized 3D Printer",
+    //   projectUrl: undefined,
+    //   techStack: ["Raspberry Pi", "OctoPrint", "3D Printing"],
+    //   description: "Upgraded Creality Ender 3 v3 SE with remote access, auto turn-off, and integrated Octoprint software via Raspberry Pi."
+    // }
   ]
 } as const;

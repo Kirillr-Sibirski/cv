@@ -10,7 +10,7 @@ interface LocationLinkProps {
 
 function LocationLink({ location, locationLink }: LocationLinkProps) {
   return (
-    <p className="max-w-md items-center text-pretty font-mono text-xs text-foreground">
+    <p className="max-w-md items-center text-pretty font-mono resume-details text-foreground">
       <a
         className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
         href={locationLink}
@@ -54,7 +54,7 @@ interface ContactButtonsProps {
 function ContactButtons({ contact, personalWebsiteUrl }: ContactButtonsProps) {
   return (
     <div
-      className="flex gap-x-1 pt-1 font-mono text-sm text-foreground/80 print:hidden"
+      className="flex gap-x-1 pt-1 font-mono resume-body text-foreground/80 print:hidden"
       role="list"
       aria-label="Contact links"
     >
@@ -92,7 +92,7 @@ interface PrintContactProps {
 function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
   return (
     <div
-      className="hidden print:flex print:flex-wrap print:items-center print:gap-x-4 font-mono text-xs text-foreground/80"
+      className="hidden print:flex print:flex-wrap print:items-center print:gap-x-4 font-mono resume-details text-foreground/80"
       aria-label="Print contact information"
     >
       {personalWebsiteUrl && (
@@ -137,11 +137,11 @@ export function Header() {
   return (
     <header className="flex items-center justify-between">
       <div className="flex-1 space-y-1.5">
-        <h1 className="text-2xl font-bold" id="resume-name">
+        <h1 className="resume-name" id="resume-name">
           {RESUME_DATA.name}
         </h1>
         <p
-          className="max-w-md text-pretty font-mono text-sm text-foreground/80 print:text-[12px]"
+          className="max-w-md text-pretty font-mono resume-body text-foreground/80"
           aria-labelledby="resume-name"
         >
           {RESUME_DATA.about}
@@ -159,7 +159,7 @@ export function Header() {
 
         <PrintContact
           contact={RESUME_DATA.contact}
-          personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
+          // personalWebsiteUrl={RESUME_DATA.personalWebsiteUrl}
         />
       </div>
 

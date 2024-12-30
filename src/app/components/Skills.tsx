@@ -20,7 +20,7 @@ interface SkillsListProps {
 function SkillsList({ title, skills, className }: SkillsListProps) {
   return (
     <div className="mb-4 last:mb-0">
-      <h3 className="text-sm font-semibold">{title}</h3>
+      <h3 className="resume-body font-semibold">{title}</h3>
       <ul
         className={cn("flex list-none flex-wrap gap-1 p-0", className)}
         aria-label={`List of ${title.toLowerCase()}`}
@@ -28,7 +28,7 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
         {skills.map((skill) => (
           <li key={skill}>
             <Badge 
-              className="px-2 py-0.5 text-xs leading-normal print:text-xs print:px-2 print:py-0.5" 
+              className="px-2 py-0.5 resume-details leading-normal print:resume-details print:px-2 print:py-0.5" 
               aria-label={`Skill: ${skill}`}
             >
               {skill}
@@ -48,16 +48,16 @@ interface SkillsProps {
 export function Skills({ skills, className }: SkillsProps) {
   return (
     <Section className={className}>
-      <h2 className="text-xl font-bold mb-2" id="skills-section">
+      <h2 className="resume-section-title font-bold mb-2" id="skills-section">
         Skills
       </h2>
       <SkillsList 
-        title="Software Development" 
+        title="Engineering" 
         skills={skills.tech} 
         aria-labelledby="skills-section" 
       />
       <SkillsList 
-        title="Engineering" 
+        title="Soft Skills" 
         skills={skills.soft} 
         aria-labelledby="skills-section" 
       />

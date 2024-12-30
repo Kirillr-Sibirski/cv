@@ -13,11 +13,11 @@ interface AboutProps {
 export function Summary({ summary, className }: AboutProps) {
   return (
     <Section className={className}>
-      <h2 className="text-xl font-bold" id="about-section">
+      <h2 className="resume-section-title font-bold" id="about-section">
         About
       </h2>
       <div
-        className="font-mono text-xs text-foreground/80 text-pretty"
+        className="font-mono resume-details text-foreground/80 text-pretty"
         aria-labelledby="about-section"
       >
         {summary}

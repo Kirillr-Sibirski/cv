@@ -38,7 +38,7 @@ const puppeteer = require('puppeteer');
                 }
 
                 a {
-                    text-decoration: none !important; /* Specifically targets links */
+                    text-decoration: none !important;
                     color: inherit !important;
                 }
 
@@ -57,12 +57,12 @@ const puppeteer = require('puppeteer');
         printBackground: true,
         preferCSSPageSize: true,
         margin: {
-            top: '20mm',
-            right: '20mm',
-            bottom: '20mm',
-            left: '20mm'
+            top: '15mm',
+            right: '15mm',
+            bottom: '15mm',
+            left: '15mm'
         },
-        scale: 0.98,
+        scale: 0.95,
         displayHeaderFooter: false
     });
 

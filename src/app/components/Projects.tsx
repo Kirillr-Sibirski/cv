@@ -10,7 +10,6 @@ import {
 } from "../../components/ui/card";
 import { Section } from "../../components/ui/section";
 import { RESUME_DATA } from "../../data/resume-data";
-import { cn } from "../../utils/cn"; // Assuming cn is a utility function for class name composition
 
 type ProjectTags = readonly string[];
 
@@ -43,7 +42,7 @@ function ProjectLink({ title, link }: ProjectLinkProps) {
         />
       </a>
       <div
-        className="hidden font-mono text-xs underline print:visible"
+        className="hidden font-mono resume-details underline print:visible"
         aria-hidden="true"
       >
         {link.replace("https://", "").replace("www.", "").replace("/", "")}
@@ -70,7 +69,7 @@ function ProjectTags({ tags }: ProjectTagsProps) {
       {tags.map((tag) => (
         <li key={tag}>
           <Badge
-            className="px-1 py-0 text-[10px] print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+            className="px-1 py-0 resume-body print:px-1 print:py-0.5 resume-body print:leading-tight"
             variant="secondary"
           >
             {tag}
@@ -96,11 +95,11 @@ function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
     >
       <CardHeader className="p-2 space-y-1">
         <div className="space-y-1">
-          <CardTitle className="text-sm">
+          <CardTitle className="resume-body">
             <ProjectLink title={title} link={link} />
           </CardTitle>
           <CardDescription
-            className="text-pretty font-mono text-xs text-foreground/80"
+            className="text-pretty font-mono resume-details text-foreground/80"
             aria-label="Project description"
           >
             {description}
@@ -123,7 +122,7 @@ export function Projects({ projects }: ProjectsProps) {
     <Section 
       className="print:break-inside-avoid print:pt-0" // Remove top padding and prevent page break
     >
-      <h2 className="text-xl font-bold" id="side-projects">
+      <h2 className="resume-section-title font-bold" id="side-projects">
         Projects
       </h2>
       <div

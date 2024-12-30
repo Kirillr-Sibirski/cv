@@ -75,15 +75,33 @@
   }
 }
 
+@layer components {
+  .resume-name {
+    @apply text-4xl font-bold;
+    font-size: 32px !important;
+  }
+  
+  .resume-section-title {
+    @apply text-xl font-bold;
+    font-size: 18px !important;
+  }
+  
+  .resume-body {
+    @apply text-sm leading-relaxed;
+    font-size: 14px !important;
+  }
+  
+  .resume-details {
+    @apply text-xs;
+    font-size: 12px !important;
+  }
+}
+
 .print-force-new-page {
   page-break-before: always;
 }
 
 @media print {
-    html {
-        font-size: 12px !important;
-    }
-
     body {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;

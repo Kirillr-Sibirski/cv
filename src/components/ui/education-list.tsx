@@ -13,7 +13,7 @@ function EducationItem({ title, items }: EducationItemProps) {
         {items.map((item, index) => (
           <li 
             key={index}
-            className="text-sm text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-muted"
+            className="resume-body text-muted-foreground pl-4 relative before:absolute before:left-0 before:top-[0.6em] before:h-1.5 before:w-1.5 before:rounded-full before:bg-muted"
           >
             {item}
           </li>

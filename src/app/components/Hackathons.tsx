@@ -14,7 +14,7 @@ interface HackathonPeriodProps {
 
 function HackathonPeriod({ start, end }: HackathonPeriodProps) {
     return (
-        <span className="text-sm text-muted-foreground">
+        <span className="resume-body text-muted-foreground">
             {start} - {end}
         </span>
     );
@@ -43,7 +43,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                     {hackathon.achievement && (
                         <Badge
                             variant="secondary"
-                            className="text-xs print:text-[8px] print:leading-tight print:py-0.5 print:align-middle"
+                            className="resume-details resume-body print:leading-tight print:py-0.5 print:align-middle"
                         >
                             {hackathon.achievement}
                         </Badge>
@@ -53,7 +53,7 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                     <div>
                         <Badge
                             variant="default"
-                            className="text-xs print:text-[8px] print:leading-tight print:py-0.5 print:align-middle"
+                            className="resume-details resume-body print:leading-tight print:py-0.5 print:align-middle"
                         >
                             <a
                                 href={hackathon.projectUrl}
@@ -67,13 +67,13 @@ function HackathonItem({ hackathon }: HackathonItemProps) {
                     </div>
                 )}
                 <div className="flex items-center gap-x-2">
-                    <div className="font-mono text-xs print:text-xs text-foreground/80">
+                    <div className="font-mono resume-details print:resume-details text-foreground/80">
                         Team Size: {hackathon.teamSize} · Role: {hackathon.role}
                     </div>
                 </div>
             </CardHeader>
             <CardContent>
-                <div className="font-mono text-xs text-foreground/80 text-pretty">
+                <div className="font-mono resume-details text-foreground/80 text-pretty">
                     {hackathon.description}
                 </div>
             </CardContent>
@@ -88,11 +88,11 @@ export function Hackathons() {
             aria-label="Hackathons"
         >
             <div className="flex items-center justify-between mb-4">
-                <h2 className="text-xl font-bold">Hackathons</h2>
+                <h2 className="resume-section-title font-bold">Hackathons</h2>
                 <HackathonPeriod start="Feb 2022" end="Present" />
             </div>
 
-            <p className="font-mono text-xs text-foreground/80 mb-4">
+            <p className="font-mono resume-details text-foreground/80 mb-4">
                 Completed 15 crypto hackathons in total (irl & online). Notable ones are listed below.
             </p>
 
