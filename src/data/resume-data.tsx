@@ -49,9 +49,9 @@ export const RESUME_DATA = {
       achievements: [
         {
           title: "A-level",
-          keywords: ["Grades", "A* - E"],
+          keywords: ["Predicted Grades", "A* - E"],
           achievements: [
-            "Physics: A",
+            "Physics: B",
             "Mathematics: A",
             "Computer Science: A",
             "EPQ: A*",
@@ -115,7 +115,7 @@ export const RESUME_DATA = {
       company: "Ragemp.pro",
       badges: ["C#", "JavaScript", "RAGE:MP API"],
       title: "Freelance Game Developer",
-      start: "Oct 2021",
+      start: "Jul 2021",
       end: "Feb 2022",
       description: (
         <div>
