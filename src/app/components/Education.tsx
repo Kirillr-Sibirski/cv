@@ -13,14 +13,14 @@ function AchievementTags({ keywords }: AchievementTagsProps) {
   if (keywords.length === 0) return null;
 
   return (
-    <ul 
-      className="mt-2 flex list-none flex-wrap gap-1 p-0" 
+    <ul
+      className="mt-2 flex list-none flex-wrap gap-1 p-0"
       aria-label="Keywords"
     >
       {keywords.map((keyword) => (
         <li key={keyword}>
-          <Badge 
-            className="px-1 py-0.5 print:px-1 print:py-0.5 print:leading-tight resume-details" 
+          <Badge
+            className="px-1 py-0 resume-body print:px-1 print:py-0.5 resume-body print:leading-tight"
             variant="secondary"
           >
             {keyword}
@@ -44,7 +44,7 @@ function AchievementCard({ title, achievements, keywords }: AchievementCardProps
         <div className="space-y-1">
           <CardTitle className="resume-body font-semibold">{title}</CardTitle>
           {achievements.length > 1 ? (
-            <ul 
+            <ul
               className="font-mono resume-details text-foreground/80 list-disc pl-4"
               aria-label="Achievement details"
             >
@@ -85,8 +85,8 @@ export function Education({ education }: EducationProps) {
                 {item.start} - {item.end}
               </div>
             </div>
-            <div 
-              className="grid grid-cols-1 gap-3 print:grid-cols-4 print:gap-2 md:grid-cols-2 lg:grid-cols-4"
+            <div
+              className="grid grid-cols-1 gap-1 print:grid-cols-5 print:gap-1 md:grid-cols-3 lg:grid-cols-5"
               role="feed"
               aria-labelledby="education-achievements"
             >

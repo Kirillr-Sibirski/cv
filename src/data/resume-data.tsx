@@ -49,27 +49,30 @@ export const RESUME_DATA = {
       achievements: [
         {
           title: "A-level",
-          keywords: ["Predicted Grades", "A* - E"],
+          keywords: ["Grades", "A*-E"],
           achievements: [
-            "Physics: B",
-            "Mathematics: A",
-            "Computer Science: A",
-            "EPQ: A*",
-            "Russian: A*"
+            "EPQ: A*, Russian: A*, Predicted: Physics B, Math A, Computer Science A"
+          ]
+        },
+        {
+          title: "iGCSE",
+          keywords: ["Grades", "9-4"],
+          achievements: [
+            "Langs: Ru 9, Sp 8, En 7; STEM: Math 7, Comp 7, Sci 6:6; Humanities: Geo 7, Bus 6, Lit 4"
           ]
         },
         {
           title: "Duke of Edinburgh",
-          keywords: ["Hike", "Expedition"],
+          keywords: ["Expedition"],
           achievements: [
             "Four journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks"
           ]
         },
         {
           title: "MUN",
-          keywords: ["Debate", "Politics"],
+          keywords: ["Debate"],
           achievements: [
-            "Repped Tanzania in UNWOMEN Council; drafted a clause on post-partum contraceptives adopted in resolution",
+            "Drafted UN resolution clause on post-partum healthcare",
           ]
         },
         {
