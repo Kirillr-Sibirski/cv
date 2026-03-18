@@ -5,7 +5,7 @@ import {
 } from "@/components/icons";
 
 export const RESUME_DATA = {
-  name: "Kirill Rybkov",
+  name: "karl ryberg",
   initials: "KR",
   locations: [
     {
@@ -18,7 +18,7 @@ export const RESUME_DATA = {
     },
   ],
   about:
-    "Engineering student and full-stack blockchain developer focused on DeFi strategies, lending and leverage mechanics, and simplifying onchain UX.",
+    "engineering student and full-stack blockchain developer focused on defi strategies, lending and leverage mechanics, and simplifying onchain ux.",
   avatarUrl: "./image.png",
   contact: {
     email: "kirill.rybkov.blog@gmail.com",
