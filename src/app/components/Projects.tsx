@@ -11,7 +11,8 @@ import {
 import { Section } from "../../components/ui/section";
 import { RESUME_DATA } from "../../data/resume-data";
 
-type ProjectTags = readonly string[];
+type ProjectTag = (typeof RESUME_DATA)["projects"][number]["techStack"][number];
+type ProjectTags = readonly ProjectTag[];
 
 interface ProjectLinkProps {
   title: string;
@@ -63,16 +64,27 @@ function ProjectTags({ tags }: ProjectTagsProps) {
 
   return (
     <ul
-      className="mt-2 flex list-none flex-wrap gap-1 p-0"
+      className="mt-2 flex list-none flex-wrap gap-1 p-0 print:mt-1 print:gap-0.5"
       aria-label="Technologies used"
     >
       {tags.map((tag) => (
-        <li key={tag}>
+        <li key={typeof tag === "string" ? tag : tag.label}>
           <Badge
-            className="px-1 py-0 resume-body print:px-1 print:py-0.5 resume-body print:leading-tight"
+            className="px-1 py-0 resume-body print:px-1 print:py-0 resume-body print:leading-tight"
             variant="secondary"
           >
-            {tag}
+            {typeof tag === "string" ? (
+              tag
+            ) : (
+              <a
+                href={tag.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                {tag.label}
+              </a>
+            )}
           </Badge>
         </li>
       ))}
@@ -90,23 +102,23 @@ interface ProjectCardProps {
 function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
   return (
     <Card
-      className="flex h-full flex-col overflow-hidden border p-2"
+      className="flex h-full flex-col overflow-hidden border p-2 print:p-1.5"
       role="article"
     >
-      <CardHeader className="p-2 space-y-1">
-        <div className="space-y-1">
-          <CardTitle className="resume-body">
-            <ProjectLink title={title} link={link} />
-          </CardTitle>
-          <CardDescription
-            className="text-pretty font-mono resume-details text-foreground/80"
-            aria-label="Project description"
-          >
-            {description}
-          </CardDescription>
-        </div>
+      <CardHeader className="space-y-1 p-2 print:p-1">
+        {/* <div className="space-y-0.5"> */}
+        <CardTitle className="resume-body">
+          <ProjectLink title={title} link={link} />
+        </CardTitle>
+        <CardDescription
+          className="text-pretty font-mono resume-details text-foreground/80"
+          aria-label="Project description"
+      >
+        {description}
+      </CardDescription>
+        {/* </div> */}
       </CardHeader>
-      <CardContent className="mt-auto p-2">
+      <CardContent className="mt-auto p-1 print:p-0.5">
         <ProjectTags tags={tags} />
       </CardContent>
     </Card>
@@ -119,14 +131,12 @@ interface ProjectsProps {
 
 export function Projects({ projects }: ProjectsProps) {
   return (
-    <Section 
-      className="print:break-inside-avoid print:pt-0" // Remove top padding and prevent page break
-    >
+    <Section className="print:break-inside-avoid print:space-y-2 print:pt-0">
       <h2 className="resume-section-title font-bold" id="side-projects">
-        Projects
+        Other Experience
       </h2>
       <div
-        className="grid grid-cols-1 gap-3 print:grid-cols-3 print:gap-2 md:grid-cols-2 lg:grid-cols-3"
+        className="grid grid-cols-1 gap-2 print:gap-1.5"
         role="feed"
         aria-labelledby="side-projects"
       >

@@ -1,5 +1,4 @@
 import { Badge } from "@/components/ui/badge";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
@@ -59,19 +58,42 @@ function WorkPeriod({ start, end }: WorkPeriodProps) {
 
 interface CompanyLinkProps {
   company: WorkExperience["company"];
-  // link: WorkExperience["link"];
+  link: WorkExperience["link"];
 }
 
-function CompanyLink({ company }: CompanyLinkProps) {
+interface ArticleLinkProps {
+  articleLink?: string;
+}
+
+function CompanyLink({ company, link }: CompanyLinkProps) {
+  if (!link) {
+    return <span>{company}</span>;
+  }
+
   return (
     <a
-      className="hover:underline"
-      // href={link}
+      className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+      href={link}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`${company} company website`}
     >
       {company}
+    </a>
+  );
+}
+
+function ArticleLink({ articleLink }: ArticleLinkProps) {
+  if (!articleLink) return null;
+
+  return (
+    <a
+      className="font-mono resume-details text-foreground/60 underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+      href={articleLink}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Radix feature
     </a>
   );
 }
@@ -85,29 +107,27 @@ interface WorkExperienceItemProps {
  * Handles responsive layout for badges (mobile/desktop)
  */
 function WorkExperienceItem({ work }: WorkExperienceItemProps) {
-  const { company, badges, title, start, end, description } = work;
+  const { company, link, articleLink, badges, title, start, end, description } = work;
 
   return (
-    <Card className="py-1 print:py-0">
-      <CardHeader className="print:space-y-1">
-        <div className="flex items-center justify-between gap-x-2 text-base">
+    <div className="rounded-lg border border-border/70 p-4 print:p-3">
+      <div className="flex items-start justify-between gap-x-3">
+        <div className="space-y-1">
           <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold text-base">
-            <CompanyLink company={company} />
+            <CompanyLink company={company} link={link} />
           </h3>
-          <div className="font-mono resume-details text-gray-500">
-            {start} - {end ?? "Present"}
-          </div>
+          <h4 className="font-mono resume-details font-semibold text-foreground/70">
+            {title}
+          </h4>
+          <ArticleLink articleLink={articleLink} />
         </div>
-        <h4 className="font-mono resume-details font-semibold">
-          {title}
-        </h4>
-      </CardHeader>
-      <CardContent>
-        <div className="font-mono resume-details text-foreground/80 text-pretty">
-          {description}
-        </div>
-      </CardContent>
-    </Card>
+        <WorkPeriod start={start} end={end} />
+      </div>
+      <BadgeList className="mt-3 flex-wrap gap-y-1" badges={badges} />
+      <div className="mt-3 font-mono resume-details text-foreground/80 text-pretty">
+        {description}
+      </div>
+    </div>
   );
 }
 
@@ -123,18 +143,18 @@ export function WorkExperience({ work }: WorkExperienceProps) {
   return (
     <Section>
       <h2 className="resume-section-title font-bold" id="work-experience">
-        Work Experience
+        Core Experience
       </h2>
-      <div 
-        className="space-y-4 print:space-y-2" // Increased print spacing from print:space-y-0 to print:space-y-6
-        role="feed" 
+      <div
+        className="space-y-4 print:space-y-2"
+        role="feed"
         aria-labelledby="work-experience"
       >
         {work.map((item) => (
-          <article 
-            key={`${item.company}-${item.start}`} 
+          <article
+            key={`${item.company}-${item.start}`}
             role="article"
-            className="print:break-inside-avoid" // Prevent breaking work experiences across pages
+            className="print:break-inside-avoid"
           >
             <WorkExperienceItem work={item} />
           </article>

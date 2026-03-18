@@ -1,111 +1,102 @@
 "use client";
 
-import React from 'react';
 import { Badge } from "@/components/ui/badge";
+import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
-import { Separator } from "@/components/ui/separator";
-import { ExternalLink } from "lucide-react";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
-interface HackathonPeriodProps {
-    start: string;
-    end: string;
+type HackathonProject = (typeof RESUME_DATA)["hackathons"][number];
+
+function StackTags({ tags }: { tags: readonly string[] }) {
+  return (
+    <ul className="mt-2 flex list-none flex-wrap gap-1 p-0 print:mt-1 print:gap-0.5">
+      {tags.map((tag) => (
+        <li key={tag}>
+          <Badge
+            variant="secondary"
+            className="px-1.5 py-0.5 resume-details print:px-1 print:py-0"
+          >
+            {tag}
+          </Badge>
+        </li>
+      ))}
+    </ul>
+  );
 }
 
-function HackathonPeriod({ start, end }: HackathonPeriodProps) {
-    return (
-        <span className="resume-body text-muted-foreground">
-            {start} - {end}
-        </span>
-    );
-}
-
-interface HackathonItemProps {
-    hackathon: (typeof RESUME_DATA)["hackathons"][number];
-}
-
-function HackathonItem({ hackathon }: HackathonItemProps) {
-    return (
-        <Card className="py-1 print:py-0">
-            <CardHeader className="print:space-y-1">
-                <div className="flex items-center justify-between gap-x-2">
-                    <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold text-base">
-                        <a
-                            href={hackathon.hackathonUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="hover:text-primary hover:underline"
-                            aria-label={`${hackathon.hackathon} hackathon`}
-                        >
-                            {hackathon.hackathon}
-                        </a>
-                    </h3>
-                    {hackathon.achievement && (
-                        <Badge
-                            variant="secondary"
-                            className="resume-details resume-body print:leading-tight print:py-0.5 print:align-middle"
-                        >
-                            {hackathon.achievement}
-                        </Badge>
-                    )}
-                </div>
-                {hackathon.projectUrl && (
-                    <div>
-                        <Badge
-                            variant="default"
-                            className="resume-details resume-body print:leading-tight print:py-0.5 print:align-middle"
-                        >
-                            <a
-                                href={hackathon.projectUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label={`${hackathon.projectName} project`}
-                            >
-                                {hackathon.projectName}
-                            </a>
-                        </Badge>
-                    </div>
-                )}
-                <div className="flex items-center gap-x-2">
-                    <div className="font-mono resume-details print:resume-details text-foreground/80">
-                        Team Size: {hackathon.teamSize} · Role: {hackathon.role}
-                    </div>
-                </div>
-            </CardHeader>
-            <CardContent>
-                <div className="font-mono resume-details text-foreground/80 text-pretty">
-                    {hackathon.description}
-                </div>
-            </CardContent>
-        </Card>
-    );
+function HackathonItem({ project }: { project: HackathonProject }) {
+  return (
+    <article className="rounded-lg border border-border/70 p-3 print:p-2">
+      <div className="flex items-start justify-between gap-3 print:gap-2">
+        <div className="space-y-1">
+          <h3 className="resume-body font-semibold leading-tight">
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {project.projectName}
+            </a>
+          </h3>
+          <p className="font-mono resume-details text-foreground/70">
+            <a
+              href={project.hackathonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+            >
+              {project.hackathon}
+            </a>{" "}
+            · {project.role}
+          </p>
+        </div>
+        <Badge
+          className="resume-details leading-tight print:px-1 print:py-0"
+          variant="outline"
+        >
+          {project.achievement}
+        </Badge>
+      </div>
+      <p className="mt-2 font-mono resume-details text-foreground/80 text-pretty print:mt-1">
+        {project.description}
+      </p>
+      <StackTags tags={project.techStack} />
+    </article>
+  );
 }
 
 export function Hackathons() {
-    return (
-        <section
-            className="w-full print:break-inside-avoid print:pt-8" // Increased top padding for print
-            aria-label="Hackathons"
-        >
-            <div className="flex items-center justify-between mb-4">
-                <h2 className="resume-section-title font-bold">Hackathons</h2>
-                <HackathonPeriod start="Feb 2022" end="Present" />
-            </div>
+  return (
+    <Section className="print:break-inside-avoid print:space-y-2">
+      <div className="flex items-end justify-between gap-3">
+        <h2 className="resume-section-title font-bold" id="hackathon-projects">
+          Hackathon Projects
+        </h2>
+        <p className="font-mono resume-details text-foreground/60 print:hidden">
+          15+ hackathons completed
+        </p>
+      </div>
 
-            <p className="font-mono resume-details text-foreground/80 mb-4">
-                Completed 15 crypto hackathons in total (irl & online). Notable ones are listed below.
-            </p>
+      <p className="font-mono resume-details text-foreground/80 print:hidden">
+        Prize-winning projects are a big part of the story because they show how
+        I build fast, ship complete products, and work across DeFi, lending,
+        oracles, and onchain UX. Most notable ones are shared below.
+      </p>
 
-            <div className="space-y-2">
-                {RESUME_DATA.hackathons.map((hackathon, index) => (
-                    <React.Fragment key={index}>
-                        <HackathonItem hackathon={hackathon} />
-                        {index < RESUME_DATA.hackathons.length - 1 && <Separator />}
-                    </React.Fragment>
-                ))}
-            </div>
-        </section>
-    );
+      <div
+        className="grid grid-cols-1 gap-2 print:grid-cols-2 print:gap-1.5 md:grid-cols-2"
+        role="feed"
+        aria-labelledby="hackathon-projects"
+      >
+        {RESUME_DATA.hackathons.map((project) => (
+          <HackathonItem
+            key={`${project.hackathon}-${project.projectName}`}
+            project={project}
+          />
+        ))}
+      </div>
+    </Section>
+  );
 }
 
 export default Hackathons;

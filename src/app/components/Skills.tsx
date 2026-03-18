@@ -1,14 +1,18 @@
 "use client";
 
-import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
 
-type SkillCategory = readonly string[];
+type SkillLink = {
+  label: string;
+  url: string;
+};
+type SkillCategory = readonly SkillLink[];
 type Skills = {
-  soft: SkillCategory;
-  tech: SkillCategory;
+  blockchain: SkillCategory;
+  frontend: SkillCategory;
+  focus: SkillCategory;
 };
 
 interface SkillsListProps {
@@ -26,13 +30,16 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
         aria-label={`List of ${title.toLowerCase()}`}
       >
         {skills.map((skill) => (
-          <li key={skill}>
-            <Badge 
-              className="px-2 py-0.5 resume-details leading-normal print:resume-details print:px-2 print:py-0.5" 
-              aria-label={`Skill: ${skill}`}
+          <li key={skill.label}>
+            <a
+              href={skill.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-md border border-transparent bg-primary/80 px-2 py-0.5 font-mono resume-details leading-normal text-primary-foreground transition-colors hover:bg-primary/60 print:px-2 print:py-0.5"
+              aria-label={`Skill: ${skill.label}`}
             >
-              {skill}
-            </Badge>
+              {skill.label}
+            </a>
           </li>
         ))}
       </ul>
@@ -49,18 +56,11 @@ export function Skills({ skills, className }: SkillsProps) {
   return (
     <Section className={className}>
       <h2 className="resume-section-title font-bold mb-2" id="skills-section">
-        Skills
+        Core Stack
       </h2>
-      <SkillsList 
-        title="Engineering" 
-        skills={skills.tech} 
-        aria-labelledby="skills-section" 
-      />
-      <SkillsList 
-        title="Soft Skills" 
-        skills={skills.soft} 
-        aria-labelledby="skills-section" 
-      />
+      <SkillsList title="Blockchain" skills={skills.blockchain} />
+      <SkillsList title="Frontend" skills={skills.frontend} />
+      <SkillsList title="Focus Areas" skills={skills.focus} />
     </Section>
   );
 }

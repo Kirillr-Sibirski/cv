@@ -74,7 +74,7 @@ export default async function Image() {
           >
             {RESUME_DATA.contact.email && (
               <div style={{ fontSize: "1rem", color: "#666" }}>
-                {RESUME_DATA.personalWebsiteUrl}
+                {RESUME_DATA.contact.email}
               </div>
             )}
           </div>

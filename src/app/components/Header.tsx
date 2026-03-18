@@ -4,23 +4,29 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RESUME_DATA } from "@/data/resume-data";
 
 interface LocationLinkProps {
-  location: typeof RESUME_DATA.location;
-  locationLink: typeof RESUME_DATA.locationLink;
+  locations: typeof RESUME_DATA.locations;
 }
 
-function LocationLink({ location, locationLink }: LocationLinkProps) {
+function LocationLink({ locations }: LocationLinkProps) {
   return (
     <p className="max-w-md items-center text-pretty font-mono resume-details text-foreground">
-      <a
-        className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
-        href={locationLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Location: ${location}`}
-      >
+      <span className="inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 align-baseline leading-none">
         <GlobeIcon className="size-3 text-foreground/80" aria-hidden="true" />
-        {location}
-      </a>
+        {locations.map((location, index) => (
+          <span key={location.label} className="inline-flex items-center gap-x-1.5">
+            {index > 0 && <span className="text-foreground/50">+</span>}
+            <a
+              className="hover:underline"
+              href={location.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Location: ${location.label}`}
+            >
+              {location.label}
+            </a>
+          </span>
+        ))}
+      </span>
     </p>
   );
 }
@@ -135,21 +141,20 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
  */
 export function Header() {
   return (
-    <header className="flex items-center justify-between">
+    <header className="flex items-center justify-between gap-4 print:gap-3">
       <div className="flex-1 space-y-1.5">
         <h1 className="resume-name" id="resume-name">
           {RESUME_DATA.name}
         </h1>
         <p
-          className="max-w-md text-pretty font-mono resume-body text-foreground/80"
+          className="max-w-2xl text-pretty font-mono resume-body text-foreground/80"
           aria-labelledby="resume-name"
         >
           {RESUME_DATA.about}
         </p>
 
         <LocationLink
-          location={RESUME_DATA.location}
-          locationLink={RESUME_DATA.locationLink}
+          locations={RESUME_DATA.locations}
         />
 
         <ContactButtons
@@ -163,7 +168,7 @@ export function Header() {
         />
       </div>
 
-      <Avatar className="size-28" aria-hidden="true">
+      <Avatar className="size-28 print:size-20" aria-hidden="true">
         <AvatarImage
           alt={`${RESUME_DATA.name}'s profile picture`}
           src={RESUME_DATA.avatarUrl}
