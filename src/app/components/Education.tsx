@@ -46,6 +46,11 @@ export function Education({ education }: EducationProps) {
                     Relevant coursework: {item.achievements[0].achievements[0]}
                   </p>
                 )}
+                {/* {item.achievements[1]?.achievements[0] && (
+                  <p className="mt-1 font-mono resume-details text-foreground/80 text-pretty">
+                    Supplementary training: {item.achievements[1].achievements[0]}
+                  </p>
+                )} */}
               </div>
               <p className="font-mono resume-details text-foreground/60">
                 {item.start} - {item.end}

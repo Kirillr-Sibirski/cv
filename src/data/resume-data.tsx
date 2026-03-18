@@ -21,7 +21,7 @@ export const RESUME_DATA = {
     "Engineering student and full-stack blockchain developer focused on DeFi strategies, lending and leverage mechanics, and simplifying onchain UX.",
   avatarUrl: "./image.png",
   contact: {
-    email: "kirill.rybkov@outlook.com",
+    email: "kirill.rybkov.blog@gmail.com",
     social: [
       {
         name: "GitHub",
@@ -62,6 +62,13 @@ export const RESUME_DATA = {
           ],
           keywords: [],
         },
+        // {
+        //   title: "Supplementary Training",
+        //   achievements: [
+        //     "Completed Cyfrin Updraft courses in Smart Contract Security, Foundry Fundamentals, and Advanced Foundry.",
+        //   ],
+        //   keywords: [],
+        // },
       ],
     },
     // , {
@@ -200,6 +207,18 @@ export const RESUME_DATA = {
       techStack: ["Pyth", "Chainlink", "World ID"],
     },
     {
+      hackathon: "ETHGlobal Prague",
+      hackathonUrl: "https://ethglobal.com/events/prague",
+      projectName: "WeSplit",
+      projectUrl: "https://ethglobal.com/showcase/wesplit-jsbqa",
+      achievement: "1inch Prize",
+      teamSize: 3,
+      role: "Solidity",
+      description:
+        "Group expense splitting app that lets users pool funds and pay a bill in one click using 1inch Fusion+.",
+      techStack: ["Solidity", "Foundry", "1inch"],
+    },
+    {
       hackathon: "EBC10 Radix",
       hackathonUrl: "https://eblockchainconvention.com/hackathon/",
       projectName: "Radish (later Lattic3)",
@@ -207,7 +226,7 @@ export const RESUME_DATA = {
       achievement: "2nd Place | $5k",
       teamSize: 2,
       role: "Frontend",
-      description: "Lending dApp built on Radix.",
+      description: "Multi-collateralized lending dApp built on Radix.",
       techStack: ["Next.js", "Radix", "Lending"],
     },
     {
@@ -222,18 +241,18 @@ export const RESUME_DATA = {
       description: "Early lending protocol built on Lukso.",
       techStack: ["Solidity", "Lukso", "Lending"],
     },
-    // {
-    //   hackathon: "Sui HackMoney",
-    //   hackathonUrl: "https://sui.io/hackathon",
-    //   projectName: "Oshio",
-    //   projectUrl: "https://ethglobal.com/showcase/oshio-99nv7",
-    //   achievement: "Sui Bounty | $1k",
-    //   teamSize: 1,
-    //   role: "Frontend / product",
-    //   description:
-    //     "Extremely user-friendly margin-trading app on Sui using DeepBook V3 SDK and Pyth.",
-    //   techStack: ["Sui", "Sui DeepBook SDK", "Pyth", "Claude Code"],
-    // },
+    {
+      hackathon: "ETHGlobal HackMoney 2026",
+      hackathonUrl: "https://ethglobal.com/events/hackmoney2026",
+      projectName: "Oshio",
+      projectUrl: "https://ethglobal.com/showcase/oshio-99nv7",
+      achievement: "Sui Bounty | $1k",
+      teamSize: 1,
+      role: "Frontend",
+      description:
+        "Margin-trading app on Sui focused on simpler UX, using DeepBook and Pyth to make leveraged trading more accessible.",
+      techStack: ["Sui", "DeepBook", "Pyth", "Next.js"],
+    },
     {
       hackathon: "ETHOxford 2025",
       hackathonUrl: "https://ethoxford.io",
@@ -277,7 +296,7 @@ export const RESUME_DATA = {
         },
       ],
       description:
-        "Custom low-profile split DIY keyboard; designing the PCB, case, and firmware."
+        "Custom low-profile split DIY keyboard with fully custom PCB, case geometry, and ZMK firmware configuration."
     },
     {
       title: "Active Suspension System",
@@ -301,7 +320,7 @@ export const RESUME_DATA = {
         },
       ],
       description:
-        "Built an active suspension system for a 1/10 scale RC car to prevent rollovers."
+        "Built an active suspension system for a 1/10 scale RC car, using sensors and PID control to reduce rollovers during aggressive cornering."
     },
   ],
 } as const;
