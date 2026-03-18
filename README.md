@@ -1,4 +1,4 @@
-# Kirill Rybkov CV
+# karl ryberg CV
 
 Print-friendly resume site for blockchain and DeFi roles, built on top of the excellent [`BartoszJarocki/cv`](https://github.com/BartoszJarocki/cv) template.
 
