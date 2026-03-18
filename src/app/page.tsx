@@ -9,17 +9,17 @@ import { Header } from "./components/Header";
 import { Hackathons } from "./components/Hackathons";
 
 export const metadata: Metadata = {
-  title: `${RESUME_DATA.name} - Resume`,
+  title: "karl ryberg cv",
   description: RESUME_DATA.about,
   openGraph: {
-    title: `${RESUME_DATA.name} - Resume`,
+    title: "karl ryberg cv",
     description: RESUME_DATA.about,
     type: "profile",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: `${RESUME_DATA.name} - Resume`,
+    title: "karl ryberg cv",
     description: RESUME_DATA.about,
   },
 };
@@ -53,7 +53,7 @@ export default function ResumePage() {
       id="main-content"
     >
       <div className="sr-only">
-        <h1>{RESUME_DATA.name}&apos;s Resume</h1>
+        <h1>karl ryberg cv</h1>
       </div>
 
       <section
