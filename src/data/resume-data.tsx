@@ -207,16 +207,16 @@ export const RESUME_DATA = {
       techStack: ["Pyth", "Chainlink", "World ID"],
     },
     {
-      hackathon: "ETHGlobal Prague",
-      hackathonUrl: "https://ethglobal.com/events/prague",
-      projectName: "WeSplit",
-      projectUrl: "https://ethglobal.com/showcase/wesplit-jsbqa",
-      achievement: "1inch Prize",
+      hackathon: "xStocks Hackathon",
+      hackathonUrl: "https://xstocks-market-open.devpost.com/",
+      projectName: "Paragon",
+      projectUrl: "https://devpost.com/software/paragon-h8isc4",
+      achievement: "Discretionary Prize | $3.3k",
       teamSize: 3,
-      role: "Solidity",
+      role: "Full stack",
       description:
-        "Group expense splitting app that lets users pool funds and pay a bill in one click using 1inch Fusion+.",
-      techStack: ["Solidity", "Foundry", "1inch"],
+        "Trading-focused build for the xStocks hackathon, where I worked across frontend, backend, and smart-contract integration.",
+      techStack: ["TypeScript", "React", "Full stack"],
     },
     {
       hackathon: "EBC10 Radix",
@@ -269,7 +269,7 @@ export const RESUME_DATA = {
       hackathonUrl: "https://chain.link/hackathon",
       projectName: "Aletheia",
       projectUrl: "https://aletheia-gilt.vercel.app",
-      achievement: "Pending...",
+      achievement: "World ID | $500",
       teamSize: 1,
       role: "Full stack",
       description:
