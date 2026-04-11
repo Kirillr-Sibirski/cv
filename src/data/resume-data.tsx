@@ -207,7 +207,7 @@ export const RESUME_DATA = {
       techStack: ["Pyth", "Chainlink", "World ID"],
     },
     {
-      hackathon: "xStocks Hackathon",
+      hackathon: "xStocks Cannes",
       hackathonUrl: "https://xstocks-market-open.devpost.com/",
       projectName: "Paragon",
       projectUrl: "https://devpost.com/software/paragon-h8isc4",
@@ -215,7 +215,7 @@ export const RESUME_DATA = {
       teamSize: 3,
       role: "Full stack",
       description:
-        "Trading-focused build for the xStocks hackathon, where I worked across frontend, backend, and smart-contract integration.",
+        "First-ever liquidation-free tokenized equity leverage platform on the Ink Chain.",
       techStack: ["TypeScript", "React", "Full stack"],
     },
     {
