@@ -3,8 +3,89 @@ import {
   LinkedInIcon,
   XIcon,
 } from "@/components/icons";
+import type { ElementType, ReactNode } from "react";
 
-export const RESUME_DATA = {
+export type ResumeLink = {
+  label: string;
+  url: string;
+};
+
+export type ResumeContactLink = {
+  name: string;
+  url: string;
+  icon: ElementType;
+};
+
+export type ResumeEducationItem = {
+  school: string;
+  schoolUrl: string;
+  degree: string;
+  degreeUrl: string;
+  start: string;
+  end: string;
+  achievements: {
+    title: string;
+    achievements: string[];
+    keywords: string[];
+  }[];
+};
+
+export type ResumeWorkItem = {
+  company: string;
+  link?: string;
+  articleLink?: string;
+  badges: string[];
+  title: string;
+  start: string;
+  end?: string;
+  description: ReactNode;
+};
+
+export type ResumeHackathonItem = {
+  hackathon: string;
+  hackathonUrl: string;
+  projectName: string;
+  projectUrl: string;
+  achievement: string;
+  teamSize: number;
+  role: string;
+  description: string;
+  techStack: string[];
+};
+
+export type ResumeProjectTag = string | ResumeLink;
+
+export type ResumeProjectItem = {
+  title: string;
+  projectUrl?: string;
+  techStack: ResumeProjectTag[];
+  description: string;
+};
+
+export type ResumeSkills = {
+  blockchain: ResumeLink[];
+  frontend: ResumeLink[];
+  focus: ResumeLink[];
+};
+
+export type ResumeData = {
+  name: string;
+  initials: string;
+  locations: ResumeLink[];
+  about: string;
+  avatarUrl: string;
+  contact: {
+    email: string;
+    social: ResumeContactLink[];
+  };
+  education: ResumeEducationItem[];
+  work: ResumeWorkItem[];
+  skills: ResumeSkills;
+  hackathons: ResumeHackathonItem[];
+  projects: ResumeProjectItem[];
+};
+
+export const RESUME_DATA: ResumeData = {
   name: "karl ryberg",
   initials: "KR",
   locations: [
@@ -207,16 +288,16 @@ export const RESUME_DATA = {
       techStack: ["Pyth", "Chainlink", "World ID"],
     },
     {
-      hackathon: "ETHGlobal Prague",
-      hackathonUrl: "https://ethglobal.com/events/prague",
-      projectName: "WeSplit",
-      projectUrl: "https://ethglobal.com/showcase/wesplit-jsbqa",
-      achievement: "1inch Prize",
+      hackathon: "xStocks Hackathon",
+      hackathonUrl: "https://xstocks-market-open.devpost.com/",
+      projectName: "Paragon",
+      projectUrl: "https://devpost.com/software/paragon-h8isc4",
+      achievement: "Discretionary Prize | $3.3k",
       teamSize: 3,
-      role: "Solidity",
+      role: "Full stack",
       description:
-        "Group expense splitting app that lets users pool funds and pay a bill in one click using 1inch Fusion+.",
-      techStack: ["Solidity", "Foundry", "1inch"],
+        "Trading-focused build for the xStocks hackathon, where I worked across frontend, backend, and smart-contract integration.",
+      techStack: ["TypeScript", "React", "Full stack"],
     },
     {
       hackathon: "EBC10 Radix",
@@ -269,7 +350,7 @@ export const RESUME_DATA = {
       hackathonUrl: "https://chain.link/hackathon",
       projectName: "Aletheia",
       projectUrl: "https://aletheia-gilt.vercel.app",
-      achievement: "Pending...",
+      achievement: "World ID | $500",
       teamSize: 1,
       role: "Full stack",
       description:
@@ -323,4 +404,130 @@ export const RESUME_DATA = {
         "Built an active suspension system for a 1/10 scale RC car, using sensors and PID control to reduce rollovers during aggressive cornering."
     },
   ],
-} as const;
+};
+
+export const ENGINEERING_RESUME_DATA: ResumeData = {
+  ...RESUME_DATA,
+  about:
+    "engineering student focused on hardware systems, prototyping, control systems, and software that turns ideas into working products.",
+  work: [
+    {
+      company: "Lattic3 Finance",
+      link: "https://lattic3.xyz",
+      articleLink: "https://www.radixdlt.com/blog/meet-the-project-lattic3",
+      badges: ["Next.js", "TypeScript", "Product UX", "Rust Programs", "TS Backend"],
+      title: "co-founder / product engineer",
+      start: "Oct 2024",
+      end: "Aug 2025",
+      description: (
+        <div>
+          <ul className="list-inside list-disc">
+            <li>
+              built a production-facing web app with a Next.js frontend coordinating with backend services and Rust-based onchain programs.
+            </li>
+            <li>
+              owned large parts of the product UX, interaction design, and implementation of real user flows in a small engineering team.
+            </li>
+            <li>
+              worked across interface design, technical integration, rapid iteration, and shipping under real constraints.
+            </li>
+          </ul>
+        </div>
+      ),
+    },
+  ],
+  skills: {
+    blockchain: [
+      { label: "KiCad", url: "https://www.kicad.org/" },
+      { label: "Onshape", url: "https://www.onshape.com/en/" },
+      {
+        label: "ZMK Firmware",
+        url: "https://github.com/Kirillr-Sibirski/zmk-config-hormesis-v2",
+      },
+      { label: "Arduino", url: "https://www.arduino.cc/" },
+      {
+        label: "PID Control",
+        url: "https://en.wikipedia.org/wiki/PID_controller",
+      },
+      { label: "CAD", url: "https://www.onshape.com/en/" },
+      { label: "PCB Design", url: "https://www.kicad.org/" },
+    ],
+    frontend: [
+      { label: "C++", url: "https://isocpp.org/" },
+      { label: "Rust", url: "https://www.rust-lang.org/" },
+      { label: "TypeScript", url: "https://www.typescriptlang.org/docs/" },
+      { label: "React", url: "https://react.dev/learn" },
+      { label: "Next.js", url: "https://nextjs.org/docs" },
+      { label: "MATLAB", url: "https://www.mathworks.com/products/matlab.html" },
+    ],
+    focus: [
+      { label: "control systems", url: "https://en.wikipedia.org/wiki/Control_theory" },
+      { label: "hardware prototyping", url: "" },
+      { label: "mechanical design", url: "" },
+      { label: "embedded-ish systems", url: "" },
+      { label: "product engineering", url: "" },
+    ],
+  },
+  hackathons: [],
+  education: [
+    {
+      ...RESUME_DATA.education[0],
+      achievements: [
+        {
+          title: "Relevant Coursework",
+          achievements: [
+            "Calculus 1, Calculus 2, Linear Algebra, Mechanics, Electronics, System Dynamics, and EAPS (MATLAB).",
+          ],
+          keywords: [],
+        },
+      ],
+    },
+  ],
+  projects: [
+    {
+      title: "Hormesis Keyboard",
+      projectUrl: "https://github.com/Kirillr-Sibirski/hormesis-keyboard",
+      techStack: [
+        {
+          label: "KiCad",
+          url: "https://www.kicad.org/",
+        },
+        {
+          label: "Onshape (CAD)",
+          url: "https://www.onshape.com/en/",
+        },
+        {
+          label: "Firmware",
+          url: "https://github.com/Kirillr-Sibirski/zmk-config-hormesis-v2",
+        },
+      ],
+      description:
+        "custom split keyboard project covering pcb design, case geometry, layout iteration, and firmware configuration as one integrated build.",
+    },
+    {
+      title: "Active Suspension System",
+      projectUrl:
+        "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
+      techStack: [
+        {
+          label: "C++",
+          url: "https://isocpp.org/",
+        },
+        {
+          label: "Arduino",
+          url: "https://www.arduino.cc/",
+        },
+        {
+          label: "PID",
+          url: "https://en.wikipedia.org/wiki/PID_controller",
+        },
+        {
+          label: "3D Printing",
+          url: "https://en.wikipedia.org/wiki/3D_printing",
+        },
+      ],
+      description:
+        "active suspension system for a 1/10 scale rc car, combining sensors, control logic, prototyping, and testing to reduce rollovers during aggressive cornering.",
+    },
+  ],
+};

@@ -1,10 +1,10 @@
 "use client";
 
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
+import { ResumeData } from "@/data/resume-data";
 
 interface EducationProps {
-  education: (typeof RESUME_DATA)["education"];
+  education: ResumeData["education"];
 }
 
 export function Education({ education }: EducationProps) {

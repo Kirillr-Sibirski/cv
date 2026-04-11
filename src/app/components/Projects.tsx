@@ -9,10 +9,10 @@ import {
   CardContent,
 } from "../../components/ui/card";
 import { Section } from "../../components/ui/section";
-import { RESUME_DATA } from "../../data/resume-data";
+import { ResumeData } from "../../data/resume-data";
 
-type ProjectTag = (typeof RESUME_DATA)["projects"][number]["techStack"][number];
-type ProjectTags = readonly ProjectTag[];
+type ProjectTag = ResumeData["projects"][number]["techStack"][number];
+type ProjectTags = ResumeData["projects"][number]["techStack"];
 
 interface ProjectLinkProps {
   title: string;
@@ -126,14 +126,15 @@ function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
 }
 
 interface ProjectsProps {
-  projects: (typeof RESUME_DATA)["projects"];
+  projects: ResumeData["projects"];
+  title?: string;
 }
 
-export function Projects({ projects }: ProjectsProps) {
+export function Projects({ projects, title = "Other Experience" }: ProjectsProps) {
   return (
     <Section className="print:break-inside-avoid print:space-y-2 print:pt-0">
       <h2 className="resume-section-title font-bold" id="side-projects">
-        Other Experience
+        {title}
       </h2>
       <div
         className="grid grid-cols-1 gap-2 print:gap-1.5"

@@ -2,9 +2,9 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
+import { ResumeData } from "@/data/resume-data";
 
-type HackathonProject = (typeof RESUME_DATA)["hackathons"][number];
+type HackathonProject = ResumeData["hackathons"][number];
 
 function StackTags({ tags }: { tags: readonly string[] }) {
   return (
@@ -65,30 +65,42 @@ function HackathonItem({ project }: { project: HackathonProject }) {
   );
 }
 
-export function Hackathons() {
+export function Hackathons({
+  projects,
+  title = "Hackathon Projects",
+  intro,
+  countLabel,
+}: {
+  projects: ResumeData["hackathons"];
+  title?: string;
+  intro?: string;
+  countLabel?: string;
+}) {
   return (
     <Section className="print:break-inside-avoid print:space-y-2">
       <div className="flex items-end justify-between gap-3">
         <h2 className="resume-section-title font-bold" id="hackathon-projects">
-          Hackathon Projects
+          {title}
         </h2>
-        <p className="font-mono resume-details text-foreground/60 print:hidden">
-          15+ hackathons completed
-        </p>
+        {countLabel && (
+          <p className="font-mono resume-details text-foreground/60 print:hidden">
+            {countLabel}
+          </p>
+        )}
       </div>
 
-      <p className="font-mono resume-details text-foreground/80 print:hidden">
-        Prize-winning projects are a big part of the story because they show how
-        I build fast, ship complete products, and work across DeFi, lending,
-        oracles, and onchain UX. Most notable ones are shared below.
-      </p>
+      {intro && (
+        <p className="font-mono resume-details text-foreground/80 print:hidden">
+          {intro}
+        </p>
+      )}
 
       <div
         className="grid grid-cols-1 gap-2 print:grid-cols-2 print:gap-1.5 md:grid-cols-2"
         role="feed"
         aria-labelledby="hackathon-projects"
       >
-        {RESUME_DATA.hackathons.map((project) => (
+        {projects.map((project) => (
           <HackathonItem
             key={`${project.hackathon}-${project.projectName}`}
             project={project}

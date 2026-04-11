@@ -1,9 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
+import { ResumeData } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
 
-type WorkExperience = (typeof RESUME_DATA)["work"][number];
+type WorkExperience = ResumeData["work"][number];
 type WorkBadges = readonly string[];
 
 interface BadgeListProps {
@@ -48,7 +48,7 @@ interface WorkPeriodProps {
 function WorkPeriod({ start, end }: WorkPeriodProps) {
   return (
     <div
-      className="resume-body tabular-nums text-gray-500"
+      className="resume-body tabular-nums text-muted-foreground"
       aria-label={`Employment period: ${start} to ${end ?? "Present"}`}
     >
       {start} - {end ?? "Present"}
@@ -132,18 +132,19 @@ function WorkExperienceItem({ work }: WorkExperienceItemProps) {
 }
 
 interface WorkExperienceProps {
-  work: (typeof RESUME_DATA)["work"];
+  work: ResumeData["work"];
+  title?: string;
 }
 
 /**
  * Main work experience section component
  * Renders a list of work experiences in chronological order
  */
-export function WorkExperience({ work }: WorkExperienceProps) {
+export function WorkExperience({ work, title = "Core Experience" }: WorkExperienceProps) {
   return (
     <Section>
       <h2 className="resume-section-title font-bold" id="work-experience">
-        Core Experience
+        {title}
       </h2>
       <div
         className="space-y-4 print:space-y-2"

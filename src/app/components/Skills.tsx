@@ -1,19 +1,11 @@
 "use client";
 
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
+import { ResumeData } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
 
-type SkillLink = {
-  label: string;
-  url: string;
-};
-type SkillCategory = readonly SkillLink[];
-type Skills = {
-  blockchain: SkillCategory;
-  frontend: SkillCategory;
-  focus: SkillCategory;
-};
+type SkillCategory = ResumeData["skills"]["blockchain"];
+type Skills = ResumeData["skills"];
 
 interface SkillsListProps {
   title: string;
@@ -50,17 +42,30 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
 interface SkillsProps {
   skills: Skills;
   className?: string;
+  titles?: {
+    blockchain: string;
+    frontend: string;
+    focus: string;
+  };
 }
 
-export function Skills({ skills, className }: SkillsProps) {
+export function Skills({
+  skills,
+  className,
+  titles = {
+    blockchain: "Blockchain",
+    frontend: "Frontend",
+    focus: "Focus Areas",
+  },
+}: SkillsProps) {
   return (
     <Section className={className}>
       <h2 className="resume-section-title font-bold mb-2" id="skills-section">
         Core Stack
       </h2>
-      <SkillsList title="Blockchain" skills={skills.blockchain} />
-      <SkillsList title="Frontend" skills={skills.frontend} />
-      <SkillsList title="Focus Areas" skills={skills.focus} />
+      <SkillsList title={titles.blockchain} skills={skills.blockchain} />
+      <SkillsList title={titles.frontend} skills={skills.frontend} />
+      <SkillsList title={titles.focus} skills={skills.focus} />
     </Section>
   );
 }
