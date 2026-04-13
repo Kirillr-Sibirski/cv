@@ -3,6 +3,7 @@ import {
   LinkedInIcon,
   XIcon,
 } from "@/components/icons";
+import { SendIcon } from "lucide-react";
 
 export const RESUME_DATA = {
   name: "karl ryberg",
@@ -21,7 +22,7 @@ export const RESUME_DATA = {
     "engineering student and full-stack blockchain developer focused on defi strategies, lending and leverage mechanics, and simplifying onchain ux.",
   avatarUrl: "./image.png",
   contact: {
-    email: "kirill.rybkov.blog@gmail.com",
+    email: "",
     social: [
       {
         name: "GitHub",
@@ -37,6 +38,11 @@ export const RESUME_DATA = {
         name: "X",
         url: "https://x.com/krlberg",
         icon: XIcon,
+      },
+      {
+        name: "Telegram",
+        url: "https://t.me/krlberg",
+        icon: SendIcon,
       },
       // {
       //   name: "YouTube",
