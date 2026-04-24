@@ -181,6 +181,7 @@ export function Header({
         <AvatarImage
           alt={`${displayName}'s profile picture`}
           src={RESUME_DATA.avatarUrl}
+          className="object-cover scale-110 object-center"
         />
         <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
       </Avatar>

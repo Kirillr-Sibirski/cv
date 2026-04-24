@@ -1,7 +1,6 @@
 "use client";
 
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
 
 type SkillLink = {
@@ -13,6 +12,11 @@ type Skills = {
   blockchain: SkillCategory;
   frontend: SkillCategory;
   focus: SkillCategory;
+};
+type SkillGroup = {
+  id: string;
+  title: string;
+  skills: SkillCategory;
 };
 
 interface SkillsListProps {
@@ -48,7 +52,8 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
 }
 
 interface SkillsProps {
-  skills: Skills;
+  skills?: Skills;
+  categories?: readonly SkillGroup[];
   className?: string;
   sectionTitle?: string;
   categoryTitles?: {
@@ -60,27 +65,45 @@ interface SkillsProps {
 
 export function Skills({
   skills,
+  categories,
   className,
   sectionTitle = "Core Stack",
   categoryTitles,
 }: SkillsProps) {
+  const resolvedCategories =
+    categories ??
+    (skills
+      ? [
+          {
+            id: "blockchain",
+            title: categoryTitles?.blockchain ?? "Blockchain",
+            skills: skills.blockchain,
+          },
+          {
+            id: "frontend",
+            title: categoryTitles?.frontend ?? "Frontend",
+            skills: skills.frontend,
+          },
+          {
+            id: "focus",
+            title: categoryTitles?.focus ?? "Focus Areas",
+            skills: skills.focus,
+          },
+        ]
+      : []);
+
   return (
     <Section className={className}>
       <h2 className="resume-section-title font-bold mb-2" id="skills-section">
         {sectionTitle}
       </h2>
-      <SkillsList
-        title={categoryTitles?.blockchain ?? "Blockchain"}
-        skills={skills.blockchain}
-      />
-      <SkillsList
-        title={categoryTitles?.frontend ?? "Frontend"}
-        skills={skills.frontend}
-      />
-      <SkillsList
-        title={categoryTitles?.focus ?? "Focus Areas"}
-        skills={skills.focus}
-      />
+      {resolvedCategories.map((category) => (
+        <SkillsList
+          key={category.id}
+          title={category.title}
+          skills={category.skills}
+        />
+      ))}
     </Section>
   );
 }

@@ -13,10 +13,10 @@ type LinkItem = {
   url: string;
 };
 
-type HardwareSkills = {
-  blockchain: LinkItem[];
-  frontend: LinkItem[];
-  focus: LinkItem[];
+type HardwareSkillCategory = {
+  id: string;
+  title: string;
+  skills: LinkItem[];
 };
 
 type HardwareWorkItem = {
@@ -38,120 +38,107 @@ type HardwareProjectItem = {
 };
 
 const HARDWARE_ABOUT =
-  "BSc Advanced Technology (mechatronics-oriented) student @ University of Twente. Software-focused builder with hands-on experience across embedded electronics, control systems, CAD, prototyping, and product development.";
+  "BSc Advanced Technology student @ University of Twente. Software-focused with experience across embedded electronics, control systems, CAD, prototyping, and product development.";
 
-const HARDWARE_SKILLS: HardwareSkills = {
-  blockchain: [
-    { label: "Arduino / C++", url: "https://www.arduino.cc/" },
-    { label: "ESP32", url: "https://www.espressif.com/en/products/socs/esp32" },
-    { label: "PWM / Analog / Digital I/O", url: "https://docs.arduino.cc/" },
-    { label: "I2C Sensors", url: "https://learn.sparkfun.com/tutorials/i2c/all" },
-    { label: "PCB", url: "https://en.wikipedia.org/wiki/Breadboard" },
-    { label: "RC Electronics", url: "https://en.wikipedia.org/wiki/Electronic_speed_control" },
-  ],
-  frontend: [
-    { label: "Onshape", url: "https://www.onshape.com/en/" },
-    { label: "SolidWorks", url: "https://www.solidworks.com/" },
-    { label: "KiCad", url: "https://www.kicad.org/" },
-    { label: "FDM 3D Printing", url: "https://en.wikipedia.org/wiki/3D_printing" },
-    // { label: "Rapid Prototyping", url: "https://en.wikipedia.org/wiki/Prototype" },
-  ],
-  focus: [
-    { label: "Python", url: "https://www.python.org/" },
-    { label: "TypeScript", url: "https://www.typescriptlang.org/docs/" },
-    { label: "MATLAB", url: "https://www.mathworks.com/products/matlab.html" },
-    { label: "Simulink", url: "https://www.mathworks.com/products/simulink.html" },
-    { label: "Git / GitHub", url: "https://github.com/Kirillr-Sibirski" },
-    { label: "Claude Code", url: "https://www.anthropic.com/claude-code" },
-    { label: "OpenAI Codex", url: "https://openai.com/codex/" },
-  ],
-};
+const HARDWARE_SKILL_CATEGORIES: HardwareSkillCategory[] = [
+  {
+    id: "embedded",
+    title: "Electronics & Embedded",
+    skills: [
+      { label: "Arduino", url: "https://www.arduino.cc/" },
+      { label: "ESP32", url: "https://www.espressif.com/en/products/socs/esp32" },
+      { label: "Raspberry Pi", url: "https://www.raspberrypi.com/" },
+      { label: "PWM / Analog / Digital I/O", url: "https://docs.arduino.cc/" },
+      { label: "I2C Sensors", url: "https://learn.sparkfun.com/tutorials/i2c/all" },
+      { label: "Breadboarding / Perfboard", url: "https://en.wikipedia.org/wiki/Breadboard" },
+      { label: "RC Electronics", url: "https://en.wikipedia.org/wiki/Electronic_speed_control" },
+    ],
+  },
+  {
+    id: "mechanical",
+    title: "Mechanical / CAD",
+    skills: [
+      { label: "Onshape", url: "https://www.onshape.com/en/" },
+      { label: "SolidWorks", url: "https://www.solidworks.com/" },
+      { label: "KiCad", url: "https://www.kicad.org/" },
+      { label: "FDM 3D Printing", url: "https://en.wikipedia.org/wiki/3D_printing" },
+    ],
+  },
+  {
+    id: "software",
+    title: "Software",
+    skills: [
+      { label: "Python", url: "https://www.python.org/" },
+      { label: "C/C++", url: "https://www.arduino.cc/" },
+      { label: "TypeScript", url: "https://www.typescriptlang.org/docs/" },
+      { label: "MATLAB", url: "https://www.mathworks.com/products/matlab.html" },
+      { label: "Simulink", url: "https://www.mathworks.com/products/simulink.html" },
+      { label: "Git", url: "https://github.com/Kirillr-Sibirski" },
+      { label: "Claude Code", url: "https://www.anthropic.com/claude-code" },
+      { label: "OpenAI Codex", url: "https://openai.com/codex/" },
+    ],
+  },
+];
 
 const HARDWARE_WORK: HardwareWorkItem[] = [
   {
     company: "Active Suspension System",
     link: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
-    badges: ["Arduino Nano", "MPU6050", "PID", "CAD", "3D Printing"],
+    badges: ["Arduino", "IMU", "PID", "CAD", "3D Printing"],
     title: "completed during EPQ A-level",
     start: "",
     end: "",
     description: (
-      <div>
-        <ul className="list-inside list-disc">
-          <li>
-            Designed and built an active anti-roll suspension system for a
-            1/10th-scale off-road RC car to reduce rollover risk on uneven
-            terrain.
-          </li>
-          <li>
-            Combined CAD, 3D printing, Arduino
-            C/C++, an IMU, and high-torque servos to dynamically shift
-            the car&apos;s effective centre of mass.
-          </li>
-          <li>
-            Implemented quaternion-to-Euler processing, calibration storage,
-            wireless power from the RC receiver, and PID tuning based on field
-            tests on slopes and rocks.
-          </li>
-        </ul>
-      </div>
+      <p>
+        Built an active anti-roll system for a 1/10 off-road RC car, with the goal of reducing rollover on uneven terrain rather
+        than just making a standard suspension upgrade. I designed the linkage
+        and printed parts, wired an Arduino Nano with an MPU6050 IMU, and wrote
+        the PID in C/C++ to turn orientation data into servo-driven
+        ride-height adjustment. Most of the work was in getting the whole loop
+        to behave in the real world: packaging the electronics cleanly on the
+        chassis, powering it from the RC receiver, and tuning the PID response
+        through repeated testing on slopes, rocks, and rough surfaces.
+      </p>
     ),
   },
   {
-    company: "AFDA Fire Detection Drone",
+    company: "Autonomous Fire Detection Aircraft",
     link: undefined,
-    badges: ["UAV", "Electronics", "Flight Controller", "GPS", "Raspberry Pi"],
+    badges: ["UAV", "Flight Controller", "GPS", "Raspberry Pi"],
     title: "high school team project",
     start: "",
     end: "",
     description: (
-      <div>
-        <ul className="list-inside list-disc">
-          <li>
-            Helped build a fixed-wing autonomous wildfire-detection drone aimed
-            at early fire monitoring in Catalonia.
-          </li>
-          <li>
-            Focused on the electronics stack and physical drone construction,
-            including the SpeedyBee F405 Wing flight controller, GPS, receiver,
-            ESC, LiPo power setup, and integration of a Raspberry Pi-based
-            vision payload.
-          </li>
-          <li>
-            Worked through multiple airframe iterations, moving from an early
-            failed prototype to a reinforced 1.4 m delta-wing design with
-            improved structural integrity and flight performance.
-          </li>
-        </ul>
-      </div>
+      <p>
+        AFDA was a fixed-wing drone project aimed at early wildfire detection
+        in Catalonia. My part was mainly the electronics and physical build:
+        integrating the SpeedyBee flight controller, power system, GPS,
+        receiver, and Raspberry Pi payload, then helping turn that into an
+        airframe that could actually survive and fly. The project was useful
+        because it forced real trade-offs between structure, weight,
+        manufacturability, and onboard electronics instead of treating them as
+        separate problems.
+      </p>
     ),
   },
   {
     company: "Piezoelectric Accelerometer",
     link: "https://drive.google.com/file/d/12hf3-xHmd9VUs-cSkcsxMcEc7xe-uF2a/view?usp=sharing",
-    badges: ["Charge Amplifier", "Arduino", "Signal Analysis"],
-    title: "university project",
+    badges: ["Charge Amplifier", "Arduino", "Signal Conditioning"],
+    title: "university team project",
     start: "",
     end: "",
     description: (
-      <div>
-        <ul className="list-inside list-disc">
-          <li>
-            Built and characterized a piezoelectric accelerometer for subwoofer
-            testing, targeting a 10 to 200 Hz operating range and accelerations
-            from 0.05 to 5 g.
-          </li>
-          <li>
-            Worked on the signal-conditioning and software side, using a charge
-            amplifier circuit, analogue signal processing, and Arduino-based
-            readout and calibration.
-          </li>
-          <li>
-            Helped validate the prototype on a shaker setup and analyze the
-            system&apos;s bandwidth, resonance behavior, and calibration limits.
-          </li>
-        </ul>
-      </div>
+      <p>
+        Designed and validated a piezoelectric
+        accelerometer for subwoofer testing. I focused mainly on the electronics
+        and software side: signal conditioning via an integrator circuit, Arduino-based readout, and
+        calibration/testing support for the final prototype. What made it
+        interesting was that it sat in the middle between theory and hardware,
+        so we had to connect the mechanical model, the analogue circuit
+        behaviour, and the measured shaker-test results instead of solving each
+        part in isolation.
+      </p>
     ),
   },
 ];
@@ -172,17 +159,11 @@ const HARDWARE_PROJECTS: HardwareProjectItem[] = [
       "Designing a custom low-profile split keyboard with an original case in Onshape, a routed PCB in KiCad, and a ZMK-based firmware setup. It has been a useful hands-on project for combining CAD, electronics, PCB layout, and firmware in one hardware build.",
   },
   {
-    title: "Software / Product Work",
+    title: "Blockchain",
     projectUrl: "https://krlberg.dev/",
-    techStack: ["TypeScript", "Git", "GitHub", "Frontend", "Backend", "Claude Code", "Codex"],
+    techStack: ["TypeScript", "GitHub", "Frontend", "DeFi"],
     description:
-      "Built and shipped production-facing software through Lattic3 and hackathon projects, using TypeScript across frontend and backend, Git/GitHub for day-to-day collaboration, and Claude Code / Codex to speed up prototyping, iteration, and implementation. The main blockchain-facing resume lives on the main page of this site.",
-  },
-  {
-    title: "RC Cars & Tinkering",
-    techStack: ["Brushless / Brushed", "ESCs", "Suspension", "Mechanical Mods"],
-    description:
-      "Regularly modify and experiment with 1/10 RC cars, including drivetrains, ESCs, suspension setups, and custom parts on a heavily modified Maverick Strada Evo XD and Remo Hobby crawler.",
+      "Built and shipped production-facing software through Lattic3 and hackathon projects, using TypeScript across frontend and backend, GitHub, and Claude Code / Codex to speed up the coding. The main blockchain-facing resume lives on the main page of the site.",
   },
 ];
 
@@ -193,17 +174,59 @@ const HARDWARE_EDUCATION = {
   degreeUrl:
     "https://www.utwente.nl/en/education/bachelor/programmes/advanced-technology/",
   gpa: "7.2 / 10",
-  courses: [
-    { code: "202001212", name: "Calculus 1" },
-    { code: "202200179", name: "Calculus 2" },
-    { code: "202500293", name: "Mechanics" },
-    { code: "202300118", name: "Error Analysis & Programming Skills" },
-    { code: "202500295", name: "System Dynamics 1" },
-    { code: "202000624", name: "Basic Electronics & Instrumentation" },
-    { code: "202000625", name: "Project Accelerometer" },
-    { code: "202500299", name: "Quantum Matter & Devices" },
-    { code: "202400642", name: "Structure and Properties of Materials" },
-    { code: "202500302", name: "Properties of Polymer Materials" },
+  courseGroups: [
+    {
+      title: "Math & Software",
+      courses: [
+        {
+          name: "Calculus 1 / 2",
+          ec: "8 EC",
+        },
+        {
+          name: "Programming Skills",
+          ec: "3 EC",
+        },
+      ],
+    },
+    {
+      title: "Electronics",
+      courses: [
+        {
+          name: "Basic Electronics",
+          ec: "4 EC",
+        },
+        {
+          name: "Accelerom. Project",
+          ec: "4 EC",
+        },
+      ],
+    },
+    {
+      title: "Engineering",
+      courses: [
+        {
+          name: "Mechanics",
+          ec: "4 EC",
+        },
+        {
+          name: "System Dynamics",
+          ec: "4 EC",
+        },
+      ],
+    },
+    {
+      title: "Materials",
+      courses: [
+        {
+          name: "Material Properties",
+          ec: "3 EC",
+        },
+        {
+          name: "Polymer Materials",
+          ec: "3 EC",
+        },
+      ],
+    },
   ],
 };
 
@@ -240,17 +263,26 @@ function HardwareEducationSection() {
           </p>
         </div>
 
-        <div className="mt-3 flex flex-wrap gap-2">
-          {HARDWARE_EDUCATION.courses.map((course) => (
-            <div
-              key={course.code}
-              className="rounded-md border border-border/70 bg-secondary/40 px-2.5 py-2"
-            >
-              <div className="font-mono resume-details text-foreground/60">
-                {course.code}
-              </div>
-              <div className="resume-details font-semibold text-foreground">
-                {course.name}
+        <div className="mt-4 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
+          {HARDWARE_EDUCATION.courseGroups.map((group) => (
+            <div key={group.title} className="space-y-2">
+              <h4 className="resume-body font-semibold">{group.title}</h4>
+              <div className="grid gap-1.5">
+                {group.courses.map((course) => (
+                  <div
+                    key={`${group.title}-${course.name}`}
+                    className="rounded-md border border-border/70 bg-secondary/40 px-2 py-1.5"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="resume-details font-semibold text-foreground">
+                        {course.name}
+                      </div>
+                      <div className="font-mono resume-details text-foreground/60">
+                        {course.ec}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -306,18 +338,13 @@ export default function HardwareResumePage() {
 
         <div className="space-y-8 print:space-y-3">
           <Skills
-            skills={HARDWARE_SKILLS}
-            sectionTitle="Technical Stack"
-            categoryTitles={{
-              blockchain: "Electronics & Embedded",
-              frontend: "Mechanical / CAD",
-              focus: "Software",
-            }}
+            categories={HARDWARE_SKILL_CATEGORIES}
+            sectionTitle="Tech Stack"
           />
 
           <WorkExperience
             work={HARDWARE_WORK}
-            title="Selected Projects"
+            title="Projects"
           />
 
           <HardwareEducationSection />
@@ -326,6 +353,17 @@ export default function HardwareResumePage() {
             projects={HARDWARE_PROJECTS}
             title="Additional Experience"
           />
+
+          <div className="pb-2 pt-1 text-center font-mono resume-details text-foreground/65 print:pt-0">
+            <a
+              href="https://krlberg.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+            >
+              and yeah, that&apos;s not everything either. here&apos;s the onchain side...
+            </a>
+          </div>
         </div>
       </section>
 
