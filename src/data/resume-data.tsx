@@ -10,7 +10,7 @@ export const RESUME_DATA = {
   initials: "KR",
   locations: [
     {
-      label: "🇳🇱 The Netherlands",
+      label: "🇳🇱 Netherlands",
       url: "https://www.google.com/maps/place/Enschede",
     },
     {

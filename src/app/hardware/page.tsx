@@ -46,17 +46,15 @@ const HARDWARE_SKILLS: HardwareSkills = {
     { label: "ESP32", url: "https://www.espressif.com/en/products/socs/esp32" },
     { label: "PWM / Analog / Digital I/O", url: "https://docs.arduino.cc/" },
     { label: "I2C Sensors", url: "https://learn.sparkfun.com/tutorials/i2c/all" },
-    { label: "Breadboard / Perfboard", url: "https://en.wikipedia.org/wiki/Breadboard" },
+    { label: "PCB", url: "https://en.wikipedia.org/wiki/Breadboard" },
     { label: "RC Electronics", url: "https://en.wikipedia.org/wiki/Electronic_speed_control" },
   ],
   frontend: [
     { label: "Onshape", url: "https://www.onshape.com/en/" },
     { label: "SolidWorks", url: "https://www.solidworks.com/" },
     { label: "KiCad", url: "https://www.kicad.org/" },
-    { label: "3D Printing", url: "https://en.wikipedia.org/wiki/3D_printing" },
-    { label: "Servo / Actuator Linkages", url: "https://en.wikipedia.org/wiki/Servo_(radio_control)" },
-    { label: "Rapid Prototyping", url: "https://en.wikipedia.org/wiki/Prototype" },
-    { label: "Mechanical Design", url: "https://www.onshape.com/en/" },
+    { label: "FDM 3D Printing", url: "https://en.wikipedia.org/wiki/3D_printing" },
+    // { label: "Rapid Prototyping", url: "https://en.wikipedia.org/wiki/Prototype" },
   ],
   focus: [
     { label: "Python", url: "https://www.python.org/" },
@@ -86,14 +84,14 @@ const HARDWARE_WORK: HardwareWorkItem[] = [
             terrain.
           </li>
           <li>
-            Combined CAD, 3D printing, custom mechanical linkages, Arduino
-            C/C++, an MPU6050 IMU, and high-torque servos to dynamically shift
+            Combined CAD, 3D printing, Arduino
+            C/C++, an IMU, and high-torque servos to dynamically shift
             the car&apos;s effective centre of mass.
           </li>
           <li>
             Implemented quaternion-to-Euler processing, calibration storage,
             wireless power from the RC receiver, and PID tuning based on field
-            tests on slopes, rocks, and planks.
+            tests on slopes and rocks.
           </li>
         </ul>
       </div>
@@ -131,7 +129,7 @@ const HARDWARE_WORK: HardwareWorkItem[] = [
   {
     company: "Piezoelectric Accelerometer",
     link: "https://drive.google.com/file/d/12hf3-xHmd9VUs-cSkcsxMcEc7xe-uF2a/view?usp=sharing",
-    badges: ["PZT-4", "Charge Amplifier", "Arduino Uno", "Testing", "Signal Analysis"],
+    badges: ["Charge Amplifier", "Arduino", "Signal Analysis"],
     title: "university project",
     start: "",
     end: "",
@@ -199,9 +197,9 @@ const HARDWARE_EDUCATION = {
     { code: "202001212", name: "Calculus 1" },
     { code: "202200179", name: "Calculus 2" },
     { code: "202500293", name: "Mechanics" },
-    { code: "202300118", name: "Programming Skills & Error Analysis" },
+    { code: "202300118", name: "Error Analysis & Programming Skills" },
     { code: "202500295", name: "System Dynamics 1" },
-    { code: "202000624", name: "Basic Electronics" },
+    { code: "202000624", name: "Basic Electronics & Instrumentation" },
     { code: "202000625", name: "Project Accelerometer" },
     { code: "202500299", name: "Quantum Matter & Devices" },
     { code: "202400642", name: "Structure and Properties of Materials" },
@@ -241,10 +239,6 @@ function HardwareEducationSection() {
             GPA: {HARDWARE_EDUCATION.gpa}
           </p>
         </div>
-
-        <p className="mt-3 font-mono resume-details text-foreground/70">
-          completed coursework most relevant to software, systems, controls, electronics, and core engineering fundamentals:
-        </p>
 
         <div className="mt-3 flex flex-wrap gap-2">
           {HARDWARE_EDUCATION.courses.map((course) => (

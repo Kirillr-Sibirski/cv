@@ -74,6 +74,24 @@ export default function ResumePage() {
           <Projects projects={RESUME_DATA.projects} />
 
           <Education education={RESUME_DATA.education} />
+
+          <div className="pb-2 pt-1 text-right font-mono resume-details text-foreground/65 print:pt-0">
+            <a
+              href="/hardware"
+              className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+            >
+              oh btw, that&apos;s not everything. here&apos;s the other side of me...
+            </a>
+            {" "}
+            <a
+              href="https://www.utwente.nl/en/education/bachelor/programmes/advanced-technology/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+            >
+              advanced technology
+            </a>
+          </div>
         </div>
       </section>
 
