@@ -9,9 +9,8 @@ import {
   CardContent,
 } from "../../components/ui/card";
 import { Section } from "../../components/ui/section";
-import { RESUME_DATA } from "../../data/resume-data";
 
-type ProjectTag = (typeof RESUME_DATA)["projects"][number]["techStack"][number];
+type ProjectTag = { label: string; url: string } | string;
 type ProjectTags = readonly ProjectTag[];
 
 interface ProjectLinkProps {
@@ -33,14 +32,10 @@ function ProjectLink({ title, link }: ProjectLinkProps) {
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 hover:underline"
+        className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
         aria-label={`${title} project (opens in new tab)`}
       >
         {title}
-        <span
-          className="size-1 rounded-full bg-green-500"
-          aria-label="Active project indicator"
-        />
       </a>
       <div
         className="hidden font-mono resume-details underline print:visible"
@@ -126,14 +121,23 @@ function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
 }
 
 interface ProjectsProps {
-  projects: (typeof RESUME_DATA)["projects"];
+  projects: readonly {
+    title: string;
+    projectUrl?: string;
+    techStack: ProjectTags;
+    description: string;
+  }[];
+  title?: string;
 }
 
-export function Projects({ projects }: ProjectsProps) {
+export function Projects({
+  projects,
+  title = "Other Experience",
+}: ProjectsProps) {
   return (
     <Section className="print:break-inside-avoid print:space-y-2 print:pt-0">
       <h2 className="resume-section-title font-bold" id="side-projects">
-        Other Experience
+        {title}
       </h2>
       <div
         className="grid grid-cols-1 gap-2 print:gap-1.5"

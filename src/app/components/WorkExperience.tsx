@@ -1,9 +1,18 @@
 import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
 import { cn } from "@/lib/utils";
+import { ReactNode } from "react";
 
-type WorkExperience = (typeof RESUME_DATA)["work"][number];
+type WorkExperience = {
+  company: string;
+  link?: string;
+  articleLink?: string;
+  badges: readonly string[];
+  title: string;
+  start: string;
+  end?: string;
+  description: ReactNode;
+};
 type WorkBadges = readonly string[];
 
 interface BadgeListProps {
@@ -46,6 +55,8 @@ interface WorkPeriodProps {
  * Displays the work period in a consistent format
  */
 function WorkPeriod({ start, end }: WorkPeriodProps) {
+  if (!start && !end) return null;
+
   return (
     <div
       className="resume-body tabular-nums text-gray-500"
@@ -132,18 +143,22 @@ function WorkExperienceItem({ work }: WorkExperienceItemProps) {
 }
 
 interface WorkExperienceProps {
-  work: (typeof RESUME_DATA)["work"];
+  work: readonly WorkExperience[];
+  title?: string;
 }
 
 /**
  * Main work experience section component
  * Renders a list of work experiences in chronological order
  */
-export function WorkExperience({ work }: WorkExperienceProps) {
+export function WorkExperience({
+  work,
+  title = "Core Experience",
+}: WorkExperienceProps) {
   return (
     <Section>
       <h2 className="resume-section-title font-bold" id="work-experience">
-        Core Experience
+        {title}
       </h2>
       <div
         className="space-y-4 print:space-y-2"

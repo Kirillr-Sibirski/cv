@@ -139,18 +139,27 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
 /**
  * Header component displaying personal information and contact details
  */
-export function Header() {
+export function Header({
+  nameOverride,
+  aboutOverride,
+}: {
+  nameOverride?: string;
+  aboutOverride?: string;
+} = {}) {
+  const displayName = nameOverride ?? RESUME_DATA.name;
+  const displayAbout = aboutOverride ?? RESUME_DATA.about;
+
   return (
     <header className="flex items-center justify-between gap-4 print:gap-3">
       <div className="flex-1 space-y-1.5">
         <h1 className="resume-name" id="resume-name">
-          {RESUME_DATA.name}
+          {displayName}
         </h1>
         <p
           className="max-w-2xl text-pretty font-mono resume-body text-foreground/80"
           aria-labelledby="resume-name"
         >
-          {RESUME_DATA.about}
+          {displayAbout}
         </p>
 
         <LocationLink
@@ -170,7 +179,7 @@ export function Header() {
 
       <Avatar className="size-28 print:size-20" aria-hidden="true">
         <AvatarImage
-          alt={`${RESUME_DATA.name}'s profile picture`}
+          alt={`${displayName}'s profile picture`}
           src={RESUME_DATA.avatarUrl}
         />
         <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>

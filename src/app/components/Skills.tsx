@@ -50,17 +50,37 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
 interface SkillsProps {
   skills: Skills;
   className?: string;
+  sectionTitle?: string;
+  categoryTitles?: {
+    blockchain?: string;
+    frontend?: string;
+    focus?: string;
+  };
 }
 
-export function Skills({ skills, className }: SkillsProps) {
+export function Skills({
+  skills,
+  className,
+  sectionTitle = "Core Stack",
+  categoryTitles,
+}: SkillsProps) {
   return (
     <Section className={className}>
       <h2 className="resume-section-title font-bold mb-2" id="skills-section">
-        Core Stack
+        {sectionTitle}
       </h2>
-      <SkillsList title="Blockchain" skills={skills.blockchain} />
-      <SkillsList title="Frontend" skills={skills.frontend} />
-      <SkillsList title="Focus Areas" skills={skills.focus} />
+      <SkillsList
+        title={categoryTitles?.blockchain ?? "Blockchain"}
+        skills={skills.blockchain}
+      />
+      <SkillsList
+        title={categoryTitles?.frontend ?? "Frontend"}
+        skills={skills.frontend}
+      />
+      <SkillsList
+        title={categoryTitles?.focus ?? "Focus Areas"}
+        skills={skills.focus}
+      />
     </Section>
   );
 }

@@ -1,10 +1,21 @@
 "use client";
 
 import { Section } from "@/components/ui/section";
-import { RESUME_DATA } from "@/data/resume-data";
 
 interface EducationProps {
-  education: (typeof RESUME_DATA)["education"];
+  education: readonly {
+    school: string;
+    schoolUrl: string;
+    degree: string;
+    degreeUrl: string;
+    start: string;
+    end: string;
+    achievements: readonly {
+      title: string;
+      achievements: readonly string[];
+      keywords: readonly string[];
+    }[];
+  }[];
 }
 
 export function Education({ education }: EducationProps) {
@@ -41,16 +52,16 @@ export function Education({ education }: EducationProps) {
                     {item.degree}
                   </a>
                 </p>
-                {item.achievements[0]?.achievements[0] && (
-                  <p className="mt-1 font-mono resume-details text-foreground/80 text-pretty">
-                    Relevant coursework: {item.achievements[0].achievements[0]}
-                  </p>
+                {item.achievements.map((achievement) =>
+                  achievement.achievements[0] ? (
+                    <p
+                      key={achievement.title}
+                      className="mt-1 font-mono resume-details text-foreground/80 text-pretty"
+                    >
+                      {achievement.title}: {achievement.achievements[0]}
+                    </p>
+                  ) : null,
                 )}
-                {/* {item.achievements[1]?.achievements[0] && (
-                  <p className="mt-1 font-mono resume-details text-foreground/80 text-pretty">
-                    Supplementary training: {item.achievements[1].achievements[0]}
-                  </p>
-                )} */}
               </div>
               <p className="font-mono resume-details text-foreground/60">
                 {item.start} - {item.end}
