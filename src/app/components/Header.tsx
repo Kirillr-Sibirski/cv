@@ -9,18 +9,21 @@ interface LocationLinkProps {
 
 function LocationLink({ locations }: LocationLinkProps) {
   return (
-    <p className="max-w-md items-center text-pretty font-mono resume-details text-foreground">
+    <p className="resume-details max-w-md items-center text-pretty font-mono text-foreground">
       <span className="inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 align-baseline leading-none">
         <GlobeIcon className="size-3 text-foreground/80" aria-hidden="true" />
         {locations.map((location, index) => (
-          <span key={location.label} className="inline-flex items-center gap-x-1.5">
+          <span
+            key={location.label}
+            className="inline-flex items-center gap-x-1.5"
+          >
             {index > 0 && <span className="text-foreground/50">+</span>}
             <a
               className="hover:underline"
               href={location.url}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`Location: ${location.label}`}
+              aria-label={`location: ${location.label}`}
             >
               {location.label}
             </a>
@@ -60,22 +63,22 @@ interface ContactButtonsProps {
 function ContactButtons({ contact, personalWebsiteUrl }: ContactButtonsProps) {
   return (
     <div
-      className="flex gap-x-1 pt-1 font-mono resume-body text-foreground/80 print:hidden"
+      className="resume-body flex gap-x-1 pt-1 font-mono text-foreground/80 print:hidden"
       role="list"
-      aria-label="Contact links"
+      aria-label="contact links"
     >
       {personalWebsiteUrl && (
         <SocialButton
           href={personalWebsiteUrl}
           icon={GlobeIcon}
-          label="Personal website"
+          label="personal website"
         />
       )}
       {contact.email && (
         <SocialButton
           href={`mailto:${contact.email}`}
           icon={MailIcon}
-          label="Email"
+          label="email"
         />
       )}
       {contact.social.map((social) => (
@@ -98,15 +101,15 @@ interface PrintContactProps {
 function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
   return (
     <div
-      className="hidden print:flex print:flex-wrap print:items-center print:gap-x-4 font-mono resume-details text-foreground/80"
-      aria-label="Print contact information"
+      className="resume-details hidden font-mono text-foreground/80 print:flex print:flex-wrap print:items-center print:gap-x-4"
+      aria-label="print contact information"
     >
       {personalWebsiteUrl && (
         <a
           href={personalWebsiteUrl}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Personal website"
+          aria-label="personal website"
         >
           <GlobeIcon className="size-4 text-foreground/80" />
         </a>
@@ -116,7 +119,7 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
           href={`mailto:${contact.email}`}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`Email: ${contact.email}`}
+          aria-label={`email: ${contact.email}`}
         >
           <MailIcon className="size-4 text-foreground/80" />
         </a>
@@ -156,15 +159,13 @@ export function Header({
           {displayName}
         </h1>
         <p
-          className="max-w-2xl text-pretty font-mono resume-body text-foreground/80"
+          className="resume-body max-w-2xl text-pretty font-mono text-foreground/80"
           aria-labelledby="resume-name"
         >
           {displayAbout}
         </p>
 
-        <LocationLink
-          locations={RESUME_DATA.locations}
-        />
+        <LocationLink locations={RESUME_DATA.locations} />
 
         <ContactButtons
           contact={RESUME_DATA.contact}
@@ -181,7 +182,7 @@ export function Header({
         <AvatarImage
           alt={`${displayName}'s profile picture`}
           src={RESUME_DATA.avatarUrl}
-          className="object-cover scale-110 object-center"
+          className="scale-110 object-cover object-center"
         />
         <AvatarFallback>{RESUME_DATA.initials}</AvatarFallback>
       </Avatar>

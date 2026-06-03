@@ -32,13 +32,13 @@ function ProjectLink({ title, link }: ProjectLinkProps) {
         href={link}
         target="_blank"
         rel="noopener noreferrer"
-        className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+        className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
         aria-label={`${title} project (opens in new tab)`}
       >
         {title}
       </a>
       <div
-        className="hidden font-mono resume-details underline print:visible"
+        className="resume-details hidden font-mono underline print:visible"
         aria-hidden="true"
       >
         {link.replace("https://", "").replace("www.", "").replace("/", "")}
@@ -60,12 +60,12 @@ function ProjectTags({ tags }: ProjectTagsProps) {
   return (
     <ul
       className="mt-2 flex list-none flex-wrap gap-1 p-0 print:mt-1 print:gap-0.5"
-      aria-label="Technologies used"
+      aria-label="technologies used"
     >
       {tags.map((tag) => (
         <li key={typeof tag === "string" ? tag : tag.label}>
           <Badge
-            className="px-1 py-0 resume-body print:px-1 print:py-0 resume-body print:leading-tight"
+            className="resume-body resume-body px-1 py-0 print:px-1 print:py-0 print:leading-tight"
             variant="secondary"
           >
             {typeof tag === "string" ? (
@@ -106,11 +106,11 @@ function ProjectCard({ title, description, tags, link }: ProjectCardProps) {
           <ProjectLink title={title} link={link} />
         </CardTitle>
         <CardDescription
-          className="text-pretty font-mono resume-details text-foreground/80"
-          aria-label="Project description"
-      >
-        {description}
-      </CardDescription>
+          className="resume-details text-pretty font-mono text-foreground/80"
+          aria-label="project description"
+        >
+          {description}
+        </CardDescription>
         {/* </div> */}
       </CardHeader>
       <CardContent className="mt-auto p-1 print:p-0.5">
@@ -132,7 +132,7 @@ interface ProjectsProps {
 
 export function Projects({
   projects,
-  title = "Other Experience",
+  title = "other experience",
 }: ProjectsProps) {
   return (
     <Section className="print:break-inside-avoid print:space-y-2 print:pt-0">
@@ -145,10 +145,7 @@ export function Projects({
         aria-labelledby="side-projects"
       >
         {projects.map((project) => (
-          <article
-            key={project.title}
-            className="h-full"
-          >
+          <article key={project.title} className="h-full">
             <ProjectCard
               title={project.title}
               description={project.description}

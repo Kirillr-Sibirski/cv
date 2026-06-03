@@ -30,13 +30,13 @@ function BadgeList({ className, badges }: BadgeListProps) {
   return (
     <ul
       className={cn("inline-flex list-none gap-x-1 p-0", className)}
-      aria-label="Technologies used"
+      aria-label="technologies used"
     >
       {badges.map((badge) => (
         <li key={badge}>
           <Badge
             variant="secondary"
-            className="align-middle resume-details print:resume-details print:px-2 print:py-0.5"
+            className="resume-details print:resume-details align-middle print:px-2 print:py-0.5"
           >
             {badge}
           </Badge>
@@ -60,9 +60,9 @@ function WorkPeriod({ start, end }: WorkPeriodProps) {
   return (
     <div
       className="resume-body tabular-nums text-gray-500"
-      aria-label={`Employment period: ${start} to ${end ?? "Present"}`}
+      aria-label={`employment period: ${start} to ${end ?? "present"}`}
     >
-      {start} - {end ?? "Present"}
+      {start} - {end ?? "present"}
     </div>
   );
 }
@@ -83,7 +83,7 @@ function CompanyLink({ company, link }: CompanyLinkProps) {
 
   return (
     <a
-      className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+      className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
       href={link}
       target="_blank"
       rel="noopener noreferrer"
@@ -99,12 +99,12 @@ function ArticleLink({ articleLink }: ArticleLinkProps) {
 
   return (
     <a
-      className="font-mono resume-details text-foreground/60 underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+      className="resume-details font-mono text-foreground/60 underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
       href={articleLink}
       target="_blank"
       rel="noopener noreferrer"
     >
-      Radix feature
+      radix feature
     </a>
   );
 }
@@ -118,16 +118,17 @@ interface WorkExperienceItemProps {
  * Handles responsive layout for badges (mobile/desktop)
  */
 function WorkExperienceItem({ work }: WorkExperienceItemProps) {
-  const { company, link, articleLink, badges, title, start, end, description } = work;
+  const { company, link, articleLink, badges, title, start, end, description } =
+    work;
 
   return (
     <div className="rounded-lg border border-border/70 p-4 print:p-3">
       <div className="flex items-start justify-between gap-x-3">
         <div className="space-y-1">
-          <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold text-base">
+          <h3 className="inline-flex items-center justify-center gap-x-1 text-base font-semibold">
             <CompanyLink company={company} link={link} />
           </h3>
-          <h4 className="font-mono resume-details font-semibold text-foreground/70">
+          <h4 className="resume-details font-mono font-semibold text-foreground/70">
             {title}
           </h4>
           <ArticleLink articleLink={articleLink} />
@@ -135,7 +136,7 @@ function WorkExperienceItem({ work }: WorkExperienceItemProps) {
         <WorkPeriod start={start} end={end} />
       </div>
       <BadgeList className="mt-3 flex-wrap gap-y-1" badges={badges} />
-      <div className="mt-3 font-mono resume-details text-foreground/80 text-pretty">
+      <div className="resume-details mt-3 text-pretty font-mono text-foreground/80">
         {description}
       </div>
     </div>
@@ -153,7 +154,7 @@ interface WorkExperienceProps {
  */
 export function WorkExperience({
   work,
-  title = "Core Experience",
+  title = "core experience",
 }: WorkExperienceProps) {
   return (
     <Section>

@@ -13,7 +13,7 @@ function StackTags({ tags }: { tags: readonly string[] }) {
         <li key={tag}>
           <Badge
             variant="secondary"
-            className="px-1.5 py-0.5 resume-details print:px-1 print:py-0"
+            className="resume-details px-1.5 py-0.5 print:px-1 print:py-0"
           >
             {tag}
           </Badge>
@@ -38,12 +38,12 @@ function HackathonItem({ project }: { project: HackathonProject }) {
               {project.projectName}
             </a>
           </h3>
-          <p className="font-mono resume-details text-foreground/70">
+          <p className="resume-details font-mono text-foreground/70">
             <a
               href={project.hackathonUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+              className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
             >
               {project.hackathon}
             </a>{" "}
@@ -57,7 +57,7 @@ function HackathonItem({ project }: { project: HackathonProject }) {
           {project.achievement}
         </Badge>
       </div>
-      <p className="mt-2 font-mono resume-details text-foreground/80 text-pretty print:mt-1">
+      <p className="resume-details mt-2 text-pretty font-mono text-foreground/80 print:mt-1">
         {project.description}
       </p>
       <StackTags tags={project.techStack} />
@@ -70,17 +70,17 @@ export function Hackathons() {
     <Section className="print:break-inside-avoid print:space-y-2">
       <div className="flex items-end justify-between gap-3">
         <h2 className="resume-section-title font-bold" id="hackathon-projects">
-          Hackathon Projects
+          hackathon projects
         </h2>
-        <p className="font-mono resume-details text-foreground/60 print:hidden">
+        <p className="resume-details font-mono text-foreground/60 print:hidden">
           15+ hackathons completed
         </p>
       </div>
 
-      <p className="font-mono resume-details text-foreground/80 print:hidden">
-        Prize-winning projects are a big part of the story because they show how
-        I build fast, ship complete products, and work across DeFi, lending,
-        oracles, and onchain UX. Most notable ones are shared below.
+      <p className="resume-details font-mono text-foreground/80 print:hidden">
+        prize-winning projects are a big part of the story because they show how
+        i build fast, ship complete products, and work across defi, lending,
+        oracles, and onchain ux. most notable ones are shared below.
       </p>
 
       <div

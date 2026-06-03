@@ -31,7 +31,7 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
       <h3 className="resume-body font-semibold">{title}</h3>
       <ul
         className={cn("flex list-none flex-wrap gap-1 p-0", className)}
-        aria-label={`List of ${title.toLowerCase()}`}
+        aria-label={`list of ${title.toLowerCase()}`}
       >
         {skills.map((skill) => (
           <li key={skill.label}>
@@ -39,8 +39,8 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
               href={skill.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center rounded-md border border-transparent bg-primary/80 px-2 py-0.5 font-mono resume-details leading-normal text-primary-foreground transition-colors hover:bg-primary/60 print:px-2 print:py-0.5"
-              aria-label={`Skill: ${skill.label}`}
+              className="resume-details inline-flex items-center rounded-md border border-transparent bg-primary/80 px-2 py-0.5 font-mono leading-normal text-primary-foreground transition-colors hover:bg-primary/60 print:px-2 print:py-0.5"
+              aria-label={`skill: ${skill.label}`}
             >
               {skill.label}
             </a>
@@ -67,7 +67,7 @@ export function Skills({
   skills,
   categories,
   className,
-  sectionTitle = "Core Stack",
+  sectionTitle = "core stack",
   categoryTitles,
 }: SkillsProps) {
   const resolvedCategories =
@@ -76,17 +76,17 @@ export function Skills({
       ? [
           {
             id: "blockchain",
-            title: categoryTitles?.blockchain ?? "Blockchain",
+            title: categoryTitles?.blockchain ?? "blockchain",
             skills: skills.blockchain,
           },
           {
             id: "frontend",
-            title: categoryTitles?.frontend ?? "Frontend",
+            title: categoryTitles?.frontend ?? "frontend",
             skills: skills.frontend,
           },
           {
             id: "focus",
-            title: categoryTitles?.focus ?? "Focus Areas",
+            title: categoryTitles?.focus ?? "focus areas",
             skills: skills.focus,
           },
         ]
@@ -94,7 +94,7 @@ export function Skills({
 
   return (
     <Section className={className}>
-      <h2 className="resume-section-title font-bold mb-2" id="skills-section">
+      <h2 className="resume-section-title mb-2 font-bold" id="skills-section">
         {sectionTitle}
       </h2>
       {resolvedCategories.map((category) => (

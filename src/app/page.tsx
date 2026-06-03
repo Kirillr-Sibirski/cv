@@ -49,7 +49,7 @@ function getCommandMenuLinks() {
 export default function ResumePage() {
   return (
     <main
-      className="container relative mx-auto scroll-my-12 overflow-auto p-4 print:px-7 print:py-6 md:p-16 print:max-w-letter"
+      className="print:max-w-letter container relative mx-auto scroll-my-12 overflow-auto p-4 print:px-7 print:py-6 md:p-16"
       id="main-content"
     >
       <div className="sr-only">
@@ -58,7 +58,7 @@ export default function ResumePage() {
 
       <section
         className="mx-auto w-full max-w-3xl space-y-8 bg-white print:space-y-3"
-        aria-label="Resume Content"
+        aria-label="resume content"
       >
         <Header />
 
@@ -75,20 +75,21 @@ export default function ResumePage() {
 
           <Education education={RESUME_DATA.education} />
 
-          <div className="pb-2 pt-1 text-center font-mono resume-details text-foreground/65 print:pt-0">
+          <div className="resume-details pb-2 pt-1 text-center font-mono text-foreground/65 print:pt-0">
             <a
               href="https://krlberg.dev/hardware"
               target="_blank"
               rel="noopener noreferrer"
-              className="underline underline-offset-2 decoration-muted-foreground/40 hover:decoration-foreground"
+              className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
             >
-              oh btw, that&apos;s not everything. here&apos;s the other side of me...
+              oh btw, that&apos;s not everything. here&apos;s the other side of
+              me...
             </a>
           </div>
         </div>
       </section>
 
-      <nav className="print:hidden" aria-label="Quick navigation">
+      <nav className="print:hidden" aria-label="quick navigation">
         <CommandMenu links={getCommandMenuLinks()} />
       </nav>
     </main>

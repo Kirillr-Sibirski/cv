@@ -24,14 +24,14 @@ export const PrintDrawer = () => {
       <DrawerContent>
         <div className="mx-auto w-full max-w-sm">
           <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+            <DrawerTitle>move goal</DrawerTitle>
+            <DrawerDescription>set your daily activity goal.</DrawerDescription>
           </DrawerHeader>
           <div className="p-4 pb-0"></div>
           <DrawerFooter>
-            <Button onClick={() => window.print()}>Print</Button>
+            <Button onClick={() => window.print()}>print</Button>
             <DrawerClose asChild>
-              <Button variant="outline">Cancel</Button>
+              <Button variant="outline">cancel</Button>
             </DrawerClose>
           </DrawerFooter>
         </div>

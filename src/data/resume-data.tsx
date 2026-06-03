@@ -1,20 +1,16 @@
-import {
-  GitHubIcon,
-  LinkedInIcon,
-  XIcon,
-} from "@/components/icons";
+import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import { SendIcon } from "lucide-react";
 
 export const RESUME_DATA = {
   name: "karl ryberg",
-  initials: "KR",
+  initials: "kr",
   locations: [
     {
-      label: "🇳🇱 Netherlands",
+      label: "🇳🇱 netherlands",
       url: "https://www.google.com/maps/place/Enschede",
     },
     {
-      label: "🇪🇸 Spain",
+      label: "🇪🇸 spain",
       url: "https://www.google.com/maps/place/Barcelona,+Spain",
     },
   ],
@@ -25,22 +21,22 @@ export const RESUME_DATA = {
     email: "",
     social: [
       {
-        name: "GitHub",
+        name: "github",
         url: "https://github.com/Kirillr-Sibirski",
         icon: GitHubIcon,
       },
       {
-        name: "LinkedIn",
+        name: "linkedin",
         url: "https://www.linkedin.com/in/kirillrybkov/",
         icon: LinkedInIcon,
       },
       {
-        name: "X",
+        name: "x",
         url: "https://x.com/krlberg",
         icon: XIcon,
       },
       {
-        name: "Telegram",
+        name: "telegram",
         url: "https://t.me/krlberg",
         icon: SendIcon,
       },
@@ -53,18 +49,18 @@ export const RESUME_DATA = {
   },
   education: [
     {
-      school: "University of Twente",
+      school: "university of twente",
       schoolUrl: "https://www.utwente.nl/en/",
-      degree: "BSc Advanced Technology",
+      degree: "bsc advanced technology",
       degreeUrl:
         "https://www.utwente.nl/en/education/bachelor/programmes/advanced-technology/",
-      start: "Sep 2025",
-      end: "Aug 2028",
+      start: "sep 2025",
+      end: "aug 2028",
       achievements: [
         {
-          title: "Relevant Coursework",
+          title: "relevant coursework",
           achievements: [
-            "Calculus 1, Calculus 2, Linear Algebra, and EAPS (MATLAB).",
+            "calculus 1, calculus 2, linear algebra, and eaps (matlab).",
           ],
           keywords: [],
         },
@@ -123,26 +119,26 @@ export const RESUME_DATA = {
   ],
   work: [
     {
-      company: "Lattic3 Finance",
+      company: "lattic3 finance",
       link: "https://lattic3.xyz",
       articleLink: "https://www.radixdlt.com/blog/meet-the-project-lattic3",
-      badges: ["DeFi", "Strategies", "Flash Loans", "Next.js", "Radix"],
-      title: "Co-Founder",
-      start: "Oct 2024",
-      end: "Aug 2025",
+      badges: ["defi", "strategies", "flash loans", "next.js", "radix"],
+      title: "co-founder",
+      start: "oct 2024",
+      end: "aug 2025",
       description: (
         <div>
           <ul className="list-inside list-disc">
             <li>
-              Co-founded Lattic3 with one other engineer, secured $20k in Radix
-              Foundation grants, and launched the protocol on Radix mainnet.
+              co-founded lattic3 with one other engineer, secured $20k in radix
+              foundation grants, and launched the protocol on radix mainnet.
             </li>
             <li>
-              Built the Next.js app frontend, developed the product UX, helped
-              design the protocol strategies, and supported marketing.
+              built the next.js app frontend and protocol-facing user flows for
+              strategy discovery, deposits, and position management.
             </li>
             <li>
-              Lattic3 is a DeFi strategies protocol; the first strategy used
+              lattic3 is a defi strategies protocol; the first strategy used
               flash loans to build leveraged positions across lending platforms.
             </li>
           </ul>
@@ -152,181 +148,183 @@ export const RESUME_DATA = {
   ],
   skills: {
     blockchain: [
-      { label: "Solidity", url: "https://soliditylang.org/" },
-      { label: "Foundry", url: "https://www.getfoundry.sh/" },
+      { label: "solidity", url: "https://soliditylang.org/" },
+      { label: "foundry", url: "https://www.getfoundry.sh/" },
       { label: "viem", url: "https://v1.viem.sh/docs/getting-started.html" },
       { label: "ethers.js", url: "https://docs.ethers.org/v6/" },
       { label: "thirdweb", url: "https://portal.thirdweb.com/" },
-      { label: "Chainlink", url: "https://docs.chain.link/" },
-      { label: "Pyth", url: "https://docs.pyth.network/" },
-      { label: "World ID", url: "https://docs.world.org/world-id" },
-      { label: "Tenderly Virtual TestNet", url: "https://docs.tenderly.co/" },
-      { label: "Sui TS SDK", url: "https://sdk.mystenlabs.com/typescript" },
-      { label: "Radix dApp Toolkit", url: "https://docs.radixdlt.com/" }
+      { label: "chainlink", url: "https://docs.chain.link/" },
+      { label: "pyth", url: "https://docs.pyth.network/" },
+      { label: "world id", url: "https://docs.world.org/world-id" },
+      { label: "tenderly virtual testnet", url: "https://docs.tenderly.co/" },
+      { label: "sui ts sdk", url: "https://sdk.mystenlabs.com/typescript" },
+      { label: "radix dapp toolkit", url: "https://docs.radixdlt.com/" },
     ],
     frontend: [
       {
-        label: "JavaScript/TypeScript",
+        label: "javascript/typescript",
         url: "https://www.typescriptlang.org/docs/",
       },
-      { label: "React", url: "https://react.dev/learn" },
-      { label: "Next.js", url: "https://nextjs.org/docs" },
-      { label: "Vite", url: "https://vite.dev/guide/" },
-      { label: "Tailwind CSS", url: "https://tailwindcss.com/docs" },
+      { label: "react", url: "https://react.dev/learn" },
+      { label: "next.js", url: "https://nextjs.org/docs" },
+      { label: "vite", url: "https://vite.dev/guide/" },
+      { label: "tailwind css", url: "https://tailwindcss.com/docs" },
       { label: "shadcn/ui", url: "https://ui.shadcn.com/docs" },
-      { label: "UI/UX Design", url: "" },
+      { label: "ui/ux design", url: "" },
     ],
     focus: [
-      { label: "DeFi strategies", url: "" },
-      { label: "Lending functionalities", url: "" },
+      { label: "defi strategies", url: "" },
+      { label: "lending functionalities", url: "" },
       {
-        label: "Leverage w/ flash loans",
+        label: "leverage w/ flash loans",
         url: "",
       },
-      { label: "Simpler UX", url: "" },
-      { label: "EVM-based chains", url: "" },
+      { label: "simpler ux", url: "" },
+      { label: "evm-based chains", url: "" },
     ],
   },
   hackathons: [
     {
-      hackathon: "ETHLisbon 2022",
+      hackathon: "ethlisbon 2022",
       hackathonUrl: "https://ethlisbon.org/",
-      projectName: "Lekker Finance",
+      projectName: "lekker finance",
       projectUrl:
         "https://taikai.network/ethlisbon/hackathons/ethlisbon-2022/projects/cl9tpj350446301zcoiepyje5/idea",
-      achievement: "Finalist | $10k",
+      achievement: "finalist | $10k",
       teamSize: 4,
-      role: "Design",
-      description: "One-click leveraged futures platform.",
-      techStack: ["Euler", "Sommelier Finance", "DeFi", "Leverage"],
+      role: "design",
+      description: "one-click leveraged futures platform.",
+      techStack: ["euler", "sommelier finance", "defi", "leverage"],
     },
     {
-      hackathon: "ETHGlobal Brussels",
+      hackathon: "ethglobal brussels",
       hackathonUrl: "https://ethglobal.com/events/brussels",
-      projectName: "SCRBL",
+      projectName: "scrbl",
       projectUrl: "https://ethglobal.com/showcase/scrbl-6d9uh",
-      achievement: "Worldcoin Pool Prize",
+      achievement: "worldcoin pool prize",
       teamSize: 3,
-      role: "Solidity",
+      role: "solidity",
       description:
-        "Under-collateralized lending platform leveraging Worldcoin identity.",
-      techStack: ["Pyth", "Chainlink", "World ID"],
+        "under-collateralized lending platform leveraging worldcoin identity.",
+      techStack: ["pyth", "chainlink", "world id"],
     },
     {
-      hackathon: "xStocks Cannes",
+      hackathon: "xstocks cannes",
       hackathonUrl: "https://xstocks-market-open.devpost.com/",
-      projectName: "Paragon",
+      projectName: "paragon",
       projectUrl: "https://devpost.com/software/paragon-h8isc4",
-      achievement: "Discretionary Prize | $3.3k",
+      achievement: "discretionary prize | $3.3k",
       teamSize: 3,
-      role: "Full stack",
+      role: "full stack",
       description:
-        "First-ever liquidation-free tokenized equity leverage platform on the Ink Chain.",
-      techStack: ["TypeScript", "React", "Full stack"],
+        "first-ever liquidation-free tokenized equity leverage platform on the ink chain.",
+      techStack: ["typescript", "react", "full stack"],
     },
     {
-      hackathon: "EBC10 Radix",
+      hackathon: "ebc10 radix",
       hackathonUrl: "https://eblockchainconvention.com/hackathon/",
-      projectName: "Radish (later Lattic3)",
+      projectName: "radish (later lattic3)",
       projectUrl: "https://github.com/Lattic3-RDX/lending-dapp",
-      achievement: "2nd Place | $5k",
+      achievement: "2nd place | $5k",
       teamSize: 2,
-      role: "Frontend",
-      description: "Multi-collateralized lending dApp built on Radix.",
-      techStack: ["Next.js", "Radix", "Lending"],
+      role: "frontend",
+      description: "multi-collateralized lending dapp built on radix.",
+      techStack: ["next.js", "radix", "lending"],
     },
     {
-      hackathon: "BuildUp #2",
+      hackathon: "buildup #2",
       hackathonUrl:
         "https://medium.com/lukso/buildup-2-hackathon-winners-0f784793bc43",
-      projectName: "Lukso Lending Protocol",
+      projectName: "lukso lending protocol",
       projectUrl: "https://llp-woad.vercel.app/",
-      achievement: "3rd Place | 5k€",
+      achievement: "3rd place | 5k€",
       teamSize: 1,
-      role: "Full stack",
-      description: "Early lending protocol built on Lukso.",
-      techStack: ["Solidity", "Lukso", "Lending"],
+      role: "full stack",
+      description: "early lending protocol built on lukso.",
+      techStack: ["solidity", "lukso", "lending"],
     },
     {
-      hackathon: "ETHGlobal HackMoney 2026",
+      hackathon: "ethglobal hackmoney 2026",
       hackathonUrl: "https://ethglobal.com/events/hackmoney2026",
-      projectName: "Oshio",
+      projectName: "oshio",
       projectUrl: "https://ethglobal.com/showcase/oshio-99nv7",
-      achievement: "Sui Bounty | $1k",
+      achievement: "sui bounty | $1k",
       teamSize: 1,
-      role: "Frontend",
+      role: "frontend",
       description:
-        "Margin-trading app on Sui focused on simpler UX, using DeepBook and Pyth to make leveraged trading more accessible.",
-      techStack: ["Sui", "DeepBook", "Pyth", "Next.js"],
+        "margin-trading app on sui focused on simpler ux, using deepbook and pyth to make leveraged trading more accessible.",
+      techStack: ["sui", "deepbook", "pyth", "next.js"],
     },
     {
-      hackathon: "ETHOxford 2025",
+      hackathon: "ethoxford 2025",
       hackathonUrl: "https://ethoxford.io",
-      projectName: "Protein Mango",
+      projectName: "protein mango",
       projectUrl: "https://dorahacks.io/buidl/22626",
-      achievement: "Flare Bounties | $3k",
+      achievement: "flare bounties | $3k",
       teamSize: 3,
-      role: "Frontend",
-      description: "Parametric earthquake insurance with automated claims via ZKPs.",
-      techStack: ["Flare", "Mina"],
+      role: "frontend",
+      description:
+        "parametric earthquake insurance with automated claims via zkps.",
+      techStack: ["flare", "mina"],
     },
     {
-      hackathon: "Chainlink Convergence",
+      hackathon: "chainlink convergence",
       hackathonUrl: "https://chain.link/hackathon",
-      projectName: "Aletheia",
+      projectName: "aletheia",
       projectUrl: "https://aletheia-gilt.vercel.app",
-      achievement: "World ID | $500",
+      achievement: "world id | $500",
       teamSize: 1,
-      role: "Full stack",
+      role: "full stack",
       description:
-        "Prediction markets with AI consensus resolution and market creation (+ sybil resistance).",
-      techStack: ["Tenderly", "Chainlink CRE", "World ID"],
+        "prediction markets with ai consensus resolution and market creation (+ sybil resistance).",
+      techStack: ["tenderly", "chainlink cre", "world id"],
     },
   ],
   projects: [
     {
-      title: "Hormesis Keyboard",
+      title: "hormesis keyboard",
       projectUrl: "https://github.com/Kirillr-Sibirski/hormesis-keyboard",
       techStack: [
         {
-          label: "KiCad",
+          label: "kicad",
           url: "https://www.kicad.org/",
         },
         {
-          label: "Onshape (CAD)",
+          label: "onshape (cad)",
           url: "https://www.onshape.com/en/",
         },
         {
-          label: "Firmware",
+          label: "firmware",
           url: "https://github.com/Kirillr-Sibirski/zmk-config-hormesis-v2",
         },
       ],
       description:
-        "Custom low-profile split DIY keyboard with fully custom PCB, case geometry, and ZMK firmware configuration."
+        "custom low-profile split diy keyboard with fully custom pcb, case geometry, and zmk firmware configuration.",
     },
     {
-      title: "Active Suspension System",
-      projectUrl: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
+      title: "active suspension system",
+      projectUrl:
+        "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
       techStack: [
         {
-          label: "C++",
+          label: "c++",
           url: "https://isocpp.org/",
         },
         {
-          label: "Arduino",
+          label: "arduino",
           url: "https://www.arduino.cc/",
         },
         {
-          label: "PID",
+          label: "pid",
           url: "https://en.wikipedia.org/wiki/PID_controller",
         },
         {
-          label: "3D Printing",
+          label: "3d printing",
           url: "https://en.wikipedia.org/wiki/3D_printing",
         },
       ],
       description:
-        "Built an active suspension system for a 1/10 scale RC car, using sensors and PID control to reduce rollovers during aggressive cornering."
+        "built an active suspension system for a 1/10 scale rc car, using sensors and pid control to reduce rollovers during aggressive cornering.",
     },
   ],
 } as const;

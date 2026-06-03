@@ -22,9 +22,13 @@ export function Education({ education }: EducationProps) {
   return (
     <Section className="print:break-inside-avoid">
       <h2 className="resume-section-title font-bold" id="education-section">
-        Education
+        education
       </h2>
-      <div className="space-y-3" role="feed" aria-labelledby="education-section">
+      <div
+        className="space-y-3"
+        role="feed"
+        aria-labelledby="education-section"
+      >
         {education.map((item) => (
           <article
             key={`${item.school}-${item.start}`}
@@ -42,7 +46,7 @@ export function Education({ education }: EducationProps) {
                     {item.school}
                   </a>
                 </h3>
-                <p className="font-mono resume-details text-foreground/70">
+                <p className="resume-details font-mono text-foreground/70">
                   <a
                     href={item.degreeUrl}
                     target="_blank"
@@ -56,14 +60,14 @@ export function Education({ education }: EducationProps) {
                   achievement.achievements[0] ? (
                     <p
                       key={achievement.title}
-                      className="mt-1 font-mono resume-details text-foreground/80 text-pretty"
+                      className="resume-details mt-1 text-pretty font-mono text-foreground/80"
                     >
                       {achievement.title}: {achievement.achievements[0]}
                     </p>
                   ) : null,
                 )}
               </div>
-              <p className="font-mono resume-details text-foreground/60">
+              <p className="resume-details font-mono text-foreground/60">
                 {item.start} - {item.end}
               </p>
             </div>

@@ -72,6 +72,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    text-transform: lowercase;
   }
 }
 
@@ -80,17 +81,17 @@
     @apply text-4xl font-bold;
     font-size: 32px !important;
   }
-  
+
   .resume-section-title {
     @apply text-xl font-bold;
     font-size: 18px !important;
   }
-  
+
   .resume-body {
     @apply text-sm leading-relaxed;
     font-size: 14px !important;
   }
-  
+
   .resume-details {
     @apply text-xs;
     font-size: 12px !important;
@@ -102,38 +103,38 @@
 }
 
 @media print {
-    body {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 
-    .resume-name {
-        font-size: 32px !important;
-    }
+  .resume-name {
+    font-size: 32px !important;
+  }
 
-    .resume-section-title {
-        font-size: 18px !important;
-    }
+  .resume-section-title {
+    font-size: 18px !important;
+  }
 
-    .resume-body {
-        font-size: 14px !important;
-        line-height: 1.45 !important;
-    }
+  .resume-body {
+    font-size: 14px !important;
+    line-height: 1.45 !important;
+  }
 
-    .resume-details {
-        font-size: 12px !important;
-        line-height: 1.4 !important;
-    }
+  .resume-details {
+    font-size: 12px !important;
+    line-height: 1.4 !important;
+  }
 
-    .print\:hidden {
-        display: none !important;
-    }
+  .print\:hidden {
+    display: none !important;
+  }
 
-    .print\:break-before-page {
-        break-before: page !important;
-    }
+  .print\:break-before-page {
+    break-before: page !important;
+  }
 
-    .print\:break-after-page {
-        break-after: page !important;
-    }
+  .print\:break-after-page {
+    break-after: page !important;
+  }
 }
