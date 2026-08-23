@@ -106,7 +106,7 @@ export function Hackathons() {
             <span className="font-semibold text-foreground">
               {project.projectName}
             </span>{" "}
-            — {project.description} ({project.hackathon},{" "}
+            · {project.description} ({project.hackathon},{" "}
             {project.achievement})
           </li>
         ))}

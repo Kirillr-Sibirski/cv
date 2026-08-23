@@ -202,7 +202,7 @@ export const RESUME_DATA = {
           active anti-roll system for a 1/10 off-road RC car. designed the
           linkage and printed parts, wired an arduino nano to an MPU6050 IMU,
           and wrote the PID in C/C++ driving servo ride-height adjustment. the
-          hard part was the real world — packaging the electronics on the
+          hard part was the real world: packaging the electronics on the
           chassis and tuning the loop on slopes and rough ground.
         </p>
       ),
@@ -233,8 +233,8 @@ export const RESUME_DATA = {
       description: (
         <p>
           piezoelectric accelerometer for subwoofer testing. built the
-          electronics and software side — integrator-based signal conditioning,
-          arduino readout, and calibration — then reconciled the mechanical
+          electronics and software side: integrator-based signal conditioning,
+          arduino readout, and calibration, then reconciled the mechanical
           model against measured shaker-test results.
         </p>
       ),
@@ -266,297 +266,274 @@ export const RESUME_DATA = {
   },
 
   /**
-   * Year 1 comes from the transcript of records; years 2-3 from the 2025-2026
+   * Courses grouped by discipline rather than by year or semester. Completed
+   * entries come from the transcript of records; the rest from the 2025-2026
    * AT programme curriculum. Grades are deliberately not stored here.
    *
-   * Course descriptions are my own one-line summaries, not official UT text:
-   * Osiris is client-rendered with no public API, so nothing could be sourced
+   * Descriptions are my own one-line summaries, not official UT text: Osiris
+   * is client-rendered with no public API, so nothing could be sourced
    * verbatim. Correct anything that reads wrong.
    */
   curriculum: {
     totalCredits: 180,
     completedCredits: 60,
-    blocks: [
+    disciplines: [
       {
-        id: "y1",
-        label: "year 1",
-        title: "foundation",
-        status: "done",
-        credits: 60,
-        groups: [
+        id: "maths",
+        title: "mathematics & computation",
+        blurb: "the analytical backbone, and the numerical tools built on it.",
+        courses: [
           {
-            id: "maths",
-            title: "mathematics & computation",
-            blurb: "the analytical backbone.",
-            courses: [
-              {
-                name: "calculus 1",
-                ec: 4,
-                desc: "limits, differentiation, integration and series in one variable.",
-              },
-              {
-                name: "calculus 2",
-                ec: 4,
-                desc: "multivariable calculus — partial derivatives, multiple integrals, vector fields.",
-              },
-              {
-                name: "linear algebra",
-                ec: 3,
-                desc: "vectors, matrices, eigenvalues and linear transformations.",
-              },
-              {
-                name: "error analysis & programming skills",
-                ec: 3,
-                desc: "measurement uncertainty and error propagation, taught alongside MATLAB.",
-              },
-            ],
+            name: "calculus 1",
+            ec: 4,
+            done: true,
+            desc: "limits, differentiation, integration and series in one variable.",
           },
           {
-            id: "mechanics",
-            title: "mechanics & dynamics",
-            blurb: "how bodies move and how systems respond over time.",
-            courses: [
-              {
-                name: "mechanics",
-                ec: 4,
-                desc: "statics and dynamics of rigid bodies — forces, moments, motion.",
-              },
-              {
-                name: "mechanics lab",
-                ec: 4,
-                desc: "experimental verification of mechanics theory in the lab.",
-              },
-              {
-                name: "system dynamics 1",
-                ec: 3,
-                desc: "modelling dynamic systems and their response in the time domain.",
-              },
-              {
-                name: "system dynamics 2",
-                ec: 4,
-                desc: "frequency-domain analysis, transfer functions and feedback.",
-              },
-            ],
+            name: "calculus 2",
+            ec: 4,
+            done: true,
+            desc: "multivariable calculus: partial derivatives, multiple integrals, vector fields.",
           },
           {
-            id: "electronics",
-            title: "electronics & instrumentation",
-            blurb: "measuring physical quantities and conditioning the signals.",
-            courses: [
-              {
-                name: "basic electronics and instrumentation",
-                ec: 4,
-                desc: "analogue circuits, op-amps, and turning sensor output into measurement.",
-              },
-              {
-                name: "project accelerometer",
-                ec: 4,
-                desc: "the piezoelectric accelerometer build listed under engineering projects above.",
-              },
-            ],
+            name: "linear algebra",
+            ec: 3,
+            done: true,
+            desc: "vectors, matrices, eigenvalues and linear transformations.",
           },
           {
-            id: "materials",
-            title: "materials & physics",
-            blurb: "what materials are made of, how they behave, why they fail.",
-            courses: [
-              {
-                name: "structures and properties of materials",
-                ec: 3,
-                desc: "crystal structure, defects, and how microstructure sets mechanical behaviour.",
-              },
-              {
-                name: "properties of polymer materials",
-                ec: 3,
-                desc: "polymer chains, thermal transitions and viscoelastic response.",
-              },
-              {
-                name: "quantum matter and devices",
-                ec: 4,
-                desc: "quantum mechanics applied to semiconductors and solid-state devices.",
-              },
-              {
-                name: "classical thermodynamics",
-                ec: 4,
-                desc: "energy, entropy, and the laws governing heat and work.",
-              },
-              {
-                name: "diffraction lab",
-                ec: 1,
-                desc: "diffraction methods for determining crystal structure.",
-              },
-            ],
+            name: "error analysis & programming skills",
+            ec: 3,
+            done: true,
+            desc: "measurement uncertainty and error propagation, taught alongside MATLAB.",
           },
           {
-            id: "projects",
-            title: "projects & engineering in context",
-            blurb: "semester-long builds and the engineering-in-society strand.",
-            courses: [
-              {
-                name: "project energy transition",
-                ec: 6,
-                desc: "semester project on sustainable energy systems and their trade-offs.",
-              },
-              {
-                name: "challenges in science and engineering 1",
-                ec: 2,
-                desc: "engineering in societal context — ethics, impact, professional practice.",
-              },
-              {
-                name: "S1: mechatronics",
-                ec: 0,
-                desc: "first-semester strand tying the mechatronics courses together.",
-              },
-              {
-                name: "S2: sustainability — materials and energy",
-                ec: 0,
-                desc: "second-semester strand linking materials and energy sustainability.",
-              },
-            ],
+            name: "statistics for engineers",
+            ec: 3,
+            done: false,
+            desc: "probability, distributions, hypothesis testing and regression.",
+          },
+          {
+            name: "finite element methods",
+            ec: 4,
+            done: false,
+            desc: "numerical solution of field and structural problems by discretisation.",
+          },
+          {
+            name: "machine learning",
+            ec: 3,
+            done: false,
+            desc: "supervised and unsupervised learning applied to engineering data.",
           },
         ],
       },
       {
-        id: "y2s3",
-        label: "year 2 · semester 3",
-        title: "signal analysis",
-        status: "todo",
-        credits: 30,
-        groups: [
+        id: "mechanics",
+        title: "mechanics & dynamics",
+        blurb: "how bodies move and how systems respond over time.",
+        courses: [
           {
-            id: "q5",
-            title: "core",
-            blurb: "signals, models, and a project pulling both together.",
-            courses: [
-              {
-                name: "signals",
-                ec: 4,
-                desc: "continuous and discrete signals, Fourier analysis, sampling and filtering.",
-              },
-              {
-                name: "models",
-                ec: 4,
-                desc: "building and validating mathematical models of physical systems.",
-              },
-              {
-                name: "project SMS",
-                ec: 3,
-                desc: "signals, models and systems applied in a design project.",
-              },
-            ],
-          },
-        ],
-        choices: [
-          {
-            title: "elective",
-            ec: "4-5 EC",
-            options: [
-              "engineering solid mechanics",
-              "computational thinking",
-              "classical mechanics",
-              "electronics",
-            ],
+            name: "mechanics",
+            ec: 4,
+            done: true,
+            desc: "statics and dynamics of rigid bodies: forces, moments, motion.",
           },
           {
-            title: "elective module (15 EC)",
-            ec: "module 6",
-            options: [
-              "materials science and engineering",
-              "transport phenomena",
-              "systems and control",
-              "software systems",
-            ],
+            name: "mechanics lab",
+            ec: 4,
+            done: true,
+            desc: "experimental verification of mechanics theory in the lab.",
+          },
+          {
+            name: "system dynamics 1",
+            ec: 3,
+            done: true,
+            desc: "modelling dynamic systems and their response in the time domain.",
+          },
+          {
+            name: "system dynamics 2",
+            ec: 4,
+            done: true,
+            desc: "frequency-domain analysis, transfer functions and feedback.",
           },
         ],
       },
       {
-        id: "y2s4",
-        label: "year 2 · semester 4",
-        title: "system design & validation",
-        status: "todo",
-        credits: 30,
-        groups: [
+        id: "signals",
+        title: "signals & modelling",
+        blurb: "describing systems well enough to predict what they will do.",
+        courses: [
           {
-            id: "s4",
-            title: "core",
-            blurb: "fields, numerical methods, data, and taking an idea to product.",
-            courses: [
-              {
-                name: "electro- and magnetostatics",
-                ec: 5,
-                desc: "static electric and magnetic fields; Maxwell in the steady state.",
-              },
-              {
-                name: "electro- and magnetodynamics",
-                ec: 3,
-                desc: "time-varying fields, waves and propagation.",
-              },
-              {
-                name: "finite element methods",
-                ec: 4,
-                desc: "numerical solution of field and structural problems by discretisation.",
-              },
-              {
-                name: "statistics for engineers",
-                ec: 3,
-                desc: "probability, distributions, hypothesis testing and regression.",
-              },
-              {
-                name: "machine learning",
-                ec: 3,
-                desc: "supervised and unsupervised learning applied to engineering data.",
-              },
-              {
-                name: "entrepreneurship & innovation management",
-                ec: 6,
-                desc: "taking a technical idea toward a viable product and business.",
-              },
-              {
-                name: "project antenna",
-                ec: 3,
-                desc: "design, simulation and measurement of an antenna.",
-              },
-              {
-                name: "challenges in science & engineering 2",
-                ec: 1,
-                desc: "continuation of the engineering-in-context strand.",
-              },
-            ],
+            name: "signals",
+            ec: 4,
+            done: false,
+            desc: "continuous and discrete signals, Fourier analysis, sampling and filtering.",
+          },
+          {
+            name: "models",
+            ec: 4,
+            done: false,
+            desc: "building and validating mathematical models of physical systems.",
           },
         ],
       },
       {
-        id: "y3",
-        label: "year 3",
-        title: "master preparation & bachelor assignment",
-        status: "todo",
-        credits: 60,
-        groups: [
+        id: "electronics",
+        title: "electronics & fields",
+        blurb: "circuits, measurement, and the electromagnetics underneath.",
+        courses: [
           {
-            id: "y3core",
-            title: "fixed components",
-            blurb:
-              "two semesters of master preparation, then the bachelor assignment.",
-            courses: [
-              {
-                name: "preparation bachelor assignment",
-                ec: 3,
-                desc: "scoping and planning the final bachelor project.",
-              },
-              {
-                name: "BSc assignment",
-                ec: 0,
-                desc: "the final project, assessed on scientific/design work, communication and process.",
-              },
-            ],
+            name: "basic electronics and instrumentation",
+            ec: 4,
+            done: true,
+            desc: "analogue circuits, op-amps, and turning sensor output into measurement.",
+          },
+          {
+            name: "electro- and magnetostatics",
+            ec: 5,
+            done: false,
+            desc: "static electric and magnetic fields; Maxwell in the steady state.",
+          },
+          {
+            name: "electro- and magnetodynamics",
+            ec: 3,
+            done: false,
+            desc: "time-varying fields, waves and propagation.",
           },
         ],
-        choices: [
+      },
+      {
+        id: "materials",
+        title: "materials & physics",
+        blurb: "what materials are made of, how they behave, why they fail.",
+        courses: [
           {
-            title: "master preparation",
-            ec: "semesters 5-6",
-            options: ["course choice depends on target master's admission requirements"],
+            name: "structures and properties of materials",
+            ec: 3,
+            done: true,
+            desc: "crystal structure, defects, and how microstructure sets mechanical behaviour.",
           },
+          {
+            name: "properties of polymer materials",
+            ec: 3,
+            done: true,
+            desc: "polymer chains, thermal transitions and viscoelastic response.",
+          },
+          {
+            name: "quantum matter and devices",
+            ec: 4,
+            done: true,
+            desc: "quantum mechanics applied to semiconductors and solid-state devices.",
+          },
+          {
+            name: "classical thermodynamics",
+            ec: 4,
+            done: true,
+            desc: "energy, entropy, and the laws governing heat and work.",
+          },
+          {
+            name: "diffraction lab",
+            ec: 1,
+            done: true,
+            desc: "diffraction methods for determining crystal structure.",
+          },
+        ],
+      },
+      {
+        id: "projects",
+        title: "projects",
+        blurb: "the build-something-and-defend-it half of the degree.",
+        courses: [
+          {
+            name: "project accelerometer",
+            ec: 4,
+            done: true,
+            desc: "the piezoelectric accelerometer build listed under engineering projects above.",
+          },
+          {
+            name: "project energy transition",
+            ec: 6,
+            done: true,
+            desc: "semester project on sustainable energy systems and their trade-offs.",
+          },
+          {
+            name: "project SMS",
+            ec: 3,
+            done: false,
+            desc: "signals, models and systems applied in a design project.",
+          },
+          {
+            name: "project antenna",
+            ec: 3,
+            done: false,
+            desc: "design, simulation and measurement of an antenna.",
+          },
+          {
+            name: "preparation bachelor assignment",
+            ec: 3,
+            done: false,
+            desc: "scoping and planning the final bachelor project.",
+          },
+          {
+            name: "BSc assignment",
+            ec: 0,
+            done: false,
+            desc: "the final project, assessed on scientific/design work, communication and process.",
+          },
+        ],
+      },
+      {
+        id: "context",
+        title: "engineering in context",
+        blurb: "the strand on impact, ethics, and turning work into product.",
+        courses: [
+          {
+            name: "challenges in science and engineering 1",
+            ec: 2,
+            done: true,
+            desc: "engineering in societal context: ethics, impact, professional practice.",
+          },
+          {
+            name: "challenges in science & engineering 2",
+            ec: 1,
+            done: false,
+            desc: "continuation of the engineering-in-context strand.",
+          },
+          {
+            name: "entrepreneurship & innovation management",
+            ec: 6,
+            done: false,
+            desc: "taking a technical idea toward a viable product and business.",
+          },
+        ],
+      },
+    ],
+    choices: [
+      {
+        title: "elective",
+        ec: "4-5 EC",
+        options: [
+          "engineering solid mechanics",
+          "computational thinking",
+          "classical mechanics",
+          "electronics",
+        ],
+      },
+      {
+        title: "elective module",
+        ec: "15 EC",
+        options: [
+          "materials science and engineering",
+          "transport phenomena",
+          "systems and control",
+          "software systems",
+        ],
+      },
+      {
+        title: "master preparation",
+        ec: "year 3",
+        options: [
+          "course choice depends on target master's admission requirements",
         ],
       },
     ],

@@ -8,10 +8,11 @@ import { cn } from "@/lib/utils";
 type Course = {
   readonly name: string;
   readonly ec: number;
+  readonly done: boolean;
   readonly desc?: string;
 };
 
-type Group = {
+type Discipline = {
   readonly id: string;
   readonly title: string;
   readonly blurb: string;
@@ -24,37 +25,41 @@ type Choice = {
   readonly options: readonly string[];
 };
 
-type Block = {
-  readonly id: string;
-  readonly label: string;
-  readonly title: string;
-  readonly status: "done" | "todo";
-  readonly credits: number;
-  readonly groups: readonly Group[];
-  readonly choices?: readonly Choice[];
-};
-
 export type CurriculumData = {
   readonly totalCredits: number;
   readonly completedCredits: number;
-  readonly blocks: readonly Block[];
+  readonly disciplines: readonly Discipline[];
+  readonly choices: readonly Choice[];
 };
 
 /** A course row. Hover or focus reveals the description. */
-function CourseRow({ course, done }: { course: Course; done: boolean }) {
+function CourseRow({ course }: { course: Course }) {
   return (
     <li className="group relative">
       <div
         tabIndex={course.desc ? 0 : -1}
         className={cn(
-          "flex items-baseline justify-between gap-x-3 rounded px-2 py-1.5 transition-colors",
+          "flex items-baseline gap-x-2 rounded px-2 py-1.5 transition-colors",
           "hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none",
-          !done && "text-foreground/75",
         )}
       >
-        <span className="resume-details leading-snug">{course.name}</span>
-        <span className="resume-details shrink-0 font-mono tabular-nums text-foreground/55">
-          {course.ec > 0 ? `${course.ec} EC` : "—"}
+        <span
+          aria-hidden="true"
+          className={cn(
+            "size-1.5 shrink-0 translate-y-[-1px] rounded-full",
+            course.done ? "bg-foreground" : "border border-foreground/40",
+          )}
+        />
+        <span
+          className={cn(
+            "resume-details leading-snug",
+            !course.done && "text-foreground/65",
+          )}
+        >
+          {course.name}
+        </span>
+        <span className="ml-auto shrink-0 resume-details font-mono tabular-nums text-foreground/55">
+          {course.ec > 0 ? `${course.ec} EC` : ""}
         </span>
       </div>
 
@@ -70,69 +75,43 @@ function CourseRow({ course, done }: { course: Course; done: boolean }) {
           <p className="resume-details leading-snug text-foreground/85">
             {course.desc}
           </p>
+          <p className="resume-details mt-1 font-mono text-foreground/45">
+            {course.done ? "completed" : "not taken yet"}
+          </p>
         </div>
       )}
     </li>
   );
 }
 
-function GroupCard({ group, done }: { group: Group; done: boolean }) {
-  const ec = group.courses.reduce((sum, c) => sum + c.ec, 0);
+function DisciplineCard({ discipline }: { discipline: Discipline }) {
+  const earned = discipline.courses
+    .filter((c) => c.done)
+    .reduce((sum, c) => sum + c.ec, 0);
+  const total = discipline.courses.reduce((sum, c) => sum + c.ec, 0);
 
   return (
-    <section
-      className={cn(
-        "rounded-lg border p-3",
-        done ? "border-border/70" : "border-dashed border-foreground/25",
-      )}
-    >
+    <section className="rounded-lg border border-border/70 p-3">
       <div className="flex items-baseline justify-between gap-x-2">
-        <h5 className="resume-body font-semibold">{group.title}</h5>
+        <h5 className="resume-body font-semibold">{discipline.title}</h5>
         <span className="resume-details shrink-0 font-mono tabular-nums text-foreground/55">
-          {ec} EC
+          {earned}/{total} EC
         </span>
       </div>
       <p className="resume-details mt-0.5 text-pretty text-foreground/60">
-        {group.blurb}
+        {discipline.blurb}
       </p>
       <ul className="mt-2 list-none divide-y divide-border/60 p-0">
-        {group.courses.map((course) => (
-          <CourseRow key={course.name} course={course} done={done} />
+        {discipline.courses.map((course) => (
+          <CourseRow key={course.name} course={course} />
         ))}
       </ul>
     </section>
   );
 }
 
-function ChoiceCard({ choice }: { choice: Choice }) {
-  return (
-    <section className="rounded-lg border border-dashed border-foreground/25 p-3">
-      <div className="flex items-baseline justify-between gap-x-2">
-        <h5 className="resume-body font-semibold">{choice.title}</h5>
-        <span className="resume-details shrink-0 font-mono text-foreground/55">
-          {choice.ec}
-        </span>
-      </div>
-      <p className="resume-details mt-0.5 text-foreground/60">
-        {choice.options.length > 1 ? "one of" : "to be decided"}
-      </p>
-      <ul className="mt-2 flex list-none flex-wrap gap-1 p-0">
-        {choice.options.map((option) => (
-          <li
-            key={option}
-            className="resume-details rounded-md bg-secondary/70 px-2 py-1 text-foreground/75"
-          >
-            {option}
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
-/** Whole-degree rail: filled for credits earned, dashed for what remains. */
+/** Whole-degree rail: filled for credits earned, hatched for what remains. */
 function ProgressRail({ data }: { data: CurriculumData }) {
-  const remaining = data.totalCredits - data.completedCredits;
   const pct = (data.completedCredits / data.totalCredits) * 100;
 
   return (
@@ -153,8 +132,8 @@ function ProgressRail({ data }: { data: CurriculumData }) {
       >
         <div className="h-full bg-foreground" style={{ width: `${pct}%` }} />
         <div
-          className="h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_3px,hsl(var(--muted-foreground)/0.35)_3px,hsl(var(--muted-foreground)/0.35)_6px)]"
-          style={{ width: `${(remaining / data.totalCredits) * 100}%` }}
+          className="h-full flex-1 bg-[repeating-linear-gradient(45deg,transparent,transparent_3px,hsl(var(--muted-foreground)/0.35)_3px,hsl(var(--muted-foreground)/0.35)_6px)]"
+          aria-hidden="true"
         />
       </div>
     </div>
@@ -187,45 +166,57 @@ export function Curriculum({ data }: { data: CurriculumData }) {
       <div id={panelId} hidden={!open}>
         <ProgressRail data={data} />
 
-        <p className="resume-details mt-2 font-mono text-foreground/50">
-          hover a course for what it covers.
-        </p>
+        <div className="resume-details mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-foreground/50">
+          <span className="inline-flex items-center gap-x-1.5">
+            <span
+              aria-hidden="true"
+              className="size-1.5 rounded-full bg-foreground"
+            />
+            completed
+          </span>
+          <span className="inline-flex items-center gap-x-1.5">
+            <span
+              aria-hidden="true"
+              className="size-1.5 rounded-full border border-foreground/40"
+            />
+            not taken yet
+          </span>
+          <span>hover a course for what it covers.</span>
+        </div>
 
-        <div className="mt-3 space-y-4">
-          {data.blocks.map((block) => {
-            const done = block.status === "done";
-            return (
-              <div key={block.id}>
-                <div className="flex items-baseline justify-between gap-x-2 border-b border-border pb-1">
-                  <h4 className="resume-body font-semibold">
-                    {block.label}
-                    <span className="ml-1.5 font-normal text-foreground/60">
-                      {block.title}
-                    </span>
-                  </h4>
-                  <span
-                    className={cn(
-                      "resume-details shrink-0 rounded px-1.5 py-0.5 font-mono",
-                      done
-                        ? "bg-foreground text-background"
-                        : "border border-dashed border-foreground/30 text-foreground/60",
-                    )}
-                  >
-                    {done ? "completed" : "upcoming"} · {block.credits} EC
-                  </span>
-                </div>
+        <div className="mt-3 grid gap-2.5 md:grid-cols-2">
+          {data.disciplines.map((discipline) => (
+            <DisciplineCard key={discipline.id} discipline={discipline} />
+          ))}
 
-                <div className="mt-2 grid gap-2.5 md:grid-cols-2">
-                  {block.groups.map((group) => (
-                    <GroupCard key={group.id} group={group} done={done} />
-                  ))}
-                  {block.choices?.map((choice) => (
-                    <ChoiceCard key={choice.title} choice={choice} />
-                  ))}
+          <section className="rounded-lg border border-dashed border-foreground/25 p-3 md:col-span-2">
+            <h5 className="resume-body font-semibold">not yet chosen</h5>
+            <p className="resume-details mt-0.5 text-foreground/60">
+              electives and the year 3 track, still open.
+            </p>
+            <div className="mt-2 grid gap-3 sm:grid-cols-3">
+              {data.choices.map((choice) => (
+                <div key={choice.title}>
+                  <p className="resume-details font-mono text-foreground/70">
+                    <span className="font-semibold text-foreground/85">
+                      {choice.title}
+                    </span>{" "}
+                    · {choice.ec}
+                  </p>
+                  <ul className="mt-1 flex list-none flex-wrap gap-1 p-0">
+                    {choice.options.map((option) => (
+                      <li
+                        key={option}
+                        className="resume-details rounded-md bg-secondary/70 px-2 py-1 text-foreground/70"
+                      >
+                        {option}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
-            );
-          })}
+              ))}
+            </div>
+          </section>
         </div>
       </div>
     </div>
