@@ -7,6 +7,7 @@ import { Skills } from "./components/Skills";
 import { Header } from "./components/Header";
 import { Hackathons } from "./components/Hackathons";
 
+const SITE_URL = "https://krlberg.dev";
 const TITLE = "kirill rybkov cv";
 
 // The on-page bio is intentionally blank right now; link previews still need
@@ -16,12 +17,40 @@ const DESCRIPTION =
   "engineering, hardware, and software projects by kirill rybkov.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://krlberg.dev"),
+  metadataBase: new URL(SITE_URL),
   title: TITLE,
   description: DESCRIPTION,
+  applicationName: "kirill rybkov",
+  authors: [{ name: "kirill rybkov", url: SITE_URL }],
+  creator: "kirill rybkov",
+  keywords: [
+    "kirill rybkov",
+    "advanced technology",
+    "university of twente",
+    "embedded systems",
+    "control systems",
+    "FMEA",
+    "reliability engineering",
+    "hardware prototyping",
+    "typescript",
+    "next.js",
+  ],
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
+    url: SITE_URL,
+    siteName: TITLE,
     type: "profile",
     locale: "en_US",
   },
@@ -29,7 +58,30 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
+    creator: "@krlberg",
   },
+};
+
+// Person schema so search engines can associate the profiles with the name.
+const PERSON_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "kirill rybkov",
+  url: SITE_URL,
+  description: DESCRIPTION,
+  alumniOf: [
+    { "@type": "CollegeOrUniversity", name: "university of twente" },
+    { "@type": "HighSchool", name: "the british school of barcelona" },
+  ],
+  knowsAbout: [
+    "embedded electronics",
+    "control systems",
+    "CAD",
+    "reliability engineering",
+    "FMEA",
+    "full-stack web development",
+  ],
+  sameAs: RESUME_DATA.contact.social.map((s) => s.url),
 };
 
 function getCommandMenuLinks() {
@@ -47,9 +99,10 @@ export default function ResumePage() {
       className="print:max-w-letter container relative mx-auto scroll-my-12 overflow-auto p-4 print:!px-6 print:!py-3 md:p-16"
       id="main-content"
     >
-      <div className="sr-only">
-        <h1>{TITLE}</h1>
-      </div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+      />
 
       <section
         className="mx-auto w-full max-w-3xl space-y-8 bg-white print:space-y-1.5"
@@ -70,7 +123,12 @@ export default function ResumePage() {
             title="engineering projects"
           />
 
-          <Education institutions={[university, secondary]} />
+          <Education
+            institutions={[
+              { ...university, curriculum: RESUME_DATA.curriculum },
+              secondary,
+            ]}
+          />
 
           <Hackathons />
         </div>

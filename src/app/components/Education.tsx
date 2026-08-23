@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
+import { Curriculum, type CurriculumData } from "./Curriculum";
 
 type Course = { readonly name: string; readonly ec: string };
 type CourseGroup = {
@@ -22,6 +23,8 @@ export type Institution = {
   readonly gpa?: string;
   /** One-line results summary, used where a full course breakdown is overkill. */
   readonly summary?: string;
+  /** Expandable completed/upcoming course breakdown; screen only. */
+  readonly curriculum?: CurriculumData;
   readonly courseGroups: readonly CourseGroup[];
 };
 
@@ -71,6 +74,8 @@ function EducationCard({ item }: { item: Institution }) {
           {item.start} - {item.end}
         </p>
       </div>
+
+      {item.curriculum && <Curriculum data={item.curriculum} />}
 
       {courseCount > 0 && (
         <>

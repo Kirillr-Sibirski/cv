@@ -15,8 +15,8 @@ export const RESUME_DATA = {
       url: "https://www.google.com/maps/place/Enschede",
     },
   ],
-  // Intentionally blank: rewriting this.
-  about: "",
+  about:
+    "BSc advanced technology student @ university of twente. experience across embedded electronics, control systems, CAD, and full-stack product work.",
   avatarUrl: "./image.png",
   contact: {
     email: "",
@@ -81,7 +81,7 @@ export const RESUME_DATA = {
         { label: "solidworks", url: "https://www.solidworks.com/" },
         { label: "kicad", url: "https://www.kicad.org/" },
         {
-          label: "FDM 3d printing",
+          label: "3D printing",
           url: "https://en.wikipedia.org/wiki/3D_printing",
         },
       ],
@@ -118,7 +118,18 @@ export const RESUME_DATA = {
     },
   ],
 
+  // Reverse-chronological by start date.
   work: [
+    {
+      company: "RISE",
+      link: "https://www.riseteam.nl/",
+      badges: ["C++", "F Prime"],
+      title: "software member",
+      start: "sep 2026",
+      end: undefined,
+      description:
+        "developing various systems required for the operations of a model rocket using the F Prime framework.",
+    },
     {
       company: "risk on radar",
       link: "https://riskonradar.com",
@@ -149,20 +160,11 @@ export const RESUME_DATA = {
       ),
     },
     {
-      company: "RISE",
-      link: "https://www.riseteam.nl/",
-      badges: [],
-      title: "software member · part-time",
-      start: "",
-      end: "",
-      description: null,
-    },
-    {
       company: "lattic3",
       link: "https://lattic3.xyz",
       articleLink: "https://www.radixdlt.com/blog/meet-the-project-lattic3",
       articleLabel: "radix feature",
-      badges: ["DeFi", "strategies", "flash loans", "next.js", "radix"],
+      badges: ["DeFi", "flash loans", "next.js"],
       title: "co-founder",
       start: "oct 2024",
       end: "aug 2025",
@@ -191,20 +193,17 @@ export const RESUME_DATA = {
     {
       company: "active suspension system",
       link: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
-      badges: ["arduino", "IMU", "PID", "CAD", "3d printing"],
+      badges: ["arduino", "IMU", "PID", "CAD", "3D printing"],
       title: "completed during EPQ A-Level",
       start: "",
       end: "",
       description: (
         <p>
-          built an active anti-roll system for a 1/10 off-road RC car, aimed at
-          reducing rollover on uneven terrain rather than just upgrading the
-          suspension. designed the linkage and printed parts, wired an arduino
-          nano with an MPU6050 IMU, and wrote the PID in C/C++ to turn
-          orientation data into servo-driven ride-height adjustment. most of the
-          work was getting the loop to behave in the real world: packaging the
-          electronics on the chassis, powering from the RC receiver, and tuning
-          the response on slopes and rough surfaces.
+          active anti-roll system for a 1/10 off-road RC car. designed the
+          linkage and printed parts, wired an arduino nano to an MPU6050 IMU,
+          and wrote the PID in C/C++ driving servo ride-height adjustment. the
+          hard part was the real world — packaging the electronics on the
+          chassis and tuning the loop on slopes and rough ground.
         </p>
       ),
     },
@@ -217,13 +216,10 @@ export const RESUME_DATA = {
       end: "",
       description: (
         <p>
-          fixed-wing drone aimed at early wildfire detection in catalonia. my
-          part was the electronics and physical build: integrating the speedybee
-          flight controller, power system, GPS, receiver, and raspberry pi
-          payload, then turning that into an airframe that could survive and
-          fly. it forced real trade-offs between structure, weight,
-          manufacturability, and onboard electronics instead of treating them as
-          separate problems.
+          fixed-wing drone for early wildfire detection in catalonia. i owned
+          the electronics and physical build: speedybee flight controller, power
+          system, GPS, receiver, and a raspberry pi payload, integrated into an
+          airframe light enough to fly and tough enough to land.
         </p>
       ),
     },
@@ -236,12 +232,10 @@ export const RESUME_DATA = {
       end: "",
       description: (
         <p>
-          designed and validated a piezoelectric accelerometer for subwoofer
-          testing, focusing on the electronics and software: signal conditioning
-          via an integrator circuit, arduino-based readout, and
-          calibration/testing for the final prototype. it sat between theory and
-          hardware, so the mechanical model, analogue circuit behaviour, and
-          measured shaker-test results all had to line up.
+          piezoelectric accelerometer for subwoofer testing. built the
+          electronics and software side — integrator-based signal conditioning,
+          arduino readout, and calibration — then reconciled the mechanical
+          model against measured shaker-test results.
         </p>
       ),
     },
@@ -266,8 +260,112 @@ export const RESUME_DATA = {
       degreeUrl: "",
       start: "sep 2021",
       end: "jun 2025",
-      summary: "A-Levels: AAA",
+      summary: "A*A*AAA",
       courseGroups: [],
+    },
+  },
+
+  /**
+   * Year 1 is taken from the transcript of records; year 2 semester 1 from the
+   * 2025-2026 AT programme curriculum. Grades are deliberately not stored here.
+   */
+  curriculum: {
+    completed: {
+      label: "year 1",
+      credits: 60,
+      groups: [
+        {
+          id: "maths",
+          title: "mathematics & computation",
+          blurb:
+            "the analytical backbone — continuous maths, linear systems, and error-aware programming.",
+          courses: [
+            { name: "calculus 1", ec: 4 },
+            { name: "calculus 2", ec: 4 },
+            { name: "linear algebra", ec: 3 },
+            { name: "error analysis & programming skills", ec: 3 },
+          ],
+        },
+        {
+          id: "mechanics",
+          title: "mechanics & dynamics",
+          blurb:
+            "how bodies move and how systems respond over time, with the lab work to match.",
+          courses: [
+            { name: "mechanics", ec: 4 },
+            { name: "mechanics lab", ec: 4 },
+            { name: "system dynamics 1", ec: 3 },
+            { name: "system dynamics 2", ec: 4 },
+          ],
+        },
+        {
+          id: "electronics",
+          title: "electronics & instrumentation",
+          blurb:
+            "measuring physical quantities and conditioning the signals that come back.",
+          courses: [
+            { name: "basic electronics and instrumentation", ec: 4 },
+            { name: "project accelerometer", ec: 4 },
+          ],
+        },
+        {
+          id: "materials",
+          title: "materials & physics",
+          blurb:
+            "what materials are made of, how they behave under load and heat, and why they fail.",
+          courses: [
+            { name: "structures and properties of materials", ec: 3 },
+            { name: "properties of polymer materials", ec: 3 },
+            { name: "quantum matter and devices", ec: 4 },
+            { name: "classical thermodynamics", ec: 4 },
+            { name: "diffraction lab", ec: 1 },
+          ],
+        },
+        {
+          id: "projects",
+          title: "projects & engineering in context",
+          blurb:
+            "semester-long builds and the strand on engineering against real constraints.",
+          courses: [
+            { name: "project energy transition", ec: 6 },
+            { name: "challenges in science and engineering 1", ec: 2 },
+            { name: "S1: mechatronics", ec: 0 },
+            { name: "S2: sustainability — materials and energy", ec: 0 },
+          ],
+        },
+      ],
+    },
+    upcoming: {
+      label: "year 2 · semester 1",
+      title: "signal analysis",
+      credits: 15,
+      courses: [
+        { name: "signals", ec: 4 },
+        { name: "models", ec: 4 },
+        { name: "project SMS", ec: 3 },
+      ],
+      choices: [
+        {
+          title: "elective",
+          ec: "4-5 EC",
+          options: [
+            "engineering solid mechanics",
+            "computational thinking",
+            "classical mechanics",
+            "electronics",
+          ],
+        },
+        {
+          title: "elective module",
+          ec: "module 6",
+          options: [
+            "materials science and engineering",
+            "transport phenomena",
+            "systems and control",
+            "software systems",
+          ],
+        },
+      ],
     },
   },
 
