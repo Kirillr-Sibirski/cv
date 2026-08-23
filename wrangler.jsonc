@@ -1,0 +1,14 @@
+{
+  "name": "cv",
+  "compatibility_date": "2026-08-23",
+  // The site is a Next static export, so this Worker serves `out/` directly
+  // and runs no script of its own.
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  },
+  "routes": [
+    { "pattern": "krlberg.dev", "custom_domain": true },
+    { "pattern": "www.krlberg.dev", "custom_domain": true }
+  ]
+}
