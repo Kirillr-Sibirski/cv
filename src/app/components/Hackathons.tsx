@@ -13,7 +13,7 @@ function StackTags({ tags }: { tags: readonly string[] }) {
         <li key={tag}>
           <Badge
             variant="secondary"
-            className="resume-details px-1.5 py-0.5 print:px-1 print:py-0"
+            className="align-middle"
           >
             {tag}
           </Badge>
@@ -51,7 +51,7 @@ function HackathonItem({ project }: { project: HackathonProject }) {
           </p>
         </div>
         <Badge
-          className="resume-details leading-tight print:px-1 print:py-0"
+          className="align-middle"
           variant="outline"
         >
           {project.achievement}

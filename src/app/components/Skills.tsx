@@ -1,5 +1,6 @@
 "use client";
 
+import { badgeVariants } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/utils";
 
@@ -39,7 +40,7 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
               href={skill.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="resume-details inline-flex items-center rounded-md border border-transparent bg-secondary px-2 py-0.5 font-mono text-foreground/70 transition-colors hover:bg-secondary/70 print:px-2 print:py-0.5"
+              className={badgeVariants({ variant: "secondary" })}
               aria-label={`skill: ${skill.label}`}
             >
               {skill.label}
