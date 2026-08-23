@@ -1,73 +1,96 @@
 "use client";
 
+import { Badge } from "@/components/ui/badge";
 import { Section } from "@/components/ui/section";
 import { RESUME_DATA } from "@/data/resume-data";
 
-import { SectionHeading } from "./SectionHeading";
-
 type HackathonProject = (typeof RESUME_DATA)["hackathons"][number];
 
-function Item({ project }: { project: HackathonProject }) {
+function StackTags({ tags }: { tags: readonly string[] }) {
   return (
-    <article className="grid gap-x-6 gap-y-0.5 border-t border-border pt-2.5 md:grid-cols-[8.5rem_1fr]">
-      <div className="flex flex-col gap-y-0.5">
-        <a
-          href={project.hackathonUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="resume-details font-mono text-foreground/50 underline decoration-transparent underline-offset-4 transition-colors hover:decoration-foreground/40"
-        >
-          {project.hackathon}
-        </a>
-        <span className="resume-details font-mono text-foreground">
-          {project.achievement}
-        </span>
-      </div>
-
-      <div>
-        <h3 className="resume-body font-semibold">
-          <a
-            href={project.projectUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline decoration-foreground/25 underline-offset-4 transition-colors hover:decoration-foreground"
+    <ul className="mt-2 flex list-none flex-wrap gap-1 p-0 print:mt-1 print:gap-0.5">
+      {tags.map((tag) => (
+        <li key={tag}>
+          <Badge
+            variant="secondary"
+            className="resume-details px-1.5 py-0.5 print:px-1 print:py-0"
           >
-            {project.projectName}
-          </a>
-        </h3>
-        <p className="resume-details mt-0.5 text-pretty font-mono text-foreground/70">
-          {project.description}
-        </p>
+            {tag}
+          </Badge>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+function HackathonItem({ project }: { project: HackathonProject }) {
+  return (
+    <article className="rounded-lg border border-border p-3 transition-colors hover:border-foreground/25 print:border-border print:p-2">
+      <div className="flex items-start justify-between gap-3 print:gap-2">
+        <div className="space-y-1">
+          <h3 className="resume-body font-semibold leading-tight">
+            <a
+              href={project.projectUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              {project.projectName}
+            </a>
+          </h3>
+          <p className="resume-details font-mono text-foreground/70">
+            <a
+              href={project.hackathonUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+            >
+              {project.hackathon}
+            </a>{" "}
+            · {project.role}
+          </p>
+        </div>
+        <Badge
+          className="resume-details leading-tight print:px-1 print:py-0"
+          variant="outline"
+        >
+          {project.achievement}
+        </Badge>
       </div>
+      <p className="resume-details mt-2 text-pretty font-mono text-foreground/70 print:mt-1">
+        {project.description}
+      </p>
+      <StackTags tags={project.techStack} />
     </article>
   );
 }
 
-export function Hackathons({ index, id }: { index: string; id: string }) {
+export function Hackathons() {
   return (
     <Section className="print:space-y-2">
-      <SectionHeading
-        index={index}
-        id={id}
-        aside={
-          <span className="resume-details font-mono text-foreground/50 print:hidden">
-            15+ entered, these placed
-          </span>
-        }
-      >
-        hackathons
-      </SectionHeading>
+      <div className="flex items-baseline justify-between gap-3">
+        <h2 className="resume-section-title font-bold" id="hackathon-projects">
+          hackathon projects
+        </h2>
+        <p className="resume-details font-mono text-foreground/50 print:hidden">
+          15+ hackathons. these are the ones that placed.
+        </p>
+      </div>
 
-      <div className="space-y-2.5 print:hidden" aria-labelledby={id}>
+      <div
+        className="grid grid-cols-1 gap-3 print:hidden md:grid-cols-2"
+        role="feed"
+        aria-labelledby="hackathon-projects"
+      >
         {RESUME_DATA.hackathons.map((project) => (
-          <Item
+          <HackathonItem
             key={`${project.hackathon}-${project.projectName}`}
             project={project}
           />
         ))}
       </div>
 
-      {/* Print: one line each. The entries above are for reading. */}
+      {/* Print: one line each. The cards are for reading, this is for the resume. */}
       <ul className="hidden list-none p-0 print:block">
         {RESUME_DATA.hackathons.map((project) => (
           <li

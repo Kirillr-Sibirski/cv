@@ -78,6 +78,16 @@
      */
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   ::selection {
     background: hsl(var(--foreground));
     color: hsl(var(--background));

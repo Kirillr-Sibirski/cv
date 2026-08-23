@@ -1,61 +1,109 @@
+"use client";
+
 import { Section } from "@/components/ui/section";
+import { cn } from "@/lib/utils";
 
-import { SectionHeading } from "./SectionHeading";
-
-type SkillLink = { label: string; url: string };
+type SkillLink = {
+  label: string;
+  url: string;
+};
+type SkillCategory = readonly SkillLink[];
+type Skills = {
+  blockchain: SkillCategory;
+  frontend: SkillCategory;
+  focus: SkillCategory;
+};
 type SkillGroup = {
   id: string;
   title: string;
-  skills: readonly SkillLink[];
+  skills: SkillCategory;
 };
 
-/**
- * Rows rather than pill grids: a label rail on the left, slash-separated
- * links on the right. Same information, far less furniture.
- */
-export function Skills({
-  categories,
-  sectionTitle = "tech stack",
-  index,
-  id,
-}: {
-  categories: readonly SkillGroup[];
-  sectionTitle?: string;
-  index: string;
-  id: string;
-}) {
-  return (
-    <Section>
-      <SectionHeading index={index} id={id}>
-        {sectionTitle}
-      </SectionHeading>
+interface SkillsListProps {
+  title: string;
+  skills: SkillCategory;
+  className?: string;
+}
 
-      <div className="space-y-2 print:space-y-1" aria-labelledby={id}>
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className="grid gap-x-6 gap-y-0.5 md:grid-cols-[8.5rem_1fr]"
-          >
-            <h3 className="resume-details font-mono text-foreground/50">
-              {category.title}
-            </h3>
-            <ul className="flex list-none flex-wrap gap-x-3 gap-y-1 p-0">
-              {category.skills.map((skill) => (
-                <li key={skill.label}>
-                  <a
-                    href={skill.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="resume-details font-mono text-foreground/70 underline decoration-transparent underline-offset-4 transition-colors hover:text-foreground hover:decoration-foreground/40"
-                  >
-                    {skill.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
+function SkillsList({ title, skills, className }: SkillsListProps) {
+  return (
+    <div className="mb-4 last:mb-0 print:mb-1">
+      <h3 className="resume-details font-mono text-foreground/50">{title}</h3>
+      <ul
+        className={cn("flex list-none flex-wrap gap-1 p-0", className)}
+        aria-label={`list of ${title.toLowerCase()}`}
+      >
+        {skills.map((skill) => (
+          <li key={skill.label}>
+            <a
+              href={skill.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="resume-details inline-flex items-center rounded-md border border-transparent bg-secondary px-2 py-0.5 font-mono text-foreground/70 transition-colors hover:bg-secondary/70 print:px-2 print:py-0.5"
+              aria-label={`skill: ${skill.label}`}
+            >
+              {skill.label}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
+    </div>
+  );
+}
+
+interface SkillsProps {
+  skills?: Skills;
+  categories?: readonly SkillGroup[];
+  className?: string;
+  sectionTitle?: string;
+  categoryTitles?: {
+    blockchain?: string;
+    frontend?: string;
+    focus?: string;
+  };
+}
+
+export function Skills({
+  skills,
+  categories,
+  className,
+  sectionTitle = "core stack",
+  categoryTitles,
+}: SkillsProps) {
+  const resolvedCategories =
+    categories ??
+    (skills
+      ? [
+          {
+            id: "blockchain",
+            title: categoryTitles?.blockchain ?? "blockchain",
+            skills: skills.blockchain,
+          },
+          {
+            id: "frontend",
+            title: categoryTitles?.frontend ?? "frontend",
+            skills: skills.frontend,
+          },
+          {
+            id: "focus",
+            title: categoryTitles?.focus ?? "focus areas",
+            skills: skills.focus,
+          },
+        ]
+      : []);
+
+  return (
+    <Section className={className}>
+      <h2 className="resume-section-title mb-2 font-bold" id="skills-section">
+        {sectionTitle}
+      </h2>
+      {resolvedCategories.map((category) => (
+        <SkillsList
+          key={category.id}
+          title={category.title}
+          skills={category.skills}
+        />
+      ))}
     </Section>
   );
 }

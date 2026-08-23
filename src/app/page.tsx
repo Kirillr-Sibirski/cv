@@ -110,19 +110,17 @@ export default function ResumePage() {
       >
         <Header />
 
-        <div className="space-y-9 print:space-y-2">
-          <WorkExperience
-            work={RESUME_DATA.work}
-            title="experience"
-            index="01"
-            id="experience"
+        <div className="space-y-8 print:space-y-1.5">
+          <Skills
+            categories={RESUME_DATA.skillCategories}
+            sectionTitle="tech stack"
           />
+
+          <WorkExperience work={RESUME_DATA.work} title="experience" />
 
           <WorkExperience
             work={RESUME_DATA.engineeringProjects}
             title="engineering projects"
-            index="02"
-            id="engineering-projects"
           />
 
           <Education
@@ -130,18 +128,9 @@ export default function ResumePage() {
               { ...university, curriculum: RESUME_DATA.curriculum },
               secondary,
             ]}
-            index="03"
-            id="education"
           />
 
-          <Hackathons index="04" id="hackathons" />
-
-          <Skills
-            categories={RESUME_DATA.skillCategories}
-            sectionTitle="tech stack"
-            index="05"
-            id="tech-stack"
-          />
+          <Hackathons />
         </div>
       </section>
 

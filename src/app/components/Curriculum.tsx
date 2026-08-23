@@ -92,7 +92,7 @@ function DisciplineCard({ discipline }: { discipline: Discipline }) {
   const doneCount = discipline.courses.filter((c) => c.done).length;
 
   return (
-    <section className="rounded-md border border-border p-3">
+    <section className="rounded-md border border-border p-3 transition-colors hover:border-foreground/25">
       <div className="flex items-baseline justify-between gap-x-2">
         <h5 className="resume-body font-semibold">{discipline.title}</h5>
         <span className="resume-details shrink-0 font-mono tabular-nums text-foreground/50">
