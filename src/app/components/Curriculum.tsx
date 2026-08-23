@@ -5,9 +5,13 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
-type Course = { readonly name: string; readonly ec: number };
+type Course = {
+  readonly name: string;
+  readonly ec: number;
+  readonly desc?: string;
+};
 
-type CompletedGroup = {
+type Group = {
   readonly id: string;
   readonly title: string;
   readonly blurb: string;
@@ -20,78 +24,138 @@ type Choice = {
   readonly options: readonly string[];
 };
 
-export type CurriculumData = {
-  readonly completed: {
-    readonly label: string;
-    readonly credits: number;
-    readonly groups: readonly CompletedGroup[];
-  };
-  readonly upcoming: {
-    readonly label: string;
-    readonly title: string;
-    readonly credits: number;
-    readonly courses: readonly Course[];
-    readonly choices: readonly Choice[];
-  };
+type Block = {
+  readonly id: string;
+  readonly label: string;
+  readonly title: string;
+  readonly status: "done" | "todo";
+  readonly credits: number;
+  readonly groups: readonly Group[];
+  readonly choices?: readonly Choice[];
 };
 
-function CourseChip({ course, muted }: { course: Course; muted?: boolean }) {
+export type CurriculumData = {
+  readonly totalCredits: number;
+  readonly completedCredits: number;
+  readonly blocks: readonly Block[];
+};
+
+/** A course row. Hover or focus reveals the description. */
+function CourseRow({ course, done }: { course: Course; done: boolean }) {
   return (
-    <li
-      className={cn(
-        "inline-flex items-baseline gap-x-1.5 rounded-md px-2 py-1",
-        muted
-          ? "border border-dashed border-border text-foreground/70"
-          : "bg-secondary/60 text-foreground",
-      )}
-    >
-      <span className="resume-details">{course.name}</span>
-      {course.ec > 0 && (
-        <span className="resume-details font-mono text-foreground/50">
-          {course.ec} EC
+    <li className="group relative">
+      <div
+        tabIndex={course.desc ? 0 : -1}
+        className={cn(
+          "flex items-baseline justify-between gap-x-3 rounded px-2 py-1.5 transition-colors",
+          "hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none",
+          !done && "text-foreground/75",
+        )}
+      >
+        <span className="resume-details leading-snug">{course.name}</span>
+        <span className="resume-details shrink-0 font-mono tabular-nums text-foreground/55">
+          {course.ec > 0 ? `${course.ec} EC` : "—"}
         </span>
+      </div>
+
+      {course.desc && (
+        <div
+          role="tooltip"
+          className={cn(
+            "pointer-events-none absolute left-0 top-full z-30 mt-1 hidden w-max max-w-[17rem]",
+            "rounded-md border border-border bg-background px-2.5 py-1.5 shadow-lg",
+            "group-hover:block group-focus-within:block",
+          )}
+        >
+          <p className="resume-details leading-snug text-foreground/85">
+            {course.desc}
+          </p>
+        </div>
       )}
     </li>
   );
 }
 
-/**
- * Proportional rail: each completed discipline gets width by credit weight,
- * with the upcoming semester tacked on as a dashed remainder.
- */
-function ProgressRail({ data }: { data: CurriculumData }) {
-  const total = data.completed.credits + data.upcoming.credits;
-  const shades = [
-    "bg-foreground",
-    "bg-foreground/80",
-    "bg-foreground/60",
-    "bg-foreground/45",
-    "bg-foreground/30",
-  ];
+function GroupCard({ group, done }: { group: Group; done: boolean }) {
+  const ec = group.courses.reduce((sum, c) => sum + c.ec, 0);
 
   return (
-    <div aria-hidden="true" className="mt-3">
-      <div className="flex h-2 w-full gap-x-0.5 overflow-hidden rounded-full">
-        {data.completed.groups.map((group, index) => {
-          const ec = group.courses.reduce((sum, c) => sum + c.ec, 0);
-          return (
-            <div
-              key={group.id}
-              className={cn("h-full", shades[index % shades.length])}
-              style={{ width: `${(ec / total) * 100}%` }}
-              title={`${group.title} — ${ec} EC`}
-            />
-          );
-        })}
-        <div
-          className="h-full rounded-r-full border border-dashed border-foreground/40"
-          style={{ width: `${(data.upcoming.credits / total) * 100}%` }}
-          title={`${data.upcoming.label} — ${data.upcoming.credits} EC`}
-        />
+    <section
+      className={cn(
+        "rounded-lg border p-3",
+        done ? "border-border/70" : "border-dashed border-foreground/25",
+      )}
+    >
+      <div className="flex items-baseline justify-between gap-x-2">
+        <h5 className="resume-body font-semibold">{group.title}</h5>
+        <span className="resume-details shrink-0 font-mono tabular-nums text-foreground/55">
+          {ec} EC
+        </span>
       </div>
-      <div className="resume-details mt-1 flex justify-between font-mono text-foreground/50">
-        <span>{data.completed.credits} EC completed</span>
-        <span>+{data.upcoming.credits} EC in progress</span>
+      <p className="resume-details mt-0.5 text-pretty text-foreground/60">
+        {group.blurb}
+      </p>
+      <ul className="mt-2 list-none divide-y divide-border/60 p-0">
+        {group.courses.map((course) => (
+          <CourseRow key={course.name} course={course} done={done} />
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function ChoiceCard({ choice }: { choice: Choice }) {
+  return (
+    <section className="rounded-lg border border-dashed border-foreground/25 p-3">
+      <div className="flex items-baseline justify-between gap-x-2">
+        <h5 className="resume-body font-semibold">{choice.title}</h5>
+        <span className="resume-details shrink-0 font-mono text-foreground/55">
+          {choice.ec}
+        </span>
+      </div>
+      <p className="resume-details mt-0.5 text-foreground/60">
+        {choice.options.length > 1 ? "one of" : "to be decided"}
+      </p>
+      <ul className="mt-2 flex list-none flex-wrap gap-1 p-0">
+        {choice.options.map((option) => (
+          <li
+            key={option}
+            className="resume-details rounded-md bg-secondary/70 px-2 py-1 text-foreground/75"
+          >
+            {option}
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+/** Whole-degree rail: filled for credits earned, dashed for what remains. */
+function ProgressRail({ data }: { data: CurriculumData }) {
+  const remaining = data.totalCredits - data.completedCredits;
+  const pct = (data.completedCredits / data.totalCredits) * 100;
+
+  return (
+    <div className="mt-3">
+      <div className="flex items-baseline justify-between">
+        <span className="resume-body font-semibold tabular-nums">
+          {data.completedCredits}{" "}
+          <span className="text-foreground/50">/ {data.totalCredits} EC</span>
+        </span>
+        <span className="resume-details font-mono text-foreground/55">
+          {Math.round(pct)}% of the degree
+        </span>
+      </div>
+      <div
+        className="mt-1.5 flex h-2.5 w-full overflow-hidden rounded-full border border-border"
+        role="img"
+        aria-label={`${data.completedCredits} of ${data.totalCredits} credits completed`}
+      >
+        <div className="h-full bg-foreground" style={{ width: `${pct}%` }} />
+        <div
+          className="h-full bg-[repeating-linear-gradient(45deg,transparent,transparent_3px,hsl(var(--muted-foreground)/0.35)_3px,hsl(var(--muted-foreground)/0.35)_6px)]"
+          style={{ width: `${(remaining / data.totalCredits) * 100}%` }}
+        />
       </div>
     </div>
   );
@@ -115,81 +179,53 @@ export function Curriculum({ data }: { data: CurriculumData }) {
           aria-hidden="true"
         />
         {open ? "hide" : "show"} curriculum
-        <span className="text-foreground/40">
-          · {data.completed.credits} EC done
+        <span className="text-foreground/45">
+          · {data.completedCredits}/{data.totalCredits} EC
         </span>
       </button>
 
       <div id={panelId} hidden={!open}>
         <ProgressRail data={data} />
 
-        <div className="mt-4 grid gap-3 md:grid-cols-2">
-          {data.completed.groups.map((group) => {
-            const ec = group.courses.reduce((sum, c) => sum + c.ec, 0);
+        <p className="resume-details mt-2 font-mono text-foreground/50">
+          hover a course for what it covers.
+        </p>
+
+        <div className="mt-3 space-y-4">
+          {data.blocks.map((block) => {
+            const done = block.status === "done";
             return (
-              <section
-                key={group.id}
-                className="rounded-lg border border-border/70 p-3"
-              >
-                <div className="flex items-baseline justify-between gap-x-2">
-                  <h4 className="resume-body font-semibold">{group.title}</h4>
-                  <span className="resume-details shrink-0 font-mono text-foreground/50">
-                    {ec} EC
+              <div key={block.id}>
+                <div className="flex items-baseline justify-between gap-x-2 border-b border-border pb-1">
+                  <h4 className="resume-body font-semibold">
+                    {block.label}
+                    <span className="ml-1.5 font-normal text-foreground/60">
+                      {block.title}
+                    </span>
+                  </h4>
+                  <span
+                    className={cn(
+                      "resume-details shrink-0 rounded px-1.5 py-0.5 font-mono",
+                      done
+                        ? "bg-foreground text-background"
+                        : "border border-dashed border-foreground/30 text-foreground/60",
+                    )}
+                  >
+                    {done ? "completed" : "upcoming"} · {block.credits} EC
                   </span>
                 </div>
-                <p className="resume-details mt-1 text-pretty font-mono text-foreground/70">
-                  {group.blurb}
-                </p>
-                <ul className="mt-2 flex list-none flex-wrap gap-1 p-0">
-                  {group.courses.map((course) => (
-                    <CourseChip key={course.name} course={course} />
+
+                <div className="mt-2 grid gap-2.5 md:grid-cols-2">
+                  {block.groups.map((group) => (
+                    <GroupCard key={group.id} group={group} done={done} />
                   ))}
-                </ul>
-              </section>
+                  {block.choices?.map((choice) => (
+                    <ChoiceCard key={choice.title} choice={choice} />
+                  ))}
+                </div>
+              </div>
             );
           })}
-
-          <section className="rounded-lg border border-dashed border-foreground/30 bg-secondary/20 p-3 md:col-span-2">
-            <div className="flex items-baseline justify-between gap-x-2">
-              <h4 className="resume-body font-semibold">
-                {data.upcoming.label} — {data.upcoming.title}
-              </h4>
-              <span className="resume-details shrink-0 font-mono text-foreground/50">
-                {data.upcoming.credits} EC
-              </span>
-            </div>
-            <p className="resume-details mt-1 font-mono text-foreground/70">
-              not taken yet.
-            </p>
-            <ul className="mt-2 flex list-none flex-wrap gap-1 p-0">
-              {data.upcoming.courses.map((course) => (
-                <CourseChip key={course.name} course={course} muted />
-              ))}
-            </ul>
-
-            <div className="mt-3 grid gap-3 sm:grid-cols-2">
-              {data.upcoming.choices.map((choice) => (
-                <div key={choice.title}>
-                  <p className="resume-details font-mono text-foreground/60">
-                    <span className="font-semibold text-foreground/80">
-                      {choice.title}
-                    </span>{" "}
-                    · {choice.ec} · one of
-                  </p>
-                  <ul className="mt-1 flex list-none flex-wrap gap-1 p-0">
-                    {choice.options.map((option) => (
-                      <li
-                        key={option}
-                        className="resume-details rounded-md border border-dashed border-border px-2 py-1 text-foreground/60"
-                      >
-                        {option}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
       </div>
     </div>
