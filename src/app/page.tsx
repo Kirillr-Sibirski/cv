@@ -8,85 +8,68 @@ import { Skills } from "./components/Skills";
 import { Header } from "./components/Header";
 import { Hackathons } from "./components/Hackathons";
 
+const TITLE = "kirill rybkov cv";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://krlberg.dev"),
-  title: "karl ryberg cv",
+  title: TITLE,
   description: RESUME_DATA.about,
   openGraph: {
-    title: "karl ryberg cv",
+    title: TITLE,
     description: RESUME_DATA.about,
     type: "profile",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "karl ryberg cv",
+    title: TITLE,
     description: RESUME_DATA.about,
   },
 };
 
-/**
- * Transform social links for command menu
- */
 function getCommandMenuLinks() {
-  // const links = [];
-
-  // if (RESUME_DATA.personalWebsiteUrl) {
-  //   links.push({
-  //     url: RESUME_DATA.personalWebsiteUrl,
-  //     title: "Personal Website",
-  //   });
-  // }
-
-  return [
-    // ...links,
-    ...RESUME_DATA.contact.social.map((socialMediaLink) => ({
-      url: socialMediaLink.url,
-      title: socialMediaLink.name,
-    })),
-  ];
+  return RESUME_DATA.contact.social.map((socialMediaLink) => ({
+    url: socialMediaLink.url,
+    title: socialMediaLink.name,
+  }));
 }
 
 export default function ResumePage() {
+  const { university, secondary } = RESUME_DATA.education;
+
   return (
     <main
-      className="print:max-w-letter container relative mx-auto scroll-my-12 overflow-auto p-4 print:px-7 print:py-6 md:p-16"
+      className="print:max-w-letter container relative mx-auto scroll-my-12 overflow-auto p-4 print:!px-6 print:!py-3 md:p-16"
       id="main-content"
     >
       <div className="sr-only">
-        <h1>karl ryberg cv</h1>
+        <h1>{TITLE}</h1>
       </div>
 
       <section
-        className="mx-auto w-full max-w-3xl space-y-8 bg-white print:space-y-3"
+        className="mx-auto w-full max-w-3xl space-y-8 bg-white print:space-y-1.5"
         aria-label="resume content"
       >
         <Header />
 
-        <div className="space-y-8 print:space-y-3">
-          <Skills skills={RESUME_DATA.skills} />
+        <div className="space-y-8 print:space-y-1.5">
+          <Skills
+            categories={RESUME_DATA.skillCategories}
+            sectionTitle="tech stack"
+          />
 
-          <WorkExperience work={RESUME_DATA.work} />
+          <WorkExperience work={RESUME_DATA.work} title="experience" />
 
-          <div className="print:break-before-page" />
+          <WorkExperience
+            work={RESUME_DATA.engineeringProjects}
+            title="engineering projects"
+          />
+
+          <Education institutions={[university, secondary]} />
+
+          <Projects projects={RESUME_DATA.projects} title="other builds" />
 
           <Hackathons />
-
-          <Projects projects={RESUME_DATA.projects} />
-
-          <Education education={RESUME_DATA.education} />
-
-          <div className="resume-details pb-2 pt-1 text-center font-mono text-foreground/65 print:pt-0">
-            <a
-              href="https://krlberg.dev/hardware"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
-            >
-              oh btw, that&apos;s not everything. here&apos;s the other side of
-              me...
-            </a>
-          </div>
         </div>
       </section>
 

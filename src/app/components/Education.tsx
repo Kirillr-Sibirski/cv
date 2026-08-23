@@ -1,77 +1,157 @@
 "use client";
 
-import { Section } from "@/components/ui/section";
+import { useState } from "react";
+import { ChevronDownIcon } from "lucide-react";
 
-interface EducationProps {
-  education: readonly {
-    school: string;
-    schoolUrl: string;
-    degree: string;
-    degreeUrl: string;
-    start: string;
-    end: string;
-    achievements: readonly {
-      title: string;
-      achievements: readonly string[];
-      keywords: readonly string[];
-    }[];
-  }[];
+import { Section } from "@/components/ui/section";
+import { cn } from "@/lib/utils";
+
+type Course = { readonly name: string; readonly ec: string };
+type CourseGroup = {
+  readonly title: string;
+  readonly courses: readonly Course[];
+};
+
+export type Institution = {
+  readonly school: string;
+  readonly schoolUrl: string;
+  readonly degree: string;
+  readonly degreeUrl: string;
+  readonly start: string;
+  readonly end: string;
+  readonly gpa?: string;
+  readonly courseGroups: readonly CourseGroup[];
+};
+
+function SchoolLink({ label, url }: { label: string; url: string }) {
+  if (!url) return <>{label}</>;
+  return (
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+    >
+      {label}
+    </a>
+  );
 }
 
-export function Education({ education }: EducationProps) {
+function EducationCard({ item }: { item: Institution }) {
+  const [open, setOpen] = useState(false);
+  const courseCount = item.courseGroups.reduce(
+    (total, group) => total + group.courses.length,
+    0,
+  );
+
   return (
-    <Section className="print:break-inside-avoid">
+    <article className="rounded-lg border border-border/70 p-3 print:break-inside-avoid print:p-2.5">
+      <div className="flex items-start justify-between gap-3">
+        <div className="space-y-1">
+          <h3 className="resume-body font-semibold">
+            <SchoolLink label={item.school} url={item.schoolUrl} />
+          </h3>
+          <p className="resume-details font-mono text-foreground/70">
+            <SchoolLink label={item.degree} url={item.degreeUrl} />
+          </p>
+          {item.gpa && (
+            <p className="resume-details font-mono text-foreground/80">
+              gpa: {item.gpa}
+            </p>
+          )}
+        </div>
+        <p className="resume-details shrink-0 font-mono text-foreground/60">
+          {item.start} - {item.end}
+        </p>
+      </div>
+
+      {courseCount > 0 && (
+        <>
+          {/* Screen: collapsed by default, since there are a lot of these. */}
+          <button
+            type="button"
+            onClick={() => setOpen((value) => !value)}
+            aria-expanded={open}
+            className="resume-details mt-2 inline-flex items-center gap-x-1 font-mono text-foreground/70 hover:text-foreground print:hidden"
+          >
+            <ChevronDownIcon
+              className={cn(
+                "size-3 transition-transform",
+                open && "rotate-180",
+              )}
+              aria-hidden="true"
+            />
+            {open ? "hide" : "show"} {courseCount} results
+          </button>
+
+          <div
+            className={cn(
+              "mt-3 gap-2.5 sm:grid-cols-2 xl:grid-cols-4",
+              open ? "grid" : "hidden",
+              "print:hidden",
+            )}
+          >
+            {item.courseGroups.map((group) => (
+              <div key={group.title} className="space-y-2">
+                <h4 className="resume-body font-semibold">{group.title}</h4>
+                <div className="grid gap-1.5">
+                  {group.courses.map((course) => (
+                    <div
+                      key={`${group.title}-${course.name}`}
+                      className="rounded-md border border-border/70 bg-secondary/40 px-2 py-1.5"
+                    >
+                      <div className="flex items-start justify-between gap-2">
+                        <div className="resume-details font-semibold text-foreground">
+                          {course.name}
+                        </div>
+                        <div className="resume-details font-mono text-foreground/60">
+                          {course.ec}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Print: one dense line per group, so the resume still fits two pages. */}
+          <div className="hidden print:mt-1.5 print:block">
+            {item.courseGroups.map((group) => (
+              <p
+                key={group.title}
+                className="resume-details font-mono text-foreground/80"
+              >
+                <span className="font-semibold">{group.title}:</span>{" "}
+                {group.courses
+                  .map((course) => `${course.name} (${course.ec})`)
+                  .join(", ")}
+              </p>
+            ))}
+          </div>
+        </>
+      )}
+    </article>
+  );
+}
+
+export function Education({
+  institutions,
+}: {
+  institutions: readonly Institution[];
+}) {
+  return (
+    <Section>
       <h2 className="resume-section-title font-bold" id="education-section">
         education
       </h2>
       <div
-        className="space-y-3"
+        className="space-y-3 print:space-y-1"
         role="feed"
         aria-labelledby="education-section"
       >
-        {education.map((item) => (
-          <article
-            key={`${item.school}-${item.start}`}
-            className="rounded-lg border border-border/70 p-3 print:p-2.5"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h3 className="resume-body font-semibold">
-                  <a
-                    href={item.schoolUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {item.school}
-                  </a>
-                </h3>
-                <p className="resume-details font-mono text-foreground/70">
-                  <a
-                    href={item.degreeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {item.degree}
-                  </a>
-                </p>
-                {item.achievements.map((achievement) =>
-                  achievement.achievements[0] ? (
-                    <p
-                      key={achievement.title}
-                      className="resume-details mt-1 text-pretty font-mono text-foreground/80"
-                    >
-                      {achievement.title}: {achievement.achievements[0]}
-                    </p>
-                  ) : null,
-                )}
-              </div>
-              <p className="resume-details font-mono text-foreground/60">
-                {item.start} - {item.end}
-              </p>
-            </div>
-          </article>
+        {institutions.map((item) => (
+          <EducationCard key={item.school} item={item} />
         ))}
       </div>
     </Section>

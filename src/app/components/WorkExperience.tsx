@@ -162,7 +162,7 @@ export function WorkExperience({
         {title}
       </h2>
       <div
-        className="space-y-4 print:space-y-2"
+        className="space-y-4 print:space-y-1"
         role="feed"
         aria-labelledby="work-experience"
       >

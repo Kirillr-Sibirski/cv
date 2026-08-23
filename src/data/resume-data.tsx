@@ -2,7 +2,7 @@ import { GitHubIcon, LinkedInIcon, XIcon } from "@/components/icons";
 import { SendIcon } from "lucide-react";
 
 export const RESUME_DATA = {
-  name: "karl ryberg",
+  name: "kirill rybkov",
   initials: "kr",
   locations: [
     {
@@ -15,7 +15,7 @@ export const RESUME_DATA = {
     },
   ],
   about:
-    "engineering student and full-stack blockchain developer focused on defi strategies, lending and leverage mechanics, and simplifying onchain ux.",
+    "bsc advanced technology student @ university of twente. building risk on radar, an evidence-backed fmea platform for reliability engineering. experience across embedded electronics, control systems, cad, and full-stack product work.",
   avatarUrl: "./image.png",
   contact: {
     email: "",
@@ -40,84 +40,137 @@ export const RESUME_DATA = {
         url: "https://t.me/krlberg",
         icon: SendIcon,
       },
-      // {
-      //   name: "YouTube",
-      //   url: "https://www.youtube.com/watch?v=R8I-8ekBumE",
-      //   icon: Youtube,
-      // },
     ],
   },
-  education: [
+
+  /**
+   * Skill groups, ordered so the engineering side reads first. The blockchain
+   * row is kept deliberately short: it is prior experience now, not the pitch.
+   */
+  skillCategories: [
     {
-      school: "university of twente",
-      schoolUrl: "https://www.utwente.nl/en/",
-      degree: "bsc advanced technology",
-      degreeUrl:
-        "https://www.utwente.nl/en/education/bachelor/programmes/advanced-technology/",
-      start: "sep 2025",
-      end: "aug 2028",
-      achievements: [
+      id: "embedded",
+      title: "electronics & embedded",
+      skills: [
+        { label: "arduino", url: "https://www.arduino.cc/" },
         {
-          title: "relevant coursework",
-          achievements: [
-            "calculus 1, calculus 2, linear algebra, and eaps (matlab).",
-          ],
-          keywords: [],
+          label: "esp32",
+          url: "https://www.espressif.com/en/products/socs/esp32",
         },
-        // {
-        //   title: "Supplementary Training",
-        //   achievements: [
-        //     "Completed Cyfrin Updraft courses in Smart Contract Security, Foundry Fundamentals, and Advanced Foundry.",
-        //   ],
-        //   keywords: [],
-        // },
+        { label: "raspberry pi", url: "https://www.raspberrypi.com/" },
+        {
+          label: "pwm / analog / digital i/o",
+          url: "https://docs.arduino.cc/",
+        },
+        {
+          label: "i2c sensors",
+          url: "https://learn.sparkfun.com/tutorials/i2c/all",
+        },
+        {
+          label: "signal conditioning",
+          url: "https://en.wikipedia.org/wiki/Signal_conditioning",
+        },
+        {
+          label: "rc electronics",
+          url: "https://en.wikipedia.org/wiki/Electronic_speed_control",
+        },
       ],
     },
-    // , {
-    //   school: "The British School of Barcelona",
-    //   degree: "Secondary Education",
-    //   start: "Sep 2021",
-    //   end: "Jun 2025",
-    //   achievements: [
-    //     // {
-    //     //   title: "A-level",
-    //     //   keywords: ["Grades", "A*-E"],
-    //     //   achievements: [
-    //     //     "EPQ: A*, Russian: A*, Predicted: Physics B, Math A, Computer Science A"
-    //     //   ]
-    //     // },
-    //     // {
-    //     //   title: "iGCSE",
-    //     //   keywords: ["Grades", "9-4"],
-    //     //   achievements: [
-    //     //     "Langs: Ru 9, Sp 8, En 7; STEM: Math 7, Comp 7, Sci 6:6; Humanities: Geo 7, Bus 6, Lit 4"
-    //     //   ]
-    //     // },
-    //     // {
-    //     //   title: "Duke of Edinburgh",
-    //     //   keywords: ["Expedition"],
-    //     //   achievements: [
-    //     //     "Four journeys in the Catalonia wilderness, walking 20km each day with 15kg backpacks"
-    //     //   ]
-    //     // },
-    //     // {
-    //     //   title: "MUN",
-    //     //   keywords: ["Debate"],
-    //     //   achievements: [
-    //     //     "Drafted UN resolution clause on post-partum healthcare",
-    //     //   ]
-    //     // },
-    //     // {
-    //     //   title: "Public Speaking",
-    //     //   keywords: ["4Voices"],
-    //     //   achievements: [
-    //     //     "Gave a speech at CosmoCaixa venue in Barcelona to 300 people on brain chips"
-    //     //   ]
-    //     // }
-    //   ]
-    // }
+    {
+      id: "mechanical",
+      title: "mechanical / cad",
+      skills: [
+        { label: "onshape", url: "https://www.onshape.com/en/" },
+        { label: "solidworks", url: "https://www.solidworks.com/" },
+        { label: "kicad", url: "https://www.kicad.org/" },
+        {
+          label: "fdm 3d printing",
+          url: "https://en.wikipedia.org/wiki/3D_printing",
+        },
+      ],
+    },
+    {
+      id: "software",
+      title: "software",
+      skills: [
+        { label: "python", url: "https://www.python.org/" },
+        { label: "c/c++", url: "https://isocpp.org/" },
+        { label: "typescript", url: "https://www.typescriptlang.org/docs/" },
+        { label: "react", url: "https://react.dev/learn" },
+        { label: "next.js", url: "https://nextjs.org/docs" },
+        {
+          label: "matlab",
+          url: "https://www.mathworks.com/products/matlab.html",
+        },
+        {
+          label: "simulink",
+          url: "https://www.mathworks.com/products/simulink.html",
+        },
+        { label: "git", url: "https://github.com/Kirillr-Sibirski" },
+      ],
+    },
+    {
+      id: "blockchain",
+      title: "blockchain (prior focus)",
+      skills: [
+        { label: "solidity", url: "https://soliditylang.org/" },
+        { label: "foundry", url: "https://www.getfoundry.sh/" },
+        { label: "viem", url: "https://v1.viem.sh/docs/getting-started.html" },
+        { label: "radix dapp toolkit", url: "https://docs.radixdlt.com/" },
+      ],
+    },
   ],
+
+  /**
+   * Paid / founded work, newest first. Hardware and reliability lead; the
+   * Lattic3 entry is carried over verbatim from the old crypto page.
+   */
   work: [
+    {
+      company: "good thinking",
+      link: undefined,
+      badges: ["TODO"],
+      title: "TODO — role",
+      start: "TODO",
+      end: "TODO",
+      description: (
+        <div>
+          <ul className="list-inside list-disc">
+            <li>
+              placeholder — send me the role, dates, and 2-3 bullets on what you
+              actually did here and i will write this properly.
+            </li>
+          </ul>
+        </div>
+      ),
+    },
+    {
+      company: "risk on radar",
+      link: "https://riskonradar.com",
+      badges: ["fmea", "reliability", "next.js", "typescript"],
+      title: "founder",
+      start: "2026",
+      end: undefined,
+      description: (
+        <div>
+          <ul className="list-inside list-disc">
+            <li>
+              building an fmea intelligence platform for reliability and quality
+              engineering teams, grounded in peer-reviewed failure literature
+              rather than whoever happens to be in the room.
+            </li>
+            <li>
+              structures papers, standards, industrial reports, and ndt records
+              into reusable failure modes, causes, effects, and controls.
+            </li>
+            <li>
+              models subsystem dependencies and propagation paths so failure
+              patterns transfer across operating contexts and domains.
+            </li>
+          </ul>
+        </div>
+      ),
+    },
     {
       company: "lattic3 finance",
       link: "https://lattic3.xyz",
@@ -146,43 +199,168 @@ export const RESUME_DATA = {
       ),
     },
   ],
-  skills: {
-    blockchain: [
-      { label: "solidity", url: "https://soliditylang.org/" },
-      { label: "foundry", url: "https://www.getfoundry.sh/" },
-      { label: "viem", url: "https://v1.viem.sh/docs/getting-started.html" },
-      { label: "ethers.js", url: "https://docs.ethers.org/v6/" },
-      { label: "thirdweb", url: "https://portal.thirdweb.com/" },
-      { label: "chainlink", url: "https://docs.chain.link/" },
-      { label: "pyth", url: "https://docs.pyth.network/" },
-      { label: "world id", url: "https://docs.world.org/world-id" },
-      { label: "tenderly virtual testnet", url: "https://docs.tenderly.co/" },
-      { label: "sui ts sdk", url: "https://sdk.mystenlabs.com/typescript" },
-      { label: "radix dapp toolkit", url: "https://docs.radixdlt.com/" },
-    ],
-    frontend: [
-      {
-        label: "javascript/typescript",
-        url: "https://www.typescriptlang.org/docs/",
-      },
-      { label: "react", url: "https://react.dev/learn" },
-      { label: "next.js", url: "https://nextjs.org/docs" },
-      { label: "vite", url: "https://vite.dev/guide/" },
-      { label: "tailwind css", url: "https://tailwindcss.com/docs" },
-      { label: "shadcn/ui", url: "https://ui.shadcn.com/docs" },
-      { label: "ui/ux design", url: "" },
-    ],
-    focus: [
-      { label: "defi strategies", url: "" },
-      { label: "lending functionalities", url: "" },
-      {
-        label: "leverage w/ flash loans",
-        url: "",
-      },
-      { label: "simpler ux", url: "" },
-      { label: "evm-based chains", url: "" },
-    ],
+
+  /**
+   * Engineering projects, formerly the body of the hardware page.
+   */
+  engineeringProjects: [
+    {
+      company: "active suspension system",
+      link: "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
+      badges: ["arduino", "imu", "pid", "cad", "3d printing"],
+      title: "completed during epq a-level",
+      start: "",
+      end: "",
+      description: (
+        <p>
+          built an active anti-roll system for a 1/10 off-road rc car, aimed at
+          reducing rollover on uneven terrain rather than just upgrading the
+          suspension. designed the linkage and printed parts, wired an arduino
+          nano with an mpu6050 imu, and wrote the pid in c/c++ to turn
+          orientation data into servo-driven ride-height adjustment. most of the
+          work was getting the loop to behave in the real world: packaging the
+          electronics on the chassis, powering from the rc receiver, and tuning
+          the response on slopes and rough surfaces.
+        </p>
+      ),
+    },
+    {
+      company: "autonomous fire detection aircraft",
+      link: undefined,
+      badges: ["uav", "flight controller", "gps", "raspberry pi"],
+      title: "high school team project",
+      start: "",
+      end: "",
+      description: (
+        <p>
+          fixed-wing drone aimed at early wildfire detection in catalonia. my
+          part was the electronics and physical build: integrating the speedybee
+          flight controller, power system, gps, receiver, and raspberry pi
+          payload, then turning that into an airframe that could survive and
+          fly. it forced real trade-offs between structure, weight,
+          manufacturability, and onboard electronics instead of treating them as
+          separate problems.
+        </p>
+      ),
+    },
+    {
+      company: "piezoelectric accelerometer",
+      link: "https://drive.google.com/file/d/12hf3-xHmd9VUs-cSkcsxMcEc7xe-uF2a/view?usp=sharing",
+      badges: ["charge amplifier", "arduino", "signal conditioning"],
+      title: "university team project",
+      start: "",
+      end: "",
+      description: (
+        <p>
+          designed and validated a piezoelectric accelerometer for subwoofer
+          testing, focusing on the electronics and software: signal conditioning
+          via an integrator circuit, arduino-based readout, and
+          calibration/testing for the final prototype. it sat between theory and
+          hardware, so the mechanical model, analogue circuit behaviour, and
+          measured shaker-test results all had to line up.
+        </p>
+      ),
+    },
+  ],
+
+  projects: [
+    {
+      title: "hormesis keyboard",
+      projectUrl: "https://github.com/Kirillr-Sibirski/hormesis-keyboard",
+      techStack: [
+        { label: "onshape", url: "https://www.onshape.com/en/" },
+        { label: "kicad", url: "https://www.kicad.org/" },
+        {
+          label: "zmk firmware",
+          url: "https://github.com/Kirillr-Sibirski/zmk-config-hormesis-v2",
+        },
+      ],
+      description:
+        "custom low-profile split keyboard with an original case in onshape, a routed pcb in kicad, and a zmk firmware setup. combines cad, electronics, pcb layout, and firmware in one build.",
+    },
+  ],
+
+  education: {
+    university: {
+      school: "university of twente",
+      schoolUrl: "https://www.utwente.nl/en/",
+      degree: "bsc advanced technology",
+      degreeUrl:
+        "https://www.utwente.nl/en/education/bachelor/programmes/advanced-technology/",
+      start: "sep 2025",
+      end: "aug 2028",
+      gpa: "7.2 / 10",
+      courseGroups: [
+        {
+          title: "math & software",
+          courses: [
+            { name: "calculus 1 / 2", ec: "8 ec" },
+            { name: "programming skills", ec: "3 ec" },
+          ],
+        },
+        {
+          title: "electronics",
+          courses: [
+            { name: "basic electronics", ec: "4 ec" },
+            { name: "accelerom. project", ec: "4 ec" },
+          ],
+        },
+        {
+          title: "engineering",
+          courses: [
+            { name: "mechanics", ec: "4 ec" },
+            { name: "system dynamics", ec: "4 ec" },
+          ],
+        },
+        {
+          title: "materials",
+          courses: [
+            { name: "material properties", ec: "3 ec" },
+            { name: "polymer materials", ec: "3 ec" },
+          ],
+        },
+      ],
+    },
+    secondary: {
+      school: "the british school of barcelona",
+      schoolUrl: "https://www.britishschoolbarcelona.com/",
+      degree: "a-levels & igcse",
+      degreeUrl: "",
+      start: "sep 2021",
+      end: "jun 2025",
+      // TODO: confirm grades before this goes anywhere near a job application.
+      courseGroups: [
+        {
+          title: "a-level",
+          courses: [
+            { name: "epq", ec: "A*" },
+            { name: "russian", ec: "A*" },
+            { name: "mathematics", ec: "A" },
+            { name: "computer science", ec: "A" },
+            { name: "physics", ec: "B" },
+          ],
+        },
+        {
+          title: "igcse",
+          courses: [
+            { name: "russian", ec: "9" },
+            { name: "spanish", ec: "8" },
+            { name: "english", ec: "7" },
+            { name: "mathematics", ec: "7" },
+            { name: "computer science", ec: "7" },
+            { name: "geography", ec: "7" },
+            { name: "science (dual)", ec: "6" },
+            { name: "business", ec: "6" },
+          ],
+        },
+      ],
+    },
   },
+
+  /**
+   * Trimmed from eight to the four strongest results, since the crypto work is
+   * now supporting evidence rather than the headline.
+   */
   hackathons: [
     {
       hackathon: "ethlisbon 2022",
@@ -194,31 +372,7 @@ export const RESUME_DATA = {
       teamSize: 4,
       role: "design",
       description: "one-click leveraged futures platform.",
-      techStack: ["euler", "sommelier finance", "defi", "leverage"],
-    },
-    {
-      hackathon: "ethglobal brussels",
-      hackathonUrl: "https://ethglobal.com/events/brussels",
-      projectName: "scrbl",
-      projectUrl: "https://ethglobal.com/showcase/scrbl-6d9uh",
-      achievement: "worldcoin pool prize",
-      teamSize: 3,
-      role: "solidity",
-      description:
-        "under-collateralized lending platform leveraging worldcoin identity.",
-      techStack: ["pyth", "chainlink", "world id"],
-    },
-    {
-      hackathon: "xstocks cannes",
-      hackathonUrl: "https://xstocks-market-open.devpost.com/",
-      projectName: "paragon",
-      projectUrl: "https://devpost.com/software/paragon-h8isc4",
-      achievement: "discretionary prize | $3.3k",
-      teamSize: 3,
-      role: "full stack",
-      description:
-        "first-ever liquidation-free tokenized equity leverage platform on the ink chain.",
-      techStack: ["typescript", "react", "full stack"],
+      techStack: ["euler", "defi", "leverage"],
     },
     {
       hackathon: "ebc10 radix",
@@ -244,18 +398,6 @@ export const RESUME_DATA = {
       techStack: ["solidity", "lukso", "lending"],
     },
     {
-      hackathon: "ethglobal hackmoney 2026",
-      hackathonUrl: "https://ethglobal.com/events/hackmoney2026",
-      projectName: "oshio",
-      projectUrl: "https://ethglobal.com/showcase/oshio-99nv7",
-      achievement: "sui bounty | $1k",
-      teamSize: 1,
-      role: "frontend",
-      description:
-        "margin-trading app on sui focused on simpler ux, using deepbook and pyth to make leveraged trading more accessible.",
-      techStack: ["sui", "deepbook", "pyth", "next.js"],
-    },
-    {
       hackathon: "ethoxford 2025",
       hackathonUrl: "https://ethoxford.io",
       projectName: "protein mango",
@@ -266,65 +408,6 @@ export const RESUME_DATA = {
       description:
         "parametric earthquake insurance with automated claims via zkps.",
       techStack: ["flare", "mina"],
-    },
-    {
-      hackathon: "chainlink convergence",
-      hackathonUrl: "https://chain.link/hackathon",
-      projectName: "aletheia",
-      projectUrl: "https://aletheia-gilt.vercel.app",
-      achievement: "world id | $500",
-      teamSize: 1,
-      role: "full stack",
-      description:
-        "prediction markets with ai consensus resolution and market creation (+ sybil resistance).",
-      techStack: ["tenderly", "chainlink cre", "world id"],
-    },
-  ],
-  projects: [
-    {
-      title: "hormesis keyboard",
-      projectUrl: "https://github.com/Kirillr-Sibirski/hormesis-keyboard",
-      techStack: [
-        {
-          label: "kicad",
-          url: "https://www.kicad.org/",
-        },
-        {
-          label: "onshape (cad)",
-          url: "https://www.onshape.com/en/",
-        },
-        {
-          label: "firmware",
-          url: "https://github.com/Kirillr-Sibirski/zmk-config-hormesis-v2",
-        },
-      ],
-      description:
-        "custom low-profile split diy keyboard with fully custom pcb, case geometry, and zmk firmware configuration.",
-    },
-    {
-      title: "active suspension system",
-      projectUrl:
-        "https://drive.google.com/file/d/1RVng1U3ozTkHGZV1VvMJidTT9ehvyb1P/view?usp=sharing",
-      techStack: [
-        {
-          label: "c++",
-          url: "https://isocpp.org/",
-        },
-        {
-          label: "arduino",
-          url: "https://www.arduino.cc/",
-        },
-        {
-          label: "pid",
-          url: "https://en.wikipedia.org/wiki/PID_controller",
-        },
-        {
-          label: "3d printing",
-          url: "https://en.wikipedia.org/wiki/3D_printing",
-        },
-      ],
-      description:
-        "built an active suspension system for a 1/10 scale rc car, using sensors and pid control to reduce rollovers during aggressive cornering.",
     },
   ],
 } as const;

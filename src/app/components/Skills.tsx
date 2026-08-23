@@ -27,7 +27,7 @@ interface SkillsListProps {
 
 function SkillsList({ title, skills, className }: SkillsListProps) {
   return (
-    <div className="mb-4 last:mb-0">
+    <div className="mb-4 last:mb-0 print:mb-1">
       <h3 className="resume-body font-semibold">{title}</h3>
       <ul
         className={cn("flex list-none flex-wrap gap-1 p-0", className)}

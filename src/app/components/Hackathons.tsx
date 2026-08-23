@@ -67,7 +67,7 @@ function HackathonItem({ project }: { project: HackathonProject }) {
 
 export function Hackathons() {
   return (
-    <Section className="print:break-inside-avoid print:space-y-2">
+    <Section className="print:space-y-2">
       <div className="flex items-end justify-between gap-3">
         <h2 className="resume-section-title font-bold" id="hackathon-projects">
           hackathon projects
@@ -78,13 +78,13 @@ export function Hackathons() {
       </div>
 
       <p className="resume-details font-mono text-foreground/80 print:hidden">
-        prize-winning projects are a big part of the story because they show how
-        i build fast, ship complete products, and work across defi, lending,
-        oracles, and onchain ux. most notable ones are shared below.
+        where i learned to ship: scope a problem quickly, build the product
+        surface, and get something usable working before the clock runs out. the
+        strongest results are below.
       </p>
 
       <div
-        className="grid grid-cols-1 gap-2 print:grid-cols-2 print:gap-1.5 md:grid-cols-2"
+        className="grid grid-cols-1 gap-2 print:hidden md:grid-cols-2"
         role="feed"
         aria-labelledby="hackathon-projects"
       >
@@ -95,6 +95,22 @@ export function Hackathons() {
           />
         ))}
       </div>
+
+      {/* Print: one line each. The cards are for reading, this is for the resume. */}
+      <ul className="hidden list-none p-0 print:block">
+        {RESUME_DATA.hackathons.map((project) => (
+          <li
+            key={`print-${project.hackathon}-${project.projectName}`}
+            className="resume-details font-mono text-foreground/80"
+          >
+            <span className="font-semibold text-foreground">
+              {project.projectName}
+            </span>{" "}
+            — {project.description} ({project.hackathon},{" "}
+            {project.achievement})
+          </li>
+        ))}
+      </ul>
     </Section>
   );
 }

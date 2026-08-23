@@ -135,7 +135,7 @@ export function Projects({
   title = "other experience",
 }: ProjectsProps) {
   return (
-    <Section className="print:break-inside-avoid print:space-y-2 print:pt-0">
+    <Section className="print:space-y-2 print:pt-0">
       <h2 className="resume-section-title font-bold" id="side-projects">
         {title}
       </h2>
