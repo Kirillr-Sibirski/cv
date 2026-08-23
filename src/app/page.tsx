@@ -9,6 +9,7 @@ import { Header } from "./components/Header";
 import { Hackathons } from "./components/Hackathons";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://krlberg.dev"),
   title: "karl ryberg cv",
   description: RESUME_DATA.about,
   openGraph: {

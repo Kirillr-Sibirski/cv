@@ -315,6 +315,7 @@ function HardwareEducationSection() {
 }
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://krlberg.dev"),
   title: "kirill rybkov hardware",
   description: HARDWARE_ABOUT,
   openGraph: {

@@ -1,8 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
+import fs from "node:fs";
+import path from "node:path";
+
 import { ImageResponse } from "next/og";
 import { RESUME_DATA } from "../data/resume-data";
 
-export const runtime = "edge";
 
 export const alt = "karl ryberg cv";
 export const size = {
@@ -11,6 +13,12 @@ export const size = {
 };
 
 export const contentType = "image/png";
+
+// Static export renders this at build time, where the avatar has to be inlined:
+// @vercel/og cannot resolve a relative path the way the running server could.
+const avatar = `data:image/png;base64,${fs
+  .readFileSync(path.join(process.cwd(), "public", "image.png"))
+  .toString("base64")}`;
 
 export default async function Image() {
   return new ImageResponse(
@@ -36,7 +44,7 @@ export default async function Image() {
           }}
         >
           <img
-            src={RESUME_DATA.avatarUrl}
+            src={avatar}
             alt={RESUME_DATA.name}
             style={{
               width: "150px",
