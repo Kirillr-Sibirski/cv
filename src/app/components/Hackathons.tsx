@@ -25,7 +25,7 @@ function StackTags({ tags }: { tags: readonly string[] }) {
 
 function HackathonItem({ project }: { project: HackathonProject }) {
   return (
-    <article className="rounded-lg border border-border/70 p-3 print:p-2">
+    <article className="rounded-lg border border-border p-3 print:p-2">
       <div className="flex items-start justify-between gap-3 print:gap-2">
         <div className="space-y-1">
           <h3 className="resume-body font-semibold leading-tight">
@@ -57,7 +57,7 @@ function HackathonItem({ project }: { project: HackathonProject }) {
           {project.achievement}
         </Badge>
       </div>
-      <p className="resume-details mt-2 text-pretty font-mono text-foreground/80 print:mt-1">
+      <p className="resume-details mt-2 text-pretty font-mono text-foreground/70 print:mt-1">
         {project.description}
       </p>
       <StackTags tags={project.techStack} />
@@ -68,17 +68,17 @@ function HackathonItem({ project }: { project: HackathonProject }) {
 export function Hackathons() {
   return (
     <Section className="print:space-y-2">
-      <div className="flex items-end justify-between gap-3">
+      <div className="flex items-baseline justify-between gap-3">
         <h2 className="resume-section-title font-bold" id="hackathon-projects">
           hackathon projects
         </h2>
-        <p className="resume-details font-mono text-foreground/60 print:hidden">
-          15+ hackathons completed
+        <p className="resume-details font-mono text-foreground/50 print:hidden">
+          15+ hackathons. these are the ones that placed.
         </p>
       </div>
 
       <div
-        className="grid grid-cols-1 gap-2 print:hidden md:grid-cols-2"
+        className="grid grid-cols-1 gap-3 print:hidden md:grid-cols-2"
         role="feed"
         aria-labelledby="hackathon-projects"
       >
@@ -95,7 +95,7 @@ export function Hackathons() {
         {RESUME_DATA.hackathons.map((project) => (
           <li
             key={`print-${project.hackathon}-${project.projectName}`}
-            className="resume-details font-mono text-foreground/80"
+            className="resume-details font-mono text-foreground/70"
           >
             <span className="font-semibold text-foreground">
               {project.projectName}

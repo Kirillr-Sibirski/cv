@@ -362,6 +362,12 @@ export const RESUME_DATA = {
             done: true,
             desc: "frequency-domain analysis, transfer functions and feedback.",
           },
+          {
+            name: "system dynamics 3",
+            ec: 4,
+            done: false,
+            desc: "continues system dynamics 1 and 2: modelling and validating physical systems.",
+          },
         ],
       },
       {
@@ -374,12 +380,6 @@ export const RESUME_DATA = {
             ec: 4,
             done: false,
             desc: "continuous and discrete signals, Fourier analysis, sampling and filtering.",
-          },
-          {
-            name: "models",
-            ec: 4,
-            done: false,
-            desc: "building and validating mathematical models of physical systems.",
           },
           {
             name: "engineering system dynamics",

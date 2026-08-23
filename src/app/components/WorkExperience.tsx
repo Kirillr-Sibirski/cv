@@ -60,7 +60,7 @@ function WorkPeriod({ start, end }: WorkPeriodProps) {
 
   return (
     <div
-      className="resume-body tabular-nums text-gray-500"
+      className="resume-details font-mono tabular-nums text-foreground/50"
       aria-label={`employment period: ${start} to ${end ?? "present"}`}
     >
       {start} - {end ?? "present"}
@@ -101,7 +101,7 @@ function ArticleLink({ articleLink, articleLabel }: ArticleLinkProps) {
 
   return (
     <a
-      className="resume-details font-mono text-foreground/60 underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
+      className="resume-details font-mono text-foreground/50 underline decoration-muted-foreground/40 underline-offset-2 hover:decoration-foreground"
       href={articleLink}
       target="_blank"
       rel="noopener noreferrer"
@@ -133,10 +133,10 @@ function WorkExperienceItem({ work }: WorkExperienceItemProps) {
   } = work;
 
   return (
-    <div className="rounded-lg border border-border/70 p-4 print:p-2">
+    <div className="rounded-lg border border-border p-4 print:p-2">
       <div className="flex items-start justify-between gap-x-3">
         <div className="space-y-1">
-          <h3 className="inline-flex items-center justify-center gap-x-1 text-base font-semibold">
+          <h3 className="resume-body inline-flex items-center gap-x-1 font-semibold">
             <CompanyLink company={company} link={link} />
           </h3>
           <h4 className="resume-details font-mono font-semibold text-foreground/70">
@@ -148,7 +148,7 @@ function WorkExperienceItem({ work }: WorkExperienceItemProps) {
       </div>
       <BadgeList className="mt-3 flex-wrap gap-y-1" badges={badges} />
       {description ? (
-        <div className="resume-details mt-3 text-pretty font-mono text-foreground/80">
+        <div className="resume-details mt-3 text-pretty font-mono text-foreground/70">
           {description}
         </div>
       ) : null}
@@ -175,7 +175,7 @@ export function WorkExperience({
         {title}
       </h2>
       <div
-        className="space-y-4 print:space-y-1"
+        className="space-y-3 print:space-y-1"
         role="feed"
         aria-labelledby="work-experience"
       >

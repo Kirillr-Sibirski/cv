@@ -50,7 +50,7 @@ function EducationCard({ item }: { item: Institution }) {
   );
 
   return (
-    <article className="rounded-lg border border-border/70 p-3 print:break-inside-avoid print:p-2">
+    <article className="rounded-lg border border-border p-3 print:break-inside-avoid print:p-2">
       <div className="flex items-start justify-between gap-3">
         <div className="space-y-1">
           <h3 className="resume-body font-semibold">
@@ -60,17 +60,17 @@ function EducationCard({ item }: { item: Institution }) {
             <SchoolLink label={item.degree} url={item.degreeUrl} />
           </p>
           {item.gpa && (
-            <p className="resume-details font-mono text-foreground/80">
+            <p className="resume-details font-mono text-foreground/70">
               GPA: {item.gpa}
             </p>
           )}
           {item.summary && (
-            <p className="resume-details font-mono text-foreground/80">
+            <p className="resume-details font-mono text-foreground/70">
               {item.summary}
             </p>
           )}
         </div>
-        <p className="resume-details shrink-0 font-mono text-foreground/60">
+        <p className="resume-details shrink-0 font-mono text-foreground/50">
           {item.start} - {item.end}
         </p>
       </div>
@@ -110,13 +110,13 @@ function EducationCard({ item }: { item: Institution }) {
                   {group.courses.map((course) => (
                     <div
                       key={`${group.title}-${course.name}`}
-                      className="rounded-md border border-border/70 bg-secondary/40 px-2 py-1.5"
+                      className="rounded-md border border-border px-2 py-1.5"
                     >
                       <div className="flex items-start justify-between gap-2">
                         <div className="resume-details font-semibold text-foreground">
                           {course.name}
                         </div>
-                        <div className="resume-details font-mono text-foreground/60">
+                        <div className="resume-details font-mono text-foreground/50">
                           {course.ec}
                         </div>
                       </div>
@@ -132,7 +132,7 @@ function EducationCard({ item }: { item: Institution }) {
             {item.courseGroups.map((group) => (
               <p
                 key={group.title}
-                className="resume-details font-mono text-foreground/80"
+                className="resume-details font-mono text-foreground/70"
               >
                 <span className="font-semibold">{group.title}:</span>{" "}
                 {group.courses

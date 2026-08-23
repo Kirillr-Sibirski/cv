@@ -71,38 +71,47 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground;
     /*
      * No global lowercase transform: copy is authored lowercase by hand so
-     * acronyms (GPA, PID, CAD, IMU, GPS, FMEA…) can stay uppercase.
+     * acronyms (GPA, PID, CAD, IMU, GPS, FMEA) can stay uppercase.
      */
+  }
+
+  ::selection {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
   }
 }
 
 @layer components {
+  /*
+   * Four sizes, each with its own line-height. Previously these did @apply
+   * and then overrode themselves with !important, which forced every print
+   * rule to shout back to be heard.
+   */
   .resume-name {
-    @apply text-4xl font-bold;
-    font-size: 32px !important;
+    font-size: 32px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: -0.02em;
   }
 
   .resume-section-title {
-    @apply text-xl font-bold;
-    font-size: 18px !important;
+    font-size: 18px;
+    line-height: 1.25;
+    font-weight: 700;
   }
 
   .resume-body {
-    @apply text-sm leading-relaxed;
-    font-size: 14px !important;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .resume-details {
-    @apply text-xs;
-    font-size: 12px !important;
+    font-size: 12px;
+    line-height: 1.45;
   }
-}
-
-.print-force-new-page {
-  page-break-before: always;
 }
 
 @media print {
@@ -116,21 +125,21 @@
    * in the browser but still land on two sheets of A4.
    */
   .resume-name {
-    font-size: 26px !important;
+    font-size: 26px;
   }
 
   .resume-section-title {
-    font-size: 15px !important;
+    font-size: 15px;
   }
 
   .resume-body {
-    font-size: 12.5px !important;
-    line-height: 1.3 !important;
+    font-size: 12.5px;
+    line-height: 1.3;
   }
 
   .resume-details {
-    font-size: 10.5px !important;
-    line-height: 1.28 !important;
+    font-size: 10.5px;
+    line-height: 1.28;
   }
 
   /*
@@ -145,13 +154,5 @@
 
   .print\:hidden {
     display: none !important;
-  }
-
-  .print\:break-before-page {
-    break-before: page !important;
-  }
-
-  .print\:break-after-page {
-    break-after: page !important;
   }
 }

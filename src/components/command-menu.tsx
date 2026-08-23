@@ -51,9 +51,9 @@ export const CommandMenu = ({ links }: Props) => {
         <CommandIcon className="my-6 size-6" />
       </Button>
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="type a command or search..." />
+        <CommandInput placeholder="type something, or just poke around" />
         <CommandList>
-          <CommandEmpty>no results found.</CommandEmpty>
+          <CommandEmpty>nothing. try fewer letters.</CommandEmpty>
           <CommandGroup heading="actions">
             <CommandItem
               onSelect={() => {

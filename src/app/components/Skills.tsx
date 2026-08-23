@@ -28,7 +28,7 @@ interface SkillsListProps {
 function SkillsList({ title, skills, className }: SkillsListProps) {
   return (
     <div className="mb-4 last:mb-0 print:mb-1">
-      <h3 className="resume-body font-semibold">{title}</h3>
+      <h3 className="resume-details font-mono text-foreground/50">{title}</h3>
       <ul
         className={cn("flex list-none flex-wrap gap-1 p-0", className)}
         aria-label={`list of ${title.toLowerCase()}`}
@@ -39,7 +39,7 @@ function SkillsList({ title, skills, className }: SkillsListProps) {
               href={skill.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="resume-details inline-flex items-center rounded-md border border-transparent bg-primary/80 px-2 py-0.5 font-mono leading-normal text-primary-foreground transition-colors hover:bg-primary/60 print:px-2 print:py-0.5"
+              className="resume-details inline-flex items-center rounded-md border border-transparent bg-secondary px-2 py-0.5 font-mono text-foreground/70 transition-colors hover:bg-secondary/70 print:px-2 print:py-0.5"
               aria-label={`skill: ${skill.label}`}
             >
               {skill.label}

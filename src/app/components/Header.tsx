@@ -11,7 +11,7 @@ function LocationLink({ locations }: LocationLinkProps) {
   return (
     <p className="resume-details max-w-md items-center text-pretty font-mono text-foreground">
       <span className="inline-flex flex-wrap items-center gap-x-1.5 gap-y-1 align-baseline leading-none">
-        <GlobeIcon className="size-3 text-foreground/80" aria-hidden="true" />
+        <GlobeIcon className="size-3 text-foreground/70" aria-hidden="true" />
         {locations.map((location, index) => (
           <span
             key={location.label}
@@ -63,7 +63,7 @@ interface ContactButtonsProps {
 function ContactButtons({ contact, personalWebsiteUrl }: ContactButtonsProps) {
   return (
     <div
-      className="resume-body flex gap-x-1 pt-1 font-mono text-foreground/80 print:hidden"
+      className="resume-body flex gap-x-1 font-mono text-foreground/70 print:hidden"
       role="list"
       aria-label="contact links"
     >
@@ -101,7 +101,7 @@ interface PrintContactProps {
 function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
   return (
     <div
-      className="resume-details hidden font-mono text-foreground/80 print:flex print:flex-wrap print:items-center print:gap-x-4"
+      className="resume-details hidden font-mono text-foreground/70 print:flex print:flex-wrap print:items-center print:gap-x-4"
       aria-label="print contact information"
     >
       {personalWebsiteUrl && (
@@ -111,7 +111,7 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
           rel="noopener noreferrer"
           aria-label="personal website"
         >
-          <GlobeIcon className="size-4 text-foreground/80" />
+          <GlobeIcon className="size-4 text-foreground/70" />
         </a>
       )}
       {contact.email && (
@@ -121,7 +121,7 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
           rel="noopener noreferrer"
           aria-label={`email: ${contact.email}`}
         >
-          <MailIcon className="size-4 text-foreground/80" />
+          <MailIcon className="size-4 text-foreground/70" />
         </a>
       )}
       {contact.social.map((social) => (
@@ -132,7 +132,7 @@ function PrintContact({ contact, personalWebsiteUrl }: PrintContactProps) {
           rel="noopener noreferrer"
           aria-label={social.name}
         >
-          <social.icon className="size-4 text-foreground/80" />
+          <social.icon className="size-4 text-foreground/70" />
         </a>
       ))}
     </div>
@@ -153,14 +153,14 @@ export function Header({
   const displayAbout = aboutOverride ?? RESUME_DATA.about;
 
   return (
-    <header className="flex items-center justify-between gap-4 print:gap-3">
-      <div className="flex-1 space-y-1.5">
+    <header className="flex items-start justify-between gap-4 print:gap-3">
+      <div className="flex-1 space-y-2">
         <h1 className="resume-name" id="resume-name">
           {displayName}
         </h1>
         {displayAbout ? (
           <p
-            className="resume-body max-w-2xl text-pretty font-mono text-foreground/80"
+            className="resume-body max-w-2xl text-pretty font-mono text-foreground/70"
             aria-labelledby="resume-name"
           >
             {displayAbout}
