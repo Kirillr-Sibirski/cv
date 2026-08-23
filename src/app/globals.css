@@ -148,10 +148,6 @@
    * those utilities (Tailwind emits them without !important) and, because
    * .rounded-md is on Badge, padded every skill chip instead of shrinking it.
    */
-  ul.list-inside li {
-    margin-bottom: 0.1rem !important;
-  }
-
   .print\:hidden {
     display: none !important;
   }

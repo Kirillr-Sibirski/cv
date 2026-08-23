@@ -16,7 +16,7 @@ export const RESUME_DATA = {
     },
   ],
   about:
-    "BSc advanced technology student @ university of twente. experience across embedded electronics, control systems, CAD, and full-stack product work.",
+    "bachelor advanced technology student @ university of twente. experience across embedded electronics, control systems, CAD, and full-stack product work.",
   avatarUrl: "./image.png",
   contact: {
     email: "",
@@ -121,7 +121,7 @@ export const RESUME_DATA = {
   // Reverse-chronological by start date.
   work: [
     {
-      company: "RISE",
+      company: "rise",
       link: "https://www.riseteam.nl/",
       badges: ["C++", "F Prime"],
       title: "software member",
@@ -139,25 +139,8 @@ export const RESUME_DATA = {
       title: "co-founder",
       start: "apr 2026",
       end: undefined,
-      description: (
-        <div>
-          <ul className="list-inside list-disc">
-            <li>
-              building an FMEA intelligence platform for reliability and quality
-              engineering teams, grounded in peer-reviewed failure literature
-              rather than whoever happens to be in the room.
-            </li>
-            <li>
-              structures papers, standards, industrial reports, and NDT records
-              into reusable failure modes, causes, effects, and controls.
-            </li>
-            <li>
-              models subsystem dependencies and propagation paths so failure
-              patterns transfer across operating contexts and domains.
-            </li>
-          </ul>
-        </div>
-      ),
+      description:
+        "an FMEA platform for reliability engineers. it reads the papers, standards and NDT reports nobody has time for, turns them into reusable failure modes, and models how those failures propagate between subsystems.",
     },
     {
       company: "lattic3",
@@ -168,24 +151,8 @@ export const RESUME_DATA = {
       title: "co-founder",
       start: "oct 2024",
       end: "aug 2025",
-      description: (
-        <div>
-          <ul className="list-inside list-disc">
-            <li>
-              co-founded lattic3 with one other engineer, secured $20k in radix
-              foundation grants, and launched the protocol on radix mainnet.
-            </li>
-            <li>
-              built the next.js app frontend and protocol-facing user flows for
-              strategy discovery, deposits, and position management.
-            </li>
-            <li>
-              lattic3 is a DeFi strategies protocol; the first strategy used
-              flash loans to build leveraged positions across lending platforms.
-            </li>
-          </ul>
-        </div>
-      ),
+      description:
+        "a DeFi strategies protocol on radix, built with one other engineer. i owned the frontend and the discovery, deposit and position flows. $20k in radix foundation grants, launched on mainnet; the first strategy used flash loans for leveraged lending positions.",
     },
   ],
 
@@ -245,11 +212,11 @@ export const RESUME_DATA = {
     university: {
       school: "university of twente",
       schoolUrl: "https://www.utwente.nl/en/",
-      degree: "BSc advanced technology",
+      degree: "bachelor advanced technology",
       degreeUrl:
         "https://www.utwente.nl/en/education/bachelor/programmes/advanced-technology/",
       start: "sep 2025",
-      end: "aug 2028",
+      end: "sep 2028",
       gpa: "7.2 / 10",
       courseGroups: [],
     },

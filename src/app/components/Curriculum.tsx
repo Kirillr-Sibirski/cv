@@ -56,7 +56,7 @@ function CourseRow({ course }: { course: Course }) {
 
   if (!course.desc) {
     return (
-      <li className="grid grid-cols-[0.375rem_1fr_auto] items-baseline gap-x-2.5 px-1.5 py-1">
+      <li className="grid grid-cols-[0.375rem_1fr_auto] items-baseline gap-x-1.5 px-1.5 py-1">
         {label}
       </li>
     );
@@ -70,7 +70,7 @@ function CourseRow({ course }: { course: Course }) {
         aria-expanded={open}
         aria-controls={descId}
         className={cn(
-          "grid w-full grid-cols-[0.375rem_1fr_auto] items-baseline gap-x-2.5 rounded px-1.5 py-1 text-left",
+          "grid w-full grid-cols-[0.375rem_1fr_auto] items-baseline gap-x-1.5 rounded px-1.5 py-1 text-left",
           "transition-colors hover:bg-secondary focus-visible:bg-secondary focus-visible:outline-none",
           open && "bg-secondary",
         )}
@@ -80,7 +80,7 @@ function CourseRow({ course }: { course: Course }) {
       <p
         id={descId}
         hidden={!open}
-        className="resume-details pb-1.5 pl-[1.125rem] pr-1.5 text-foreground/70"
+        className="resume-details pb-1.5 pl-[1.5rem] pr-1.5 text-foreground/70"
       >
         {course.desc}
       </p>
@@ -89,34 +89,19 @@ function CourseRow({ course }: { course: Course }) {
 }
 
 function DisciplineCard({ discipline }: { discipline: Discipline }) {
-  // Completed first: interleaving the two made the dot the only signal.
-  const done = discipline.courses.filter((c) => c.done);
-  const todo = discipline.courses.filter((c) => !c.done);
+  const doneCount = discipline.courses.filter((c) => c.done).length;
 
   return (
     <section className="rounded-md border border-border p-3">
       <div className="flex items-baseline justify-between gap-x-2">
         <h5 className="resume-body font-semibold">{discipline.title}</h5>
         <span className="resume-details shrink-0 font-mono tabular-nums text-foreground/50">
-          {done.length}/{discipline.courses.length} done
+          {doneCount}/{discipline.courses.length} done
         </span>
       </div>
 
       <ul className="mt-2 list-none p-0">
-        {done.map((course) => (
-          <CourseRow key={course.name} course={course} />
-        ))}
-
-        {todo.length > 0 && done.length > 0 && (
-          <li
-            aria-hidden="true"
-            className="resume-details mt-1.5 border-t border-border pt-1.5 pl-1.5 font-mono text-foreground/50"
-          >
-            upcoming
-          </li>
-        )}
-
-        {todo.map((course) => (
+        {discipline.courses.map((course) => (
           <CourseRow key={course.name} course={course} />
         ))}
       </ul>
