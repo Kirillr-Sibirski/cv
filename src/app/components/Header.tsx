@@ -158,12 +158,14 @@ export function Header({
         <h1 className="resume-name" id="resume-name">
           {displayName}
         </h1>
-        <p
-          className="resume-body max-w-2xl text-pretty font-mono text-foreground/80"
-          aria-labelledby="resume-name"
-        >
-          {displayAbout}
-        </p>
+        {displayAbout ? (
+          <p
+            className="resume-body max-w-2xl text-pretty font-mono text-foreground/80"
+            aria-labelledby="resume-name"
+          >
+            {displayAbout}
+          </p>
+        ) : null}
 
         <LocationLink locations={RESUME_DATA.locations} />
 

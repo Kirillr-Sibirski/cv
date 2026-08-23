@@ -72,7 +72,10 @@
   }
   body {
     @apply bg-background text-foreground;
-    text-transform: lowercase;
+    /*
+     * No global lowercase transform: copy is authored lowercase by hand so
+     * acronyms (GPA, PID, CAD, IMU, GPS, FMEA…) can stay uppercase.
+     */
   }
 }
 
@@ -130,12 +133,12 @@
     line-height: 1.28 !important;
   }
 
-  /* Cards carry most of the vertical slack, so tighten their boxes too. */
-  .rounded-lg,
-  .rounded-md {
-    padding: 0.4rem 0.55rem !important;
-  }
-
+  /*
+   * Card padding is tuned per component via print:p-*; no blanket override
+   * here. An earlier `.rounded-lg, .rounded-md { … !important }` rule beat
+   * those utilities (Tailwind emits them without !important) and, because
+   * .rounded-md is on Badge, padded every skill chip instead of shrinking it.
+   */
   ul.list-inside li {
     margin-bottom: 0.1rem !important;
   }

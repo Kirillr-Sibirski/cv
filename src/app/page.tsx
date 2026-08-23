@@ -2,7 +2,6 @@ import { CommandMenu } from "@/components/command-menu";
 import { Metadata } from "next";
 import { RESUME_DATA } from "@/data/resume-data";
 import { WorkExperience } from "./components/WorkExperience";
-import { Projects } from "./components/Projects";
 import { Education } from "./components/Education";
 import { Skills } from "./components/Skills";
 import { Header } from "./components/Header";
@@ -10,20 +9,26 @@ import { Hackathons } from "./components/Hackathons";
 
 const TITLE = "kirill rybkov cv";
 
+// The on-page bio is intentionally blank right now; link previews still need
+// something, so fall back rather than shipping an empty description.
+const DESCRIPTION =
+  RESUME_DATA.about ||
+  "engineering, hardware, and software projects by kirill rybkov.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://krlberg.dev"),
   title: TITLE,
-  description: RESUME_DATA.about,
+  description: DESCRIPTION,
   openGraph: {
     title: TITLE,
-    description: RESUME_DATA.about,
+    description: DESCRIPTION,
     type: "profile",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
-    description: RESUME_DATA.about,
+    description: DESCRIPTION,
   },
 };
 
@@ -66,8 +71,6 @@ export default function ResumePage() {
           />
 
           <Education institutions={[university, secondary]} />
-
-          <Projects projects={RESUME_DATA.projects} title="other builds" />
 
           <Hackathons />
         </div>

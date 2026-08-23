@@ -7,11 +7,12 @@ type WorkExperience = {
   company: string;
   link?: string;
   articleLink?: string;
+  articleLabel?: string;
   badges: readonly string[];
   title: string;
   start: string;
   end?: string;
-  description: ReactNode;
+  description?: ReactNode;
 };
 type WorkBadges = readonly string[];
 
@@ -74,6 +75,7 @@ interface CompanyLinkProps {
 
 interface ArticleLinkProps {
   articleLink?: string;
+  articleLabel?: string;
 }
 
 function CompanyLink({ company, link }: CompanyLinkProps) {
@@ -94,7 +96,7 @@ function CompanyLink({ company, link }: CompanyLinkProps) {
   );
 }
 
-function ArticleLink({ articleLink }: ArticleLinkProps) {
+function ArticleLink({ articleLink, articleLabel }: ArticleLinkProps) {
   if (!articleLink) return null;
 
   return (
@@ -104,7 +106,7 @@ function ArticleLink({ articleLink }: ArticleLinkProps) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      radix feature
+      {articleLabel ?? "feature"}
     </a>
   );
 }
@@ -118,11 +120,20 @@ interface WorkExperienceItemProps {
  * Handles responsive layout for badges (mobile/desktop)
  */
 function WorkExperienceItem({ work }: WorkExperienceItemProps) {
-  const { company, link, articleLink, badges, title, start, end, description } =
-    work;
+  const {
+    company,
+    link,
+    articleLink,
+    articleLabel,
+    badges,
+    title,
+    start,
+    end,
+    description,
+  } = work;
 
   return (
-    <div className="rounded-lg border border-border/70 p-4 print:p-3">
+    <div className="rounded-lg border border-border/70 p-4 print:p-2">
       <div className="flex items-start justify-between gap-x-3">
         <div className="space-y-1">
           <h3 className="inline-flex items-center justify-center gap-x-1 text-base font-semibold">
@@ -131,14 +142,16 @@ function WorkExperienceItem({ work }: WorkExperienceItemProps) {
           <h4 className="resume-details font-mono font-semibold text-foreground/70">
             {title}
           </h4>
-          <ArticleLink articleLink={articleLink} />
+          <ArticleLink articleLink={articleLink} articleLabel={articleLabel} />
         </div>
         <WorkPeriod start={start} end={end} />
       </div>
       <BadgeList className="mt-3 flex-wrap gap-y-1" badges={badges} />
-      <div className="resume-details mt-3 text-pretty font-mono text-foreground/80">
-        {description}
-      </div>
+      {description ? (
+        <div className="resume-details mt-3 text-pretty font-mono text-foreground/80">
+          {description}
+        </div>
+      ) : null}
     </div>
   );
 }

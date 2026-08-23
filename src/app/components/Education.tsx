@@ -20,6 +20,8 @@ export type Institution = {
   readonly start: string;
   readonly end: string;
   readonly gpa?: string;
+  /** One-line results summary, used where a full course breakdown is overkill. */
+  readonly summary?: string;
   readonly courseGroups: readonly CourseGroup[];
 };
 
@@ -45,7 +47,7 @@ function EducationCard({ item }: { item: Institution }) {
   );
 
   return (
-    <article className="rounded-lg border border-border/70 p-3 print:break-inside-avoid print:p-2.5">
+    <article className="rounded-lg border border-border/70 p-3 print:break-inside-avoid print:p-2">
       <div className="flex items-start justify-between gap-3">
         <div className="space-y-1">
           <h3 className="resume-body font-semibold">
@@ -56,7 +58,12 @@ function EducationCard({ item }: { item: Institution }) {
           </p>
           {item.gpa && (
             <p className="resume-details font-mono text-foreground/80">
-              gpa: {item.gpa}
+              GPA: {item.gpa}
+            </p>
+          )}
+          {item.summary && (
+            <p className="resume-details font-mono text-foreground/80">
+              {item.summary}
             </p>
           )}
         </div>
