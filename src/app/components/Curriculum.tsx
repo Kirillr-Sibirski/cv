@@ -19,17 +19,10 @@ type Discipline = {
   readonly courses: readonly Course[];
 };
 
-type Choice = {
-  readonly title: string;
-  readonly ec: string;
-  readonly options: readonly string[];
-};
-
 export type CurriculumData = {
   readonly totalCredits: number;
   readonly completedCredits: number;
   readonly disciplines: readonly Discipline[];
-  readonly choices: readonly Choice[];
 };
 
 /** A course row. Hover or focus reveals the description. */
@@ -188,35 +181,6 @@ export function Curriculum({ data }: { data: CurriculumData }) {
           {data.disciplines.map((discipline) => (
             <DisciplineCard key={discipline.id} discipline={discipline} />
           ))}
-
-          <section className="rounded-lg border border-dashed border-foreground/25 p-3 md:col-span-2">
-            <h5 className="resume-body font-semibold">not yet chosen</h5>
-            <p className="resume-details mt-0.5 text-foreground/60">
-              electives and the year 3 track, still open.
-            </p>
-            <div className="mt-2 grid gap-3 sm:grid-cols-3">
-              {data.choices.map((choice) => (
-                <div key={choice.title}>
-                  <p className="resume-details font-mono text-foreground/70">
-                    <span className="font-semibold text-foreground/85">
-                      {choice.title}
-                    </span>{" "}
-                    · {choice.ec}
-                  </p>
-                  <ul className="mt-1 flex list-none flex-wrap gap-1 p-0">
-                    {choice.options.map((option) => (
-                      <li
-                        key={option}
-                        className="resume-details rounded-md bg-secondary/70 px-2 py-1 text-foreground/70"
-                      >
-                        {option}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
       </div>
     </div>

@@ -77,12 +77,6 @@ export function Hackathons() {
         </p>
       </div>
 
-      <p className="resume-details font-mono text-foreground/80 print:hidden">
-        where i learned to ship: scope a problem quickly, build the product
-        surface, and get something usable working before the clock runs out. the
-        strongest results are below.
-      </p>
-
       <div
         className="grid grid-cols-1 gap-2 print:hidden md:grid-cols-2"
         role="feed"

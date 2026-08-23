@@ -325,6 +325,12 @@ export const RESUME_DATA = {
             done: false,
             desc: "supervised and unsupervised learning applied to engineering data.",
           },
+          {
+            name: "computational thinking",
+            ec: 4,
+            done: false,
+            desc: "chosen elective: decomposing problems into algorithms and data structures.",
+          },
         ],
       },
       {
@@ -374,6 +380,18 @@ export const RESUME_DATA = {
             ec: 4,
             done: false,
             desc: "building and validating mathematical models of physical systems.",
+          },
+          {
+            name: "engineering system dynamics",
+            ec: 5,
+            done: false,
+            desc: "systems and control module: modelling multi-domain dynamic systems.",
+          },
+          {
+            name: "control engineering",
+            ec: 5,
+            done: false,
+            desc: "systems and control module: feedback design, stability and controller tuning.",
           },
         ],
       },
@@ -469,6 +487,12 @@ export const RESUME_DATA = {
             desc: "design, simulation and measurement of an antenna.",
           },
           {
+            name: "project systems and control",
+            ec: 5,
+            done: false,
+            desc: "systems and control module: designing and validating a controlled system.",
+          },
+          {
             name: "preparation bachelor assignment",
             ec: 3,
             done: false,
@@ -505,35 +529,6 @@ export const RESUME_DATA = {
             done: false,
             desc: "taking a technical idea toward a viable product and business.",
           },
-        ],
-      },
-    ],
-    choices: [
-      {
-        title: "elective",
-        ec: "4-5 EC",
-        options: [
-          "engineering solid mechanics",
-          "computational thinking",
-          "classical mechanics",
-          "electronics",
-        ],
-      },
-      {
-        title: "elective module",
-        ec: "15 EC",
-        options: [
-          "materials science and engineering",
-          "transport phenomena",
-          "systems and control",
-          "software systems",
-        ],
-      },
-      {
-        title: "master preparation",
-        ec: "year 3",
-        options: [
-          "course choice depends on target master's admission requirements",
         ],
       },
     ],
